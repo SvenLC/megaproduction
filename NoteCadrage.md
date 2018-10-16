@@ -5,7 +5,7 @@
 | Numéro | Date     | responsable | descriptif                                                     |
 | ------ | -------- | ----------- | -------------------------------------------------------------- |
 | 1.0.0  | 16/10/18 | B. Ragot    | Création du document , Versionning, Contexte et problématiques |
-| 1.0.1  | 16/10/18 | S. Le Cann  | Objectifs                                                      |
+| 1.0.1  | 16/10/18 | S. Le Cann  | Objectifs, intervenant                                         |
 
 ## Contexte et problématiques
 
@@ -47,4 +47,4 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 - Client: Dorian Hiron
 - Prestataires: Benjamin Ragot, Sven Le Cann
 - Expert technique: Dorian Hiron, Tawfiq Cadi Tazi
-- Expert gestion de projets: Jeremy Perouault
+- Expert gestion de projets: Jeremy Perouaultstatus
