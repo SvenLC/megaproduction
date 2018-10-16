@@ -5,6 +5,8 @@
 | Numéro | Date     | responsable | descriptif                                                     |
 | ------ | -------- | ----------- | -------------------------------------------------------------- |
 | 1.0.0  | 16/10/18 | B. Ragot    | Création du document , Versionning, Contexte et problématiques |
+| 1.0.1  | 16/10/18 | S. Le Cann  | Objectifs                                                      |
+
 
 ## Contexte et problématiques
 
@@ -23,11 +25,25 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 - Gestion des castings à l'aide d'un client lourd
 
     Afficher, ajouter, éditer, supprimer les clients, les partenaires de diffusion et les offres de castings d'une interface simple et intuitive
-    
 - Mises en place d'une base de donnée pour stocker
+  - Des clients (organisations à la recherche d'artiste)
+  - Des partenaires de diffusion
+  - Des offres de casting
+  - Des listes de référentiel(types de contrats, domaines de métiers, métiers)
 
-    - Des clients (organisations à la recherche d'artiste)
-    - Des partenaires de diffusion
-    - Des offres de casting
-    - Des listes de référentiel(types de contrats, domaines de métiers, métiers)
+## Objectifs
 
+- Mettre en place un client lourd accessible uniquement par les employés de l'équipe de MegaCasting et doit être simple et disponible sur tous les postes de la société.
+- Les solutions doivent être ergonomique.
+- Le site doit être seulement en consultation.
+- Mise en place d'une API RestFull pour les partenaires.
+
+## Intervenants
+
+- Client: Dorian Hiron
+
+- Prestataires: Benjamin Ragot, Sven Le Cann
+- Expert technique: Dorian Hiron, Tawfiq Cadi Tazi
+- Expert gestion de projets: Jeremy Perouault
+
+## Contraintes
