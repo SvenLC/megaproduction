@@ -50,13 +50,12 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 ## Contraintes
 
 - Client lourd
-    - Doit être accessible de tout les postes de l'entreprise.
-    - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
-    - Interface simple, ergonomique et intuitive
+  - Doit être accessible de tout les postes de l'entreprise.
+  - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
+  - Interface simple, ergonomique et intuitive
 - Client léger (site internet)
-    - Site dynamique exploitant la base de données centralisée.
-    - Multi-support
-    - Moteur de recherche dynamique
+  - Site dynamique exploitant la base de données centralisée.
+  - Multi-support
+  - Moteur de recherche dynamique
 - API rest full
-    - gérer l'autorisation des utilisateurs pour contacter l'API (ceux )
-    - 
+  - gérer l'autorisation des utilisateurs pour contacter l'API (ceux )
