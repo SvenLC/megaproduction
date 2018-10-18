@@ -1,8 +1,9 @@
 # Cahier des charges
 
-| Numéro | Date     | responsable | descriptif           |
-| ------ | -------- | ----------- | -------------------- |
-| 1.0.0  | 16/10/18 | S. Le Cann  | Création du document |
+| Numéro | Date     | responsable | descriptif                        |
+| ------ | -------- | ----------- | --------------------------------- |
+| 1.0.0  | 16/10/18 | S. Le Cann  | Création du document              |
+| 1.0.1  | 16/10/18 | S. Le Cann  | Rédaction des principales parties |
 
 ## Contexte et problématiques
 
@@ -109,6 +110,7 @@ Les données contenues dans la base de données contiendrons les informations su
   - adresse email
   - Login
   - mots de passe
+  
 - Offres de castings
   - Intitulé
   - Référence
