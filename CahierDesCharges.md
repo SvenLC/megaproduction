@@ -83,5 +83,13 @@ Le site internet devra aussi intégrer un moteur de recherche qui permettra de r
 
 Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
 
+### Fonctionnement API
+
 ## Base de données
 
+La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
+
+Les données contenues dans la base de données sont les suivantes :
+
+- Informations clients
+- Informations partenaires de diffusions
