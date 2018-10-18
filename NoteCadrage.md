@@ -6,6 +6,7 @@
 | ------ | -------- | ----------- | -------------------------------------------------------------- |
 | 1.0.0  | 16/10/18 | B. Ragot    | Création du document , Versionning, Contexte et problématiques |
 | 1.0.1  | 16/10/18 | S. Le Cann  | Objectifs, intervenant                                         |
+| 1.0.1  | 18/10/18 | B. Ragot    | Contraintes, Dates importantes                                 |
 
 ## Contexte et problématiques
 
