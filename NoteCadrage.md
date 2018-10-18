@@ -32,6 +32,7 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
   - Des listes de référentiel(types de contrats, domaines de métiers, métiers)
 - Importance du lien permanent entre les partenaires et megacasting quant à la diffusion des annonces.
 - Traitement interne non-automatisé des annonces.
+- Gestion des ressources (contenu éditorial).
 
 ## Objectifs
 
@@ -50,12 +51,37 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 ## Contraintes
 
 - Client lourd
-  - Doit être accessible de tout les postes de l'entreprise.
-  - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
-  - Interface simple, ergonomique et intuitive
+<<<<<<< HEAD
+    - Doit être accessible de tout les postes de l'entreprise.
+    - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
+    - Interface simple, ergonomique et intuitive
+    - Gestion des ressources (contenu éditorial)
 - Client léger (site internet)
-  - Site dynamique exploitant la base de données centralisée.
-  - Multi-support
-  - Moteur de recherche dynamique
+    - Site dynamique exploitant la base de données centralisée.
+    - Multi-support
+    - Moteur de recherche dynamique
+    - Visualiser les ressources (contenu éditorial)
 - API rest full
-  - gérer l'autorisation des utilisateurs pour contacter l'API (ceux )
+    - gérer l'autorisation des utilisateurs pour contacter l'API.
+    - gérer l'accès publique/privée à certaines données.
+- Base de donnée
+    - Gérer les différents utilisateurs pour cloisonner les accès et gérer précisément les accès de chaques utilisateurs.
+    - Installation sur un serveur dédié.
+    - Gérer le système d'information de megacasting en respectant les standards.
+    - Stocker les ressources (contenu éditorial)
+
+## Dates importantes
+
+| Tâche                                                   | Date |
+| ------------------------------------------------------- | ---- |
+| Cahier des charges                                      |      |
+| Analyse détaillé                                        |      |
+| Plannification                                          |      |
+| Lotissement/évaluation des risques                      |      |
+| Création de l'infrastructure                            |      |
+| Création de la base de donnée                           |      |
+| Dev. API                                                |      |
+| Dev. Client léger                                       |      |
+| Dev. Client Lourds                                      |      |
+| Rédaction et réalisation des jeux de test               |      |
+| Rédaction des documentations utilisateurs et techniques |      |
