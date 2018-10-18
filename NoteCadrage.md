@@ -45,4 +45,18 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 - Client: Dorian Hiron
 - Prestataires: Benjamin Ragot, Sven Le Cann
 - Expert technique: Dorian Hiron, Tawfiq Cadi Tazi
-- Expert gestion de projets: Jeremy Perouaultstatus
+- Expert gestion de projets: Jeremy Perouault
+
+## Contraintes
+
+- Client lourd
+    - Doit être accessible de tout les postes de l'entreprise.
+    - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
+    - Interface simple, ergonomique et intuitive
+- Client léger (site internet)
+    - Site dynamique exploitant la base de données centralisée.
+    - Multi-support
+    - Moteur de recherche dynamique
+- API rest full
+    - gérer l'autorisation des utilisateurs pour contacter l'API (ceux )
+    - 
