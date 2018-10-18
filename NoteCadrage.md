@@ -51,7 +51,6 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 ## Contraintes
 
 - Client lourd
-<<<<<<< HEAD
     - Doit être accessible de tout les postes de l'entreprise.
     - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
     - Interface simple, ergonomique et intuitive
@@ -72,16 +71,18 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 
 ## Dates importantes
 
-| Tâche                                                   | Date |
-| ------------------------------------------------------- | ---- |
-| Cahier des charges                                      |      |
-| Analyse détaillé                                        |      |
-| Plannification                                          |      |
-| Lotissement/évaluation des risques                      |      |
-| Création de l'infrastructure                            |      |
-| Création de la base de donnée                           |      |
-| Dev. API                                                |      |
-| Dev. Client léger                                       |      |
-| Dev. Client Lourds                                      |      |
-| Rédaction et réalisation des jeux de test               |      |
-| Rédaction des documentations utilisateurs et techniques |      |
+| Tâche                                                   | Date     | Détails    |
+| ------------------------------------------------------- | -------- | ---------- |
+| Cahier des charges                                      | 24/10/18 | V1 à faire |
+| Analyse détaillé                                        |          |            |
+| Plannification                                          |          |            |
+| Lotissement/évaluation des risques                      |          |            |
+| Création de l'infrastructure                            |          |            |
+| Création de la base de donnée                           |          |            |
+| Dev. API                                                |          |            |
+| Dev. Client léger                                       |          |            |
+| Dev. Client Lourds                                      |          |            |
+| Rédaction et réalisation des jeux de test               |          |            |
+| Rédaction des documentations utilisateurs et techniques |          |            |
+
+## Coûts/Budget
