@@ -25,13 +25,11 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
   - Sécurisation de l'accès au flux par authentification.
 - Gestion des castings à l'aide d'un client lourd
   - Afficher, ajouter, éditer, supprimer les clients, les partenaires de diffusion et les offres de castings d'une interface simple et intuitive
-
 - Mises en place d'une base de donnée pour stocker
   - Des clients (organisations à la recherche d'artiste)
   - Des partenaires de diffusion
   - Des offres de casting
   - Des listes de référentiel(types de contrats, domaines de métiers, métiers)
-
 - Importance du lien permanent entre les partenaires et megacasting quant à la diffusion des annonces.
 - Traitement interne non-automatisé des annonces.
 
