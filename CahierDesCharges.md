@@ -63,6 +63,8 @@ Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un
 
 Le client lourd doit être disponible sur tous les postes de la société et être adapté à un fonctionnement à long terme.
 
+Le client lourd permettra aussi de gérer le contenu éditorial du site web. (Fiches métiers, conseils, interview)
+
 ## Client web
 
 Le site internet doit dynamiquement exploiter la base de données de MegaCasting, afin de mettre en avant les offres de castings.
@@ -83,13 +85,48 @@ Le site internet devra aussi intégrer un moteur de recherche qui permettra de r
 
 Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
 
-### Fonctionnement API
-
 ## Base de données
 
 La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
 
-Les données contenues dans la base de données sont les suivantes :
+Les données contenues dans la base de données contiendrons les informations suivantes :
 
-- Informations clients
-- Informations partenaires de diffusions
+- Clients
+  - Dénomination
+  - Statut juridique
+  - adresse
+  - numéro de téléphone
+  - numéro de fax
+  - adresse email
+  - numéro de siret (Pour les entreprises)
+  - numéro RNA (Associations)
+  
+- Partenaires de diffusions
+  - Dénomination
+  - Statut juridique
+  - numéro de téléphone
+  - numéro de fax
+  - adresse email
+  - Login
+  - mots de passe
+- Offres de castings
+  - Intitulé
+  - Référence
+  - Domaine de métier
+  - Métier
+  - Type de contrat
+  - Date de début de publication
+  - Durée de diffusion
+  - Date de début du contrat
+  - Nombre de poste
+  - Localisation
+  - Description du poste
+  - Description du profil recherché
+  - Coordonnées
+  - #Référentiels
+  - #Client
+
+- Listes de référentiels
+- Fiches métiers
+- Conseils
+- Interview

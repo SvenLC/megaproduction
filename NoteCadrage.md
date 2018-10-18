@@ -51,6 +51,7 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 ## Contraintes
 
 - Client lourd
+<<<<<<< HEAD
     - Doit être accessible de tout les postes de l'entreprise.
     - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
     - Interface simple, ergonomique et intuitive
