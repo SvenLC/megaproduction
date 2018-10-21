@@ -4,6 +4,7 @@
 | ------ | -------- | ----------- | --------------------------------- |
 | 1.0.0  | 16/10/18 | S. Le Cann  | Création du document              |
 | 1.0.1  | 16/10/18 | S. Le Cann  | Rédaction des principales parties |
+| 1.0.1  | 21/10/18 | B. Ragot    | Review et modification générales  |
 
 ## Contexte et problématiques
 
@@ -45,22 +46,34 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un interface simple et intuitive :
 
 - Gestion des clients
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
+    - Ajouter
+    - Afficher
+    - Mettre à jour
+    - Supprimer
 
 - Gestion des partenaires de diffusions
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
+    - Ajouter
+    - Afficher
+    - Mettre à jour
+    - Supprimer
 
 - Gestion des offres de castings
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
+    - Ajouter
+    - Afficher
+    - Mettre à jour
+    - Supprimer
+
+- Gestion des listes de référentiels
+    - Ajouter
+    - Afficher
+    - Mettre à jour
+    - Supprimer
+
+- Gestion du contenu éditorial
+    - Ajouter
+    - Mettre à jour
+    - Supprimer
+
 
 Le client lourd doit être disponible sur tous les postes de la société et être adapté à un fonctionnement à long terme.
 
@@ -82,15 +95,20 @@ Ces informations sont publique et peuvent être visible par tout le monde.
 
 Le site internet devra aussi intégrer un moteur de recherche qui permettra de rechercher rapidement les offres de castings qui correspondent aux profils des artistes.
 
+Le site internet doit permettre de visualiser le contenu éditorial de megacasting.
+
 ## Serveur web
 
 Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
 
-## Base de données
+## Serveur de base de données
 
 La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
 
 Les données contenues dans la base de données contiendrons les informations suivantes :
+
+
+### Différentes tables
 
 - Clients
   - Dénomination
@@ -129,6 +147,8 @@ Les données contenues dans la base de données contiendrons les informations su
   - #Client
 
 - Listes de référentiels
-- Fiches métiers
-- Conseils
-- Interview
+
+- Contenu  éditorial
+    - Fiches  métiers
+    - Conseils
+    - Interviews
