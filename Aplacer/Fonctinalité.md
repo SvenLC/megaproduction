@@ -36,12 +36,7 @@
         - Ajouter
         - Éditer
         - Supprimer
-- Rechercher une liste de référentiel
-- Gérer les listes de référentiel
-    - Afficher
-    - Ajouter
-    - Éditer
-    - Supprimer
+
 
 Ajout ?
 
@@ -72,7 +67,8 @@ Ajout ?
     -  Permet de modifier les pages statiques du site
     -  Administrer le sous domaine de l'API
 
-## API
+
+## API/Service
 
 ### Différents acteurs
 
@@ -87,7 +83,8 @@ Ajout ?
 - Permettre d'intéragir avec la base de donnée
 - Authentifier un utilsateur
 
-## Client léger
+
+## Base de donnée
 
 ### Différents acteurs
 

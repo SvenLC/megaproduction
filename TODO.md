@@ -1,0 +1,4 @@
+- Définir les différents tables (liste de référentiel)
+- Rajouter liste de référentiel dans cas de client lourds
+- Définir les champs de recherche et éditer cas client client lourd.
+- Ajouter la gestion des listes de référentiels dans Fonctionnalité client lourd.

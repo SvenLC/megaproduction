@@ -19,14 +19,10 @@
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
-    - Rechercher une liste de référentiel
-        - extends: //TODO
-    - Gérer les listes de réferentiel
-        - extends: Ajouter
-        - extends: Éditer
-        - extends: Supprimer
     - Rechercher un contenu éditorial
     - Gérer les contenues éditoriaux
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
+
+
