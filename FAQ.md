@@ -9,3 +9,21 @@
 - Le contenu éditorail doit pouvoir être affiché sur le client lourd ?
 
 - Le contenu éditorial est bien ajouté dans le client lourd ?
+
+- Fait on des catégories de contenu éditorial ?
+
+- Fait on des catégories d'offre de casting ?
+
+- Qu'est-ce qu'un client ? 
+    
+    Organisations à la recherche d’artiste.
+
+- Doit-on ajouter les fonctionnalités proposés ?
+
+- Lotissement / évaluation des risques Késako ?
+
+    ![Image 001](./src/img/risque.png)
+
+- Client lourds accès direct ou par API ?
+
+    Par API.

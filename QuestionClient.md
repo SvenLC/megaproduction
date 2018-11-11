@@ -14,6 +14,6 @@
   
 - Quel contenu dans les fiches métiers ?
 
-- Lotissement / évaluation des risques Késako ?
-  
-- Client lourds accès direct ou par API ?
+- Quelles sont les différents types de contrat dans le monde l'audio visuel ?
+
+- Demander uns liste de domaine de métier et de métier.

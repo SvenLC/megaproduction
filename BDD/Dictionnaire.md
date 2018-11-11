@@ -1,0 +1,42 @@
+- Clients
+  - Dénomination
+  - Statut juridique
+  - adresse
+  - numéro de téléphone
+  - numéro de fax
+  - adresse email
+  - numéro de siret (Pour les entreprises)
+  - numéro RNA (Associations)
+  
+- Partenaires de diffusions
+  - Dénomination
+  - Statut juridique
+  - numéro de téléphone
+  - numéro de fax
+  - adresse email
+  - Login
+  - mots de passe
+  
+- Offres de castings
+  - Intitulé
+  - Référence
+  - Domaine de métier
+  - Métier
+  - Type de contrat
+  - Date de début de publication
+  - Durée de diffusion
+  - Date de début du contrat
+  - Nombre de poste
+  - Localisation
+  - Description du poste
+  - Description du profil recherché
+  - Coordonnées
+  - #Référentiels
+  - #Client
+
+- Listes de référentiels
+
+- Contenu  éditorial
+    - Fiches  métiers
+    - Conseils
+    - Interviews
