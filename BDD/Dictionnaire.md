@@ -20,9 +20,9 @@
 - Offres de castings
   - Intitulé
   - Référence
-  - Domaine de métier
-  - Métier
-  - Type de contrat
+  - Domaine de métier //TODO : #Référentiels
+  - Métier //TODO : #Référentiels
+  - Type de contrat //TODO : #Référentiels
   - Date de début de publication
   - Durée de diffusion
   - Date de début du contrat
@@ -31,10 +31,9 @@
   - Description du poste
   - Description du profil recherché
   - Coordonnées
-  - #Référentiels
   - #Client
 
-- Listes de référentiels
+Faire les différentes table des listes de référentiel
 
 - Contenu  éditorial
     - Fiches  métiers
