@@ -26,4 +26,4 @@
 
 - Demander uns liste de domaine de métier et de métier.
 
-- Es-ce qu'une offre correspond à un seul type de contrat ?
+- Es-ce qu'une offre correspond à un seul type de contrat ? A modifier si jamais oui.
