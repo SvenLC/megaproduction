@@ -25,3 +25,5 @@
 - Quelles sont les différents types de contrat dans le monde l'audio visuel ?
 
 - Demander uns liste de domaine de métier et de métier.
+
+- Es-ce qu'une offre correspond à un seul type de contrat ?
