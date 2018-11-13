@@ -20,7 +20,26 @@
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un contenu éditorial
+        - extends: //TODO
     - Gérer les contenues éditoriaux
+        - extends: Ajouter
+        - extends: Éditer
+        - extends: Supprimer
+    - Rechercher un type contrat
+        - extends: //TODO
+    - Gérer les types contrats
+        - extends: Ajouter
+        - extends: Éditer
+        - extends: Supprimer
+    - Rechercher un métier
+        - extends: //TODO
+    - Gérer les métiers
+        - extends: Ajouter
+        - extends: Éditer
+        - extends: Supprimer
+    - Rechercher domaine de métier
+        - extends: //TODO
+    - Gérer les domaines de métier
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
