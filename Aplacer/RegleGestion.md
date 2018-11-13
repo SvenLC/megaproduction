@@ -13,5 +13,7 @@
 - Les équipes de mega casting ont la possibilités de visionner, ajouter,supprimer et éditer les clients, partenaires de diffusion, offres de castings, listes de référentiel et contenu éditorial à travers un client lourd.
 - Un moteur de recherche permettra aux internautes de trouver rapidement les offres de casting qui correspondent à leur profil.
 - Les employés auront la possibilité de rechercher les clients, partenaires de diffusion, offres de castings, listes de référentiel et contenu éditorial à travers un client lourd.
+- Un client a une et une seule adresse.
+- Plusieurs clients peuvent avoir la même adresse.
 
 A voir pour faire les règles de gestion des ajouts.
