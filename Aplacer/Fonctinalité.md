@@ -8,6 +8,7 @@
 
 ### Fonctionnalités
 
+- Espace membre pour s'identifier
 - Rechercher un client
 - Gérer les clients
   - Afficher

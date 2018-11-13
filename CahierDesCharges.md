@@ -47,6 +47,7 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 
 Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un interface simple et intuitive :
 
+- Espace membre pour s'identifier
 - Gestion des clients
   - Ajouter
   - Afficher
@@ -105,7 +106,9 @@ Le site internet devra aussi intégrer un moteur de recherche qui permettra de r
 
 Le site internet doit permettre de visualiser le contenu éditorial de megacasting.
 
-## Serveur web
+## Serveur
+
+### Serveur web
 
 Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
 
@@ -113,13 +116,13 @@ Le serveur web met à disposition des partenaires identifiés auprès de MegaCas
 
     Pour moi ça va dans l'analyse détaillé. Champs déplacé dans BDD dictionnaire.
 
-## Serveur de base de données
+### Serveur de base de données
 
 La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
 
 Les données contenues dans la base de données contiendrons les informations suivantes :
 
-### Différentes tables
+#### Différentes tables
 
 - Clients
   - Dénomination

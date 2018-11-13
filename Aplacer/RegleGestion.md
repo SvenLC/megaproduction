@@ -8,12 +8,15 @@
 - Le client lourd est présent sur tout les postes du service.
 - Les partenaires de diffusion accède aux offres de casting à travers un flux json, auquel il s'identifie avec une clé privée unique fournie par megaCasting.
 - Le site internet s'adaptera à la plateforme.
-- Un offre de casting correspond à un client.
+- Un offre de casting correspond à un et un seul client.
 - Les clients peuvent déposer autant d'annonce qu'il le souhaite sous condition de passer par les équipes de mega casting.
 - Les équipes de mega casting ont la possibilités de visionner, ajouter,supprimer et éditer les clients, partenaires de diffusion, offres de castings, listes de référentiel et contenu éditorial à travers un client lourd.
 - Un moteur de recherche permettra aux internautes de trouver rapidement les offres de casting qui correspondent à leur profil.
 - Les employés auront la possibilité de rechercher les clients, partenaires de diffusion, offres de castings, listes de référentiel et contenu éditorial à travers un client lourd.
 - Un client a une et une seule adresse.
 - Plusieurs clients peuvent avoir la même adresse.
+- Une offre est lié à un et seul type de contrat
+- Une ofre est lié à un et un seul métier
+- Une offre est lié à un et un seul domaine métier.
 
 A voir pour faire les règles de gestion des ajouts.
