@@ -1,12 +1,17 @@
-- Clients
-  - Dénomination
-  - Statut juridique
-  - adresse
-  - numéro de téléphone
-  - numéro de fax
-  - adresse email
-  - numéro de siret (Pour les entreprises)
-  - numéro RNA (Associations)
+# Dictionnaire des données
+
+## Table clients
+|Description|Nom du champ|Type|Nullable|
+|----|----|----|-----|
+|Identifiant|Cli_Id|INT|Non null|
+|Dénomination|Cli_Denomination|VARCHAR|Non null|
+|Statut juridique|Cli_StatutJuridique|VARCHAR|Non null|
+|Adresse|Cli_Adresse|
+numéro de téléphone
+numéro de fax
+adresse email
+numéro de siret (Pour les entreprises)
+numéro RNA (Associations)
   
 - Partenaires de diffusions
   - Dénomination
