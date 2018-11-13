@@ -14,16 +14,14 @@
 
 - Fait on des catégories d'offre de casting ?
 
-- Qu'est-ce qu'un client ? 
-    
-    Organisations à la recherche d’artiste.
+- Qu'est-ce qu'un client ? Organisations à la recherche d’artiste.
 
 - Doit-on ajouter les fonctionnalités proposés ?
 
 - Lotissement / évaluation des risques Késako ?
-
     ![Image 001](./src/img/risque.png)
+- Quel contenu dans les fiches métiers ?
 
-- Client lourds accès direct ou par API ?
+- Quelles sont les différents types de contrat dans le monde l'audio visuel ?
 
-    Par API.
+- Demander uns liste de domaine de métier et de métier.

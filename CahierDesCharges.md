@@ -48,55 +48,49 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un interface simple et intuitive :
 
 - Gestion des clients
-    - Ajouter
-    - Afficher
-    - Mettre à jour
-    - Supprimer
+  - Ajouter
+  - Afficher
+  - Mettre à jour
+  - Supprimer
 
 - Gestion des partenaires de diffusions
-    - Ajouter
-    - Afficher
-    - Mettre à jour
-    - Supprimer
+  - Ajouter
+  - Afficher
+  - Mettre à jour
+  - Supprimer
 
 - Gestion des offres de castings
-    - Ajouter
-    - Afficher
-    - Mettre à jour
-    - Supprimer
+  - Ajouter
+  - Afficher
+  - Mettre à jour
+  - Supprimer
 
 - Gestion des listes de référentiels
-    - Ajouter
-    - Afficher
-    - Mettre à jour
-    - Supprimer
+  - Ajouter
+  - Afficher
+  - Mettre à jour
+  - Supprimer
 
 - Gestion du contenu éditorial
-    - Ajouter
-    - Mettre à jour
-    - Supprimer
-
-
+  - Ajouter
+  - Mettre à jour
+  - Supprimer
 
 ![Image 001](./src/img/alert.png)
-```
     Ceci n'a rien à faire ici je pense.
 
 Le client lourd doit être disponible sur tous les postes de la société et être adapté à un fonctionnement à long terme.
-```
 
-Le client lourd permettra aussi de gérer le contenu éditorial du site web. (Fiches métiers, conseils, interview)
-
+    Le client lourd permettra aussi de gérer le contenu éditorial du site web. (Fiches métiers, conseils, interview)
 
 ![Image 001](./src/img/alert.png)
-```
+
     Tout ceci ne parles pas de fonctionnalité, ça regroupe des contraintes en autres et les fonctionnalités sont mal formulés.
 
 ## Client web
 
 Le site internet doit dynamiquement exploiter la base de données de MegaCasting, afin de mettre en avant les offres de castings.
 Le design doit être clair et intuitif et permettre de naviguer de façon adapté depuis tablette et mobile.
-
 
 Les fiches de castings doivent faire paraitre en plus des informations relative au casting, les informations suivantes :
 
@@ -111,16 +105,11 @@ Le site internet devra aussi intégrer un moteur de recherche qui permettra de r
 
 Le site internet doit permettre de visualiser le contenu éditorial de megacasting.
 
-
 ## Serveur web
 
 Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
-```
-
-
 
 ![Image 001](./src/img/alert.png)
-```
 
     Pour moi ça va dans l'analyse détaillé. Champs déplacé dans BDD dictionnaire.
 
@@ -129,7 +118,6 @@ Le serveur web met à disposition des partenaires identifiés auprès de MegaCas
 La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
 
 Les données contenues dans la base de données contiendrons les informations suivantes :
-
 
 ### Différentes tables
 
@@ -172,7 +160,6 @@ Les données contenues dans la base de données contiendrons les informations su
 - Listes de référentiels
 
 - Contenu  éditorial
-    - Fiches  métiers
-    - Conseils
-    - Interviews
-```
+  - Fiches  métiers
+  - Conseils
+  - Interviews
