@@ -22,27 +22,27 @@
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | part_id      | N    |
-| Dénomination            | part_denom   | AN   |
-| numéro de téléphone     | part_tel     | AN   |
-| numéro de fax           | part_fax     | AN   |
-| adresse email           | part_email   | AN   |
-| Login                   | part_login   | AN   |
-| mots de passe           | part_mdp     | AN   |
+| Identifiant             | par_id      | N    |
+| Dénomination            | par_denom   | AN   |
+| numéro de téléphone     | par_tel     | AN   |
+| numéro de fax           | par_fax     | AN   |
+| adresse email           | par_email   | AN   |
+| Login                   | par_login   | AN   |
+| mots de passe           | par_mdp     | AN   |
   
 ## Entité Offres de castings
 
 | Libellé de la propriété         | Nom du champ        | Type |
 | ------------------------------- | ------------------- | ---- |
-| Identifiant                     | cast_id             | N    |
-| Intitulé                        | cast_intit          | AN   |
-| Référence                       | cast_ref            | AN   |
-| Date de début de publication    | cast_date_deb_pub   | DATE |
-| Durée de diffusion              | cast_dur_diff       | N    |
-| Date de début du contrat        | cast_date_deb_contr | DATE |
-| Nombre de poste                 | cast_nbr_post       | N    |
-| Description du poste            | cast_desc_post      | AN   |
-| Description du profil recherché | cast_desc_prof_rech | AN   |
+| Identifiant                     | cas_id             | N    |
+| Intitulé                        | cas_intit          | AN   |
+| Référence                       | cas_ref            | AN   |
+| Date de début de publication    | cas_date_deb_pub   | DATE |
+| Durée de diffusion              | cas_dur_diff       | N    |
+| Date de début du contrat        | cas_date_deb_contr | DATE |
+| Nombre de poste                 | cas_nbr_post       | N    |
+| Description du poste            | cas_desc_post      | AN   |
+| Description du profil recherché | cas_desc_prof_rech | AN   |
 
 ## Entité Adresse
 
@@ -52,6 +52,11 @@
 | Nom de la rue           |
 
 ## Entité Ville
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+|Identifiant|vil_id|N|
+|Nom de la ville|
 
 ## Entité Code postal
 
