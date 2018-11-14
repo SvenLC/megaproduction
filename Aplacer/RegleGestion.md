@@ -22,6 +22,10 @@
 - Une offre de casting correspond à un et un seul client.
 - Une offre de casting correspond a un et un seul métier
 - Une offre de casting correspond à une et une seule localisation
+- Une offre de casting peut être crée par une et une seule personne
+- Une offre de casting peut être modifier par une ou plusieurs personnes
+- Une offre de casting peut être validée par une et une seule personne
+- Une offre de casting peut être supprimé par une et une seule personne
 
 - Les offres sont visualisable sur le site internet et les informations sont accessibles pour tout le monde.
 - Sur la fiche d’un casting, ce seront d’ailleurs les coordonnées du contact de l’organisation (URL site Internet, e-mail, téléphone, fax ou adresse postale) qui permettront aux artistes de postuler à l’annonce.
