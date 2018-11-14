@@ -20,3 +20,7 @@ R:  Découper le projet en plusieurs lots dans le but d'organiser le travail au 
 
 Q: Client lourds accès aux données de la base de données par une API ou par connexion directe à la base de données ? Qu'est-ce qui est le plus pertinent ?
 R: Instinctivement j'aurais voté pour l'accès direct mais l'API est une bonne idée et elle serait mutualisable avec le site. Idem, libre à vous.
+
+Hiron Dorian le 13/11/2018
+
+Q: Es-ce qu'un client peut aussi être partenaire ?

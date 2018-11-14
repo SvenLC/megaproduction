@@ -24,8 +24,10 @@
 
 - Quel contenu dans les fiches métiers ?
 
-- Quelles sont les différents types de contrat dans le monde l'audio visuel ?
+- Quelles sont les différents types de contrat dans le monde l'audio visuel ? Une offre peut-elle être associée à plusieurs contrats différents ?
 
 - Demander uns liste de domaine de métier et de métier.
 
 - Es-ce qu'une offre correspond à un seul type de contrat ? A modifier si jamais oui.
+
+- Les coordonnées de contact pour postuler à une offre peuvent-il être différent des coordonnées de contact pour contacter le client ?
