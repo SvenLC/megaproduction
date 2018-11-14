@@ -2,6 +2,7 @@
 
 | Numéro | Date     | responsable | descriptif                           |
 | ------ | -------- | ----------- | ------------------------------------ |
+| 1.2.0  | 14/11/18 | S. Le Cann  | Ajout des entitées                   |
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout des entitées, ajout des champs |
 | 1.0.0  | 11/11/18 | B. Ragot    | Création du document                 |
 
@@ -22,18 +23,18 @@
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | par_id      | N    |
-| Dénomination            | par_denom   | AN   |
-| numéro de téléphone     | par_tel     | AN   |
-| numéro de fax           | par_fax     | AN   |
-| adresse email           | par_email   | AN   |
-| Login                   | par_login   | AN   |
-| mots de passe           | par_mdp     | AN   |
+| Identifiant             | par_id       | N    |
+| Dénomination            | par_denom    | AN   |
+| numéro de téléphone     | par_tel      | AN   |
+| numéro de fax           | par_fax      | AN   |
+| adresse email           | par_email    | AN   |
+| Login                   | par_login    | AN   |
+| mots de passe           | par_mdp      | AN   |
   
 ## Entité Offres de castings
 
-| Libellé de la propriété         | Nom du champ        | Type |
-| ------------------------------- | ------------------- | ---- |
+| Libellé de la propriété         | Nom du champ       | Type |
+| ------------------------------- | ------------------ | ---- |
 | Identifiant                     | cas_id             | N    |
 | Intitulé                        | cas_intit          | AN   |
 | Référence                       | cas_ref            | AN   |
@@ -55,16 +56,38 @@
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-|Identifiant|vil_id|N|
-|Nom de la ville|
+| Identifiant             | vil_id       | N    |
+| Nom de la ville         | vil_nom      | A    |
 
 ## Entité Code postal
 
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | cpl_id       | N    |
+| Code                    | cpl_code     | N    |
+| Nom                     | cpl_nom      | N    |
+
 ## Entité Domaine de métiers
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | dom_id       | N    |
+| Libellé                 | dom_lib      | A    |
+
 
 ## Entité Métiers
 
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | met_id       | N    |
+| Libellé                 | met_lib      | A    |
+
 ## Entité Contrats
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | con_id       | N    |
+| Libellé                 | con_lib      | A    |
 
 ## Entité Contact
 
