@@ -19,7 +19,9 @@
 - Doit-on ajouter les fonctionnalités proposés ?
 
 - Lotissement / évaluation des risques Késako ?
+
     ![Image 001](./src/img/risque.png)
+
 - Quel contenu dans les fiches métiers ?
 
 - Quelles sont les différents types de contrat dans le monde l'audio visuel ? Une offre peut-elle être associée à plusieurs contrats différents ?

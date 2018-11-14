@@ -39,5 +39,11 @@
 - Un moteur de recherche permettra aux internautes de trouver rapidement les offres de casting qui correspondent à leur profil.
 - Les employés auront la possibilité de rechercher les clients, partenaires de diffusion, offres de castings, listes de référentiel et contenu éditorial à travers un client lourd.
 - Une offre est lié à un et seul type de contrat
+- Une ofre est lié à un et un seul métier
+- Une offre est lié à un et un seul domaine métier.
+- L'édition ou l'ajout d'un membre est réservé à l'administrateur.
+- Les membres peuvent être administrateur.
+- Si une adresse n'est pas lié à un client elle est supprimé.
+- Pour créer une offre il faut d'abbord créer le client.
 
 A voir pour faire les règles de gestion des ajouts.
