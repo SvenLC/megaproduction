@@ -8,7 +8,7 @@
 
 ### Fonctionnalités
 
-- Espace membre pour s'identifier
+- Espace membre pour s'authentifier
 - Rechercher un client
 - Gérer les clients
   - Afficher
@@ -20,7 +20,7 @@
   - Afficher
   - Ajouter
   - Éditer
-    - Supprimer
+  - Supprimer
 - Rechercher une offre de casting
 - Gérer les offres des castings
   - Gérer les catégories
@@ -28,15 +28,50 @@
   - Afficher
   - Ajouter
   - Éditer
-  - Supprimer
+- Supprimer           
 - Rechercher un contenu éditorial
 - Gérer le contenu éditorial
   - Gérer les différents catégories
   - Gérer le contenu
-        - Afficher
-        - Ajouter
-        - Éditer
-        - Supprimer
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+- Recherche un membre
+- Gérer les membres
+  - Afficher
+  - Ajouter
+  - Éditer
+    - Rendre inactif
+    - Passer en administrateur
+  - Supprimer
+- Gérer les listes de référentiel
+  - Rechercher un type de contrat
+  - Gérer les types de contrats
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Rechercher un métier
+  - Gérer les métiers
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Rechercher un domaine de métier
+  - Gérer les domaines de métier
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Recherher un status juridiques
+  - Gérer les status juridiques
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+
+Le contenu éditorial est sous forme d'article, sauvegarde en base de donnée. Écrite au format normal et stockage convertit en html.
 
 Ajout ?
 
@@ -69,16 +104,25 @@ Ajout ?
 
 ## API/Service
 
-### Différents acteurs
+### API partenaire
+
+#### Différents acteurs
 
 - partenaire
-- client
+
+#### Fonctionnalités
+
+- Récupérer les flux de castings
+- Authentifier un utilsateur
+
+### API privée
+
+#### Différents acteurs
+
 - client léger
 - client lourd
 
-### Fonctionnalités
-
-- Récupérer les flux de castings
+#### Fonctionnalités
 - Permettre d'intéragir avec la base de donnée
 - Authentifier un utilsateur
 
