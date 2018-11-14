@@ -74,7 +74,6 @@
 | Identifiant             | dom_id       | N    |
 | Libellé                 | dom_lib      | A    |
 
-
 ## Entité Métiers
 
 | Libellé de la propriété | Nom du champ | Type |
@@ -92,6 +91,12 @@
 ## Entité Contact
 
 ## Entité Statuts juridique
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | jur_id       | N    |
+| Libellé                 | jur_libelle  | A    |
+
 
 - Contenu  éditorial
   - Fiches  métiers
