@@ -2,32 +2,42 @@
 
 | Numéro | Date     | responsable | descriptif                           |
 | ------ | -------- | ----------- | ------------------------------------ |
+| 1.3.0  | 15/11/18 | S. Le Cann  | Réorganisation et ajouts d'entités   |
 | 1.2.0  | 14/11/18 | S. Le Cann  | Ajout des entitées                   |
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout des entitées, ajout des champs |
 | 1.0.0  | 11/11/18 | B. Ragot    | Création du document                 |
 
+## Entité Utilisateur
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | uti_id       | N    |
+| Nom                     | uti_nom      | A    |
+| Prenom                  | uti_prenom   | A    |
+| Login                   | uti_login    | A    |
+| Mot de passe            | uti_mdp      | AN   |
+| Est administrateur      | uti_admin    | B    |
+
+## Entité Prospect
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | pro_id       | N    |
+| Dénomination            | pro_denom    | AN   |
+
 ## Entité client
 
-| Libellé de la propriété       | Nom du champ  | Type |
-| ----------------------------- | ------------- | ---- |
-| Identifiant                   | cli_id        | N    |
-| Dénomination                  | cli_denom     | AN   |
-| numéro de téléphone           | cli_tel       | AN   |
-| numéro de fax                 | cli_fax       | AN   |
-| adresse email                 | cli_email     | AN   |
-| numéro de siret               | cli_siret     | AN   |
-| numéro RNA (Associations)     | cli_rna       | AN   |
-| numéro TVA Intracommunautaire | cli_tva_intra | AN   |
+| Libellé de la propriété   | Nom du champ | Type |
+| ------------------------- | ------------ | ---- |
+| Identifiant               | cli_id       | N    |
+| numéro de siret           | cli_siret    | AN   |
+| numéro RNA (Associations) | cli_rna      | AN   |
   
 ## Entité partenaires de diffusions
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
 | Identifiant             | par_id       | N    |
-| Dénomination            | par_denom    | AN   |
-| numéro de téléphone     | par_tel      | AN   |
-| numéro de fax           | par_fax      | AN   |
-| adresse email           | par_email    | AN   |
 | Login                   | par_login    | AN   |
 | mots de passe           | par_mdp      | AN   |
   
@@ -45,19 +55,25 @@
 | Description du poste            | cas_desc_post      | AN   |
 | Description du profil recherché | cas_desc_prof_rech | AN   |
 
+## Fiche de contact
+
+| Libellé de la propriété | Nom du champ   | Type |
+| ----------------------- | -------------- | ---- |
+| Identifiant             | ctc_id         | N    |
+| Description             | ctc_desc       | A    |
+| numéro de téléphone     | ctc_tel        | AN   |
+| numéro de fax           | ctc_fax        | AN   |
+| adresse email           | ctc_email      | AN   |
+| Est principale          | ctc_principale | B    |
+
 ## Entité Adresse
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
 | Numéro de la voie       | adr_num_voie | N    |
-| Nom de la rue           |
-
-## Entité Ville
-
-| Libellé de la propriété | Nom du champ | Type |
-| ----------------------- | ------------ | ---- |
-| Identifiant             | vil_id       | N    |
-| Nom de la ville         | vil_nom      | A    |
+| Libellé de la rue       | adr_lib_rue  | AN   |
+| Code postal             | adr_cp       | N    |
+| Ville                   | adr_ville    | A    |
 
 ## Entité Code postal
 
@@ -67,7 +83,7 @@
 | Code                    | cpl_code     | N    |
 | Nom                     | cpl_nom      | N    |
 
-## Entité Domaine de métiers
+## Entité Domaines de métiers
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
@@ -88,20 +104,12 @@
 | Identifiant             | con_id       | N    |
 | Libellé                 | con_lib      | A    |
 
-## Entité Contact
-
 ## Entité Statuts juridique
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
 | Identifiant             | jur_id       | N    |
 | Libellé                 | jur_libelle  | A    |
-
-
-- Contenu  éditorial
-  - Fiches  métiers
-  - Conseils
-  - Interviews
 
 https://sqlpro.developpez.com/cours/normes/#L3.1
 https://blog.developpez.com/exercices-sql/p10901/exercices-sql/modelisation_d_une_adresse

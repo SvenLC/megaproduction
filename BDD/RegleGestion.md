@@ -4,6 +4,7 @@
 
 | Numéro | Date     | responsable | descriptif                     |
 | ------ | -------- | ----------- | ------------------------------ |
+| 1.3.0  | 15/11/18 | S. Le Cann  | Modifications des règles       |
 | 1.2.0  | 14/11/18 | S. Le Cann  | Mise en page, ajouts de règles |
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout règles                   |
 | 1.0.0  | 11/11/18 | B. Ragot    | Création du document           |
@@ -13,6 +14,7 @@
 - Un utilisateur a un et un seul compte
 - Un utilisateur doit s'authentifier pour utiliser le client lourd
 - Un utilisateur peut créer, modifier, valider, supprimer 0 ou plusieurs offres
+- Un utilisateur peut créer, modifier, supprimer 0 ou plusieurs prospects
 - Un utilisateur peut créer, modifier, supprimer 0 ou plusieurs clients
 - Un utilisateur peut créer, modifier, supprimer 0 ou plusieurs partenaires
 - Un utilisateur peut créer, modifier, supprimer 0 ou plusieurs fiches adresse
@@ -30,13 +32,24 @@
 - Un administrateur peut créer, modifier, supprimer 0 ou plusieurs statuts juridiques
 - Un administrateur peut créer, modifier, supprimer 0 ou plusieurs localisation
 
+### Prospect
+
+- Un prospect peut être un client et/ou un partenaire.
+- Un prospect est lié à une fiche de contact principale.
+
 ### Client
 
 - Un client possède une et une seule adresse.
 - Un client a un et un seul statut juridique
 - Un client peut être lié à 0 ou plusieurs offres
 - Un client peut être partenaire
-- Un client peut être lié à 0 ou plusieurs fiches de contact
+- Un client peut être lié à 1 ou plusieurs fiches de contact
+
+### Partenaire de diffusion
+
+- Un partenaire de diffusion a un et un seul compte
+- Un partenaire doit s'authentifier pour utiliser l'API
+- Un partenaire de diffusuon peut récupérer la liste des offres à travers une API
   
 ### Offre de casting
 
@@ -54,20 +67,19 @@
 - Une offre de casting correspond à une et une seule fiche de contact
 - Une offre de casting publiée sur le site web est visible par tout le monde
 
-### Partenaire
+### Adresse et fiche contact
 
-- Un partenaire de diffusion a un et un seul compte
-- Un partenaire doit s'authentifier pour utiliser l'API
-- Un partenaire de diffusuon peut récupérer la liste des offres à travers une API
+- Une adresse peut correspondre à plusieurs client.
+- Une adresse a une et une seule localisation
+- Si une adresse n'est lié à aucun client elle est supprimé
+- Une fiche de contact est lié à un et un seul prospect
+- Une fiche de contact peut être principale, c'est elle qui permet de contacter directement le prospect.
 
 ### Listes de référentiels
 
 - Un domaine de métier peut correspondre à plusieurs offres de casting
 - Un domaine de métier peut correspondre à un ou plusieurs métiers
 - Un métier peut correspondre à plusieurs offres de casting
-- Un métier peut correspondre à plusieurs domaines de métiers
+- Un domaine peut correspondre à plusieurs offres de casting
+- Un métier correspond à un et un seul domaine de métiers
 - Un statut juridique peut être rattaché à plusieurs clients ou partenaires.
-- Une localisation peut être rattachée à plusieurs offres de casting ou adresse  
-- Une adresse peut correspondre à plusieurs client.
-- Une adresse a une et une seule localisation
-- Si une adresse n'est lié à aucun client elle est supprimé
