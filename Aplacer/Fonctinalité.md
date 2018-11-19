@@ -24,13 +24,20 @@
     - Gérer les informations partenaires de diffusion
     - Gérer les informations utilisateurs
   - Supprimer
-- Rechercher une offre de casting
-- Gérer les offres des castings
-  - Gérer les offres
+- Recherche un utilisateur
+- Gérer les utilisateurs
   - Afficher
   - Ajouter
   - Éditer
-- Supprimer           
+    - Rendre inactif
+    - Passer en administrateur
+  - Supprimer
+- Rechercher une offre de casting
+- Gérer les offres des castings
+  - Afficher
+  - Ajouter
+  - Éditer
+  - Supprimer           
 - Rechercher un contenu éditorial
 - Gérer le contenu éditorial
   - Gérer le contenu
@@ -38,14 +45,6 @@
     - Ajouter
     - Éditer
     - Supprimer
-- Recherche un employé
-- Gérer les employés
-  - Afficher
-  - Ajouter
-  - Éditer
-    - Rendre inactif
-    - Passer en administrateur
-  - Supprimer
 - Gérer les listes de référentiel
   - Rechercher un type de contrat
   - Gérer les types de contrats
@@ -88,7 +87,6 @@ Ajout ?
 
 - Visualiser les offres de casting
 - Rechercher des offres de casting
-  - Filtré par catégorie les recherches
 - Visualiser le contenu éditorial  
 
 Ajout ?
@@ -124,6 +122,7 @@ Ajout ?
 - client lourd
 
 #### Fonctionnalités
+
 - Permettre d'intéragir avec la base de donnée
 - Authentifier un utilsateur
 
@@ -131,8 +130,8 @@ Ajout ?
 
 ### Différents acteurs
 
-- client léger
-- client lourd
+- API publique
+- API privée
 
 ### Fonctionnalités
 
@@ -142,3 +141,5 @@ Ajout ?
   - Des offres de casting
   - Des listes de référentiel (types de contrat, domaines de métier, métiers, catégories ...)
   - contenu éditorial
+  - adresses
+  - contacts

@@ -33,3 +33,5 @@
 - Les coordonnées de contact pour postuler à une offre peuvent-il être différent des coordonnées de contact pour contacter le client ?  
 
     Un utilisateur peut avoir plusieurs adresses et plusieurs contacts
+
+- Pour l'E4 est-ce dérangeant si on voit que l'on était deux sur le ppe ?
