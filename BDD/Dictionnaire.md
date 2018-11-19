@@ -117,5 +117,10 @@
 | Identifiant             | jur_id       | N    |
 | Libellé                 | jur_libelle  | A    |
 
+## Contenu éditorial
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+
 https://sqlpro.developpez.com/cours/normes/#L3.1
 https://blog.developpez.com/exercices-sql/p10901/exercices-sql/modelisation_d_une_adresse

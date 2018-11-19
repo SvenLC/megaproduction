@@ -36,6 +36,7 @@
 
 - Un prospect peut être un client et/ou un partenaire.
 - Un prospect est lié à une fiche de contact principale.
+- Un prospect peut être lié à 1 ou plusieurs fiches de contact
 
 ### Client
 
@@ -43,7 +44,6 @@
 - Un client a un et un seul statut juridique
 - Un client peut être lié à 0 ou plusieurs offres
 - Un client peut être partenaire
-- Un client peut être lié à 1 ou plusieurs fiches de contact
 
 ### Partenaire de diffusion
 
