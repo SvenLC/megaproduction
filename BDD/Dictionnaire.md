@@ -75,6 +75,12 @@
 | Code postal             | adr_cp       | N    |
 | Ville                   | adr_ville    | A    |
 
+## Entité Localisation
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Identifiant             | loc_libelle  | AN   |
+
 ## Entité Code postal
 
 | Libellé de la propriété | Nom du champ | Type |
