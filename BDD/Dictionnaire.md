@@ -79,15 +79,16 @@
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | loc_libelle  | AN   |
+| Identifiant             | loc_id       | AN   |
+| libelle                 | loc_libelle  | AN   |
 
 ## Entité Code postal
 
-| Libellé de la propriété | Nom du champ | Type |
-| ----------------------- | ------------ | ---- |
-| Identifiant             | cpl_id       | N    |
-| Code                    | cpl_code     | N    |
-| Nom                     | cpl_nom      | N    |
+| Libellé de la propriété | Nom du champ    | Type |
+| ----------------------- | --------------- | ---- |
+| Identifiant             | cpl_id          | N    |
+| Code postal             | cpl_code_postal | N    |
+| Nom                     | cpl_nom         | N    |
 
 ## Entité Domaines de métiers
 
@@ -121,6 +122,7 @@
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
+
 
 https://sqlpro.developpez.com/cours/normes/#L3.1
 https://blog.developpez.com/exercices-sql/p10901/exercices-sql/modelisation_d_une_adresse
