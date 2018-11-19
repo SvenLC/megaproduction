@@ -30,4 +30,6 @@
 
 - Es-ce qu'une offre correspond à un seul type de contrat ? A modifier si jamais oui.
 
-- Les coordonnées de contact pour postuler à une offre peuvent-il être différent des coordonnées de contact pour contacter le client ?
+- Les coordonnées de contact pour postuler à une offre peuvent-il être différent des coordonnées de contact pour contacter le client ?  
+
+    Un utilisateur peut avoir plusieurs adresses et plusieurs contacts

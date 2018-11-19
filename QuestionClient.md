@@ -24,3 +24,5 @@ R: Instinctivement j'aurais voté pour l'accès direct mais l'API est une bonne 
 Hiron Dorian le 13/11/2018
 
 Q: Es-ce qu'un client peut aussi être partenaire ?
+
+R: Oui.

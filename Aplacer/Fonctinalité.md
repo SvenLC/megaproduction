@@ -9,21 +9,23 @@
 ### Fonctionnalités
 
 - Espace membre pour s'authentifier
-- Rechercher un client
-- Gérer les clients
+- Gérer les prospects
   - Afficher
   - Ajouter
+    - Faire devenir partenaire
+    - Faire devenir client
+    - Gérer les informations clients
+    - Gérer les informations partenaires de diffusion
+    - Gérer les informations utilisateurs
   - Éditer
-  - Supprimer
-- Rechercher un partenaire de diffusion
-- Gérer les partenaires de diffusion
-  - Afficher
-  - Ajouter
-  - Éditer
+    - Faire devenir partenaire
+    - Faire devenir client
+    - Gérer les informations clients
+    - Gérer les informations partenaires de diffusion
+    - Gérer les informations utilisateurs
   - Supprimer
 - Rechercher une offre de casting
 - Gérer les offres des castings
-  - Gérer les catégories
   - Gérer les offres
   - Afficher
   - Ajouter
@@ -31,14 +33,13 @@
 - Supprimer           
 - Rechercher un contenu éditorial
 - Gérer le contenu éditorial
-  - Gérer les différents catégories
   - Gérer le contenu
     - Afficher
     - Ajouter
     - Éditer
     - Supprimer
-- Recherche un membre
-- Gérer les membres
+- Recherche un employé
+- Gérer les employés
   - Afficher
   - Ajouter
   - Éditer
