@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,22 @@ namespace MegaCastingWPF
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            GridContenu.Children.Clear();
+            HamburgerMenuGlyphItem item = e.ClickedItem as HamburgerMenuGlyphItem;
+            GridContenu.Children.Add(item.Tag as UIElement);
+
+            //this.HamburgerMenuControl.Content = e.ClickedItem;
+            //this.HamburgerMenuControl.IsPaneOpen = false;
         }
     }
 }
