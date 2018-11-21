@@ -1,0 +1,344 @@
+Dictionnaire de données 
+
+Nom : UTI_ID
+Code : UTI_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : UTI_NOM
+Code : UTI_NOM
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : UTI_PRENOM
+Code : UTI_PRENOM
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : UTI_LOGIN
+Code : UTI_LOGIN
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : UTI_MDP
+Code : UTI_MDP
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : UTI_ADMINISTRATEUR
+Code : UTI_ADMINISTRATEUR
+Type : BOOL
+Taille : ,
+Commentaire : 
+
+Nom : PRO_ID
+Code : PRO_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CLI_SIRET
+Code : CLI_SIRET
+Type : INT
+Taille : 14,
+Commentaire : 
+
+Nom : CLI_RNA
+Code : CLI_RNA
+Type : INT
+Taille : 14,
+Commentaire : 
+
+Nom : PAR_LOGIN
+Code : PAR_LOGIN
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : PAR_MDP
+Code : PAR_MDP
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CAST_ID
+Code : CAST_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CAST_INTITULE
+Code : CAST_INTITULE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CAST_REFERENCE
+Code : CAST_REFERENCE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CAST_DATE_DEBUT_PUBLICATION
+Code : CAST_DATE_DEBUT_PUBLICATION
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : CAST_DUREE_DIFFUSION
+Code : CAST_DUREE_DIFFUSION
+Type : TIME
+Taille : ,
+Commentaire : 
+
+Nom : CAST_DATE_DEBUT_CONTRAT
+Code : CAST_DATE_DEBUT_CONTRAT
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : CAST_NBR_POSTE
+Code : CAST_NBR_POSTE
+Type : INT
+Taille : ,
+Commentaire : 
+
+Nom : CAST_DESCRIPTION_POSTE
+Code : CAST_DESCRIPTION_POSTE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CAST_DESCRIPTION_PROFIL
+Code : CAST_DESCRIPTION_PROFIL
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CTC_ID
+Code : CTC_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CTC_DESCRIPTION
+Code : CTC_DESCRIPTION
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CTC_NUM_TEL
+Code : CTC_NUM_TEL
+Type : VARCHAR
+Taille : 14,
+Commentaire : 
+
+Nom : CTC_NUM_FAX
+Code : CTC_NUM_FAX
+Type : VARCHAR
+Taille : 14,
+Commentaire : 
+
+Nom : CTC_EMAIL
+Code : CTC_EMAIL
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CTC_PRINCIPALE
+Code : CTC_PRINCIPALE
+Type : BOOL
+Taille : ,
+Commentaire : 
+
+Nom : ADR_ID
+Code : ADR_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : ADR_NUM_VOIE
+Code : ADR_NUM_VOIE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : ADR_LIBELLE_RUE
+Code : ADR_LIBELLE_RUE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : ADR_VILLE
+Code : ADR_VILLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : LOC_ID
+Code : LOC_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : LOC_LIBELLE
+Code : LOC_LIBELLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CPT_ID
+Code : CPT_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CPT_CODE_POSTAL
+Code : CPT_CODE_POSTAL
+Type : CHAR
+Taille : 5,
+Commentaire : 
+
+Nom : CPT_VILLE
+Code : CPT_VILLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : DOM_ID
+Code : DOM_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : DOM_LIBELLE
+Code : DOM_LIBELLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : MET_ID
+Code : MET_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : MET_LIBELLE
+Code : MET_LIBELLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : CON_ID
+Code : CON_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CON_LIBELLE
+Code : CON_LIBELLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : JUR_ID
+Code : JUR_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : JUR_LIBELLE
+Code : JUR_LIBELLE
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : EDI_ID
+Code : LOC_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : EDI_DESCRIPTION
+Code : LOC_LIBELLE
+Type : VARCHAR
+Taille : 100,
+Commentaire : 
+
+Nom : EDI_CONTENU
+Code : EDI_CONTENU
+Type : TEXT
+Taille : 1500,
+Commentaire : 
+
+Nom : CET_ID
+Code : LOC_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : CET_LIBELLE
+Code : LOC_LIBELLE
+Type : VARCHAR
+Taille : 100,
+Commentaire : 
+
+Nom : DBI_ID
+Code : DBI_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : DBI_TYPE
+Code : DBI_TYPE
+Type : VARCHAR
+Taille : 12,
+Commentaire : 
+
+Nom : DBI_VALEUR
+Code : DBI_VALEUR
+Type : TEXT
+Taille : 256,
+Commentaire : 
+
+Nom : DBA_ID
+Code : DBA_ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : DBA_DATEHEURE
+Code : DBA_DATEHEURE
+Type : DATETIME
+Taille : ,
+Commentaire : 
+
+Nom : DBA_NOM
+Code : DBA_NOM
+Type : VARCHAR
+Taille : 32,
+Commentaire : 
+
+Nom : DBA_NATURE
+Code : DBA_NATURE
+Type : VARCHAR
+Taille : 256,
+Commentaire : 
+
+Nom : DBA_COMMANDE
+Code : DBA_COMMANDE
+Type : VARCHAR
+Taille : 256,
+Commentaire : 
+
+Nom : DBI_LIBELLE
+Code : DBI_LIBELLE
+Type : VARCHAR
+Taille : 128,
+Commentaire : 
+
