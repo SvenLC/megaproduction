@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,25 @@ namespace MegaCastingWPF
 
             //this.HamburgerMenuControl.Content = e.ClickedItem;
             //this.HamburgerMenuControl.IsPaneOpen = false;
+        }
+
+
+        private void LinkWebSite_Click(object sender, RoutedEventArgs e)
+        {
+            Process p = new Process();
+            ProcessStartInfo pInfo = new ProcessStartInfo("http://www.google.fr");
+
+            try
+            {
+                p.StartInfo = pInfo;
+                p.Start();
+
+                p.Close();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

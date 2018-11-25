@@ -15,19 +15,108 @@
         </Grid.RowDefinitions>
         <Grid.Children>
             <TabControl Name="tabControl1"  Grid.Column="0" Grid.Row="0" IsSynchronizedWithCurrentItem="True">
-                <TabItem Header="Liste" Name="tabItem1">
-                    <DataGrid x:Name="DataGridContenu" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn IsReadOnly="True" Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                <TabItem Header="Afficher" Name="tabItem1">
+                    <Grid Margin="5,0,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="15"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Children>
+                                    <TextBlock Grid.Column="0" FontSize="16"  VerticalAlignment="Center">Liste</TextBlock>
+                                    <TextBlock Grid.Column="1" FontSize="16"  VerticalAlignment="Center">Search:</TextBlock>
+                                    <TextBox Grid.Column="3" TextChanged="TextBoxSearch_TextChanged"></TextBox>
+                                    <Button Background="Transparent" BorderBrush="Transparent" Grid.Column="5" Click="ButtonListe_Click">
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}" >
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border Background="{TemplateBinding Background}">
+                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Style>
+                                        <iconPacks:PackIconModern Width="16" Height="16" Kind="List" VerticalAlignment="Center" />
+                                    </Button>
+                                    <Button Background="Transparent" BorderBrush="Transparent" Grid.Column="7" Click="ButtonVignette_Click">
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}" >
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border Background="{TemplateBinding Background}">
+                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Style>
+                                        <iconPacks:PackIconModern Width="16" Height="16" Kind="Window" VerticalAlignment="Center" />
+                                    </Button>
+                                </Grid.Children>
+                            </Grid>
+                            <Separator Grid.Row="1"></Separator>
+                            <Grid x:Name="ListContent" Grid.Row="3">
+                            </Grid>
+                        </Grid.Children>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Modification" Name="tabItem2">
                     <StackPanel Orientation="Vertical">
-                        <Grid Margin="5,5,5,5">
+                        <Grid Margin="5,0,5,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="95*"></ColumnDefinition>
-                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition  Height="auto"></RowDefinition>
+                                <RowDefinition  Height="10"></RowDefinition>
+                                <RowDefinition  Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.Children>
+                                <TextBlock Text="Prospects" FontSize="16" Grid.Row="0" />
+                                <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                                <Grid Margin="0,10,0,10" Grid.Row="2" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="auto"></RowDefinition>
+                                        <RowDefinition  Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.Children>
+                                        <TextBlock Text="Nom" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Person.Nom}"/>
+                                        <TextBlock Text="Prénom" FontSize="12" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2"/>
+                                    </Grid.Children>
+                                </Grid>
+                                
+                            </Grid.Children>
+                        </Grid>
+                        <Grid Margin="5,0,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition  Height="auto"></RowDefinition>
@@ -35,32 +124,38 @@
                                 <RowDefinition  Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.Children>
-                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="18">Partenaire</TextBlock>
-                                <Button Grid.Column="1" Grid.Row="0" x:Name="partenaireShown" Click="PartenaireShown" Background="{x:Null}" BorderBrush="{x:Null}">
-                                    <iconPacks:PackIconMaterial Kind="ArrowSplitHorizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" />
-                                </Button>
-                                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Visibility="{Binding IsPartenaireOpen}">
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16">Partenaire</TextBlock>
+                                <controls:ToggleSwitch Grid.Column="4" x:Name="isPartenaireSwitch"
+                                    VerticalAlignment="Center"
+                                    Width="Auto"
+                                    Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                    OnLabel="" OffLabel=""
+                                    IsChecked="{Binding IsPartenaire}" HorizontalAlignment="Center"/>
+                                <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                                <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Visibility="{Binding IsPartenaireOpen}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        <ColumnDefinition Width="96*"></ColumnDefinition>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition  Height="*"></RowDefinition>
+                                        <RowDefinition  Height="auto"></RowDefinition>
+                                        <RowDefinition  Height="auto"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.Children>
-                                        <StackPanel Orientation="Vertical" Grid.Column="1">
-                                            <TextBox controls:TextBoxHelper.ClearTextButton="True" />
-                                            <TextBox controls:TextBoxHelper.ClearTextButton="True" />
-                                        </StackPanel>
+                                        <TextBlock Text="Nom" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" />
+                                        <TextBlock Text="Prénom" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" />
                                     </Grid.Children>
                                 </Grid>
                             </Grid.Children>
                         </Grid>
-                        <Grid Margin="5,5,5,5">
+                        <Grid Margin="5,0,5,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="95*"></ColumnDefinition>
-                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition  Height="auto"></RowDefinition>
@@ -68,24 +163,29 @@
                                 <RowDefinition  Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.Children>
-                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="18">Client</TextBlock>
-                                <Button Grid.Column="1" Grid.Row="0" x:Name="clientShow" Click="ClientShow" BorderBrush="{x:Null}" Background="{x:Null}">
-                                    <iconPacks:PackIconMaterial Kind="ArrowSplitHorizontal" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                </Button>
-                                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Visibility="{Binding IsClientOpen}" >
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16">Client</TextBlock>
+                                <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                                <controls:ToggleSwitch Grid.Column="3" x:Name="isClientSwitch"
+                                    VerticalAlignment="Center"
+                                    Width="Auto"
+                                    Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                    OnLabel="" OffLabel=""
+                                    IsChecked="{Binding IsClient}" HorizontalAlignment="Center"/>
+                                <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Visibility="{Binding IsClientOpen}" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        <ColumnDefinition Width="96*"></ColumnDefinition>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition  Height="*"></RowDefinition>
+                                        <RowDefinition  Height="auto"></RowDefinition>
+                                        <RowDefinition  Height="auto"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.Children>
-                                        <StackPanel Orientation="Vertical" Grid.Column="1">
-                                            <TextBox controls:TextBoxHelper.ClearTextButton="True" />
-                                            <TextBox controls:TextBoxHelper.ClearTextButton="True" />
-                                        </StackPanel>
+                                        <TextBlock Text="Nom" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" />
+                                        <TextBlock Text="Prénom" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" />
                                     </Grid.Children>
                                 </Grid>
                             </Grid.Children>
