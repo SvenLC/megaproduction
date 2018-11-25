@@ -1,0 +1,985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MegaCastingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_E_ADRESSE_ADR">
+          <Key>
+            <PropertyRef Name="ADR_ID" />
+          </Key>
+          <Property Name="ADR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADR_NUM_VOIE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADR_LIBELLE_RUE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADR_VILLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_E_CONTACT_CTC">
+          <Key>
+            <PropertyRef Name="CTC_ID" />
+          </Key>
+          <Property Name="CTC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CTC_DESCRIPTION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CTC_NUM_TEL" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="CTC_NUM_FAX" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="CTC_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CTC_PRINCIPALE" Type="bit" Nullable="false" />
+          <Property Name="PRO_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_E_CONTENU_EDITORIAL_EDI">
+          <Key>
+            <PropertyRef Name="EDI_ID" />
+          </Key>
+          <Property Name="EDI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EDI_DESCRIPTION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EDI_CONTENU" Type="text" Nullable="false" />
+          <Property Name="CET_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_E_OFFRE_CASTING_CAST">
+          <Key>
+            <PropertyRef Name="CAST_ID" />
+          </Key>
+          <Property Name="CAST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAST_INTITULE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAST_REFERENCE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAST_DATE_DEBUT_PUBLICATION" Type="datetime" Nullable="false" />
+          <Property Name="CAST_DUREE_DIFFUSION" Type="time" Precision="2" Nullable="false" />
+          <Property Name="CAST_DATE_DEBUT_CONTRAT" Type="datetime" Nullable="false" />
+          <Property Name="CAST_NBR_POSTE" Type="int" Nullable="false" />
+          <Property Name="CAST_DESCRIPTION_POSTE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAST_DESCRIPTION_PROFIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRO_ID" Type="int" Nullable="false" />
+          <Property Name="MET_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_E_PROSPECT_PRO">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_NAME" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="T_H_CLIENT_CLI">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="int" Nullable="false" />
+          <Property Name="CLI_SIRET" Type="int" />
+          <Property Name="CLI_RNA" Type="int" />
+          <Property Name="JUR_ID" Type="int" Nullable="false" />
+          <Property Name="ADR_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_H_PARTENAIRES_PAR">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="int" Nullable="false" />
+          <Property Name="PAR_LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PAR_MDP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_J_PROPOSE_PRO">
+          <Key>
+            <PropertyRef Name="CON_ID" />
+            <PropertyRef Name="CAST_ID" />
+          </Key>
+          <Property Name="CON_ID" Type="int" Nullable="false" />
+          <Property Name="CAST_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_J_SITUER_SIT">
+          <Key>
+            <PropertyRef Name="LOC_ID" />
+            <PropertyRef Name="CAST_ID" />
+          </Key>
+          <Property Name="LOC_ID" Type="int" Nullable="false" />
+          <Property Name="CAST_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_CONTENU_EDITORIAL_TYPE_CET">
+          <Key>
+            <PropertyRef Name="CET_ID" />
+          </Key>
+          <Property Name="CET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CET_LIBELLE" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_CONTRAT_CON">
+          <Key>
+            <PropertyRef Name="CON_ID" />
+          </Key>
+          <Property Name="CON_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CON_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_DOMAINE_METIER_DOM">
+          <Key>
+            <PropertyRef Name="DOM_ID" />
+          </Key>
+          <Property Name="DOM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOM_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_LOCALISATION_LOC">
+          <Key>
+            <PropertyRef Name="LOC_ID" />
+          </Key>
+          <Property Name="LOC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOC_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_METIER_MET">
+          <Key>
+            <PropertyRef Name="MET_ID" />
+          </Key>
+          <Property Name="MET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MET_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOM_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_R_STATUT_JURIDIQUE_JUR">
+          <Key>
+            <PropertyRef Name="JUR_ID" />
+          </Key>
+          <Property Name="JUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JUR_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_S_DATABASE_ADMIN_DBA">
+          <Key>
+            <PropertyRef Name="DBA_ID" />
+          </Key>
+          <Property Name="DBA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DBA_DATEHEURE" Type="datetime" Nullable="false" />
+          <Property Name="DBA_NOM" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="DBA_NATURE" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="DBA_COMMANDE" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'MEGACASTING.dbo.T_S_DATABASE_INFO_DBI' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="T_S_DATABASE_INFO_DBI">
+          <Key>
+            <PropertyRef Name="DBI_LIBELLE" />
+            <PropertyRef Name="DBI_TYPE" />
+            <PropertyRef Name="DBI_VALEUR" />
+          </Key>
+          <Property Name="DBI_LIBELLE" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DBI_TYPE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="DBI_VALEUR" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_S_UTILISATEUR_UTI">
+          <Key>
+            <PropertyRef Name="UTI_ID" />
+          </Key>
+          <Property Name="UTI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UTI_NOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UTI_PRENOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UTI_LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UTI_MDP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UTI_ADMINISTRATEUR" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_X_CODE_POSTAL_CPT">
+          <Key>
+            <PropertyRef Name="CPT_ID" />
+          </Key>
+          <Property Name="CPT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPT_CODE_POSTAL" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CPT_VILLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_E_CONTACT_CTC" Type="Self.T_E_CONTACT_CTC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_E_CONTACT_CTC">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET">
+          <End Role="T_R_CONTENU_EDITORIAL_TYPE_CET" Type="Self.T_R_CONTENU_EDITORIAL_TYPE_CET" Multiplicity="1" />
+          <End Role="T_E_CONTENU_EDITORIAL_EDI" Type="Self.T_E_CONTENU_EDITORIAL_EDI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_CONTENU_EDITORIAL_TYPE_CET">
+              <PropertyRef Name="CET_ID" />
+            </Principal>
+            <Dependent Role="T_E_CONTENU_EDITORIAL_EDI">
+              <PropertyRef Name="CET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI">
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="1" />
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0">
+          <End Role="T_R_METIER_MET" Type="Self.T_R_METIER_MET" Multiplicity="1" />
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_METIER_MET">
+              <PropertyRef Name="MET_ID" />
+            </Principal>
+            <Dependent Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="MET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1">
+          <End Role="T_E_ADRESSE_ADR" Type="Self.T_E_ADRESSE_ADR" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_ADRESSE_ADR">
+              <PropertyRef Name="ADR_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="ADR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0">
+          <End Role="T_R_STATUT_JURIDIQUE_JUR" Type="Self.T_R_STATUT_JURIDIQUE_JUR" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_STATUT_JURIDIQUE_JUR">
+              <PropertyRef Name="JUR_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="JUR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_H_PARTENAIRES_PAR" Type="Self.T_H_PARTENAIRES_PAR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_H_PARTENAIRES_PAR">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_J_PROPOSE_PRO_T_E_OFFRE_CASTING_CAST0">
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="1" />
+          <End Role="T_J_PROPOSE_PRO" Type="Self.T_J_PROPOSE_PRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="CAST_ID" />
+            </Principal>
+            <Dependent Role="T_J_PROPOSE_PRO">
+              <PropertyRef Name="CAST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_J_PROPOSE_PRO_T_R_CONTRAT_CON">
+          <End Role="T_R_CONTRAT_CON" Type="Self.T_R_CONTRAT_CON" Multiplicity="1" />
+          <End Role="T_J_PROPOSE_PRO" Type="Self.T_J_PROPOSE_PRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_CONTRAT_CON">
+              <PropertyRef Name="CON_ID" />
+            </Principal>
+            <Dependent Role="T_J_PROPOSE_PRO">
+              <PropertyRef Name="CON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_J_SITUER_SIT_T_E_OFFRE_CASTING_CAST0">
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="1" />
+          <End Role="T_J_SITUER_SIT" Type="Self.T_J_SITUER_SIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="CAST_ID" />
+            </Principal>
+            <Dependent Role="T_J_SITUER_SIT">
+              <PropertyRef Name="CAST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_J_SITUER_SIT_T_R_LOCALISATION_LOC">
+          <End Role="T_R_LOCALISATION_LOC" Type="Self.T_R_LOCALISATION_LOC" Multiplicity="1" />
+          <End Role="T_J_SITUER_SIT" Type="Self.T_J_SITUER_SIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_LOCALISATION_LOC">
+              <PropertyRef Name="LOC_ID" />
+            </Principal>
+            <Dependent Role="T_J_SITUER_SIT">
+              <PropertyRef Name="LOC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM">
+          <End Role="T_R_DOMAINE_METIER_DOM" Type="Self.T_R_DOMAINE_METIER_DOM" Multiplicity="1" />
+          <End Role="T_R_METIER_MET" Type="Self.T_R_METIER_MET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_DOMAINE_METIER_DOM">
+              <PropertyRef Name="DOM_ID" />
+            </Principal>
+            <Dependent Role="T_R_METIER_MET">
+              <PropertyRef Name="DOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MegaCastingModelStoreContainer">
+          <EntitySet Name="T_E_ADRESSE_ADR" EntityType="Self.T_E_ADRESSE_ADR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_E_CONTACT_CTC" EntityType="Self.T_E_CONTACT_CTC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_E_CONTENU_EDITORIAL_EDI" EntityType="Self.T_E_CONTENU_EDITORIAL_EDI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_E_OFFRE_CASTING_CAST" EntityType="Self.T_E_OFFRE_CASTING_CAST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_E_PROSPECT_PRO" EntityType="Self.T_E_PROSPECT_PRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_H_CLIENT_CLI" EntityType="Self.T_H_CLIENT_CLI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_H_PARTENAIRES_PAR" EntityType="Self.T_H_PARTENAIRES_PAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_J_PROPOSE_PRO" EntityType="Self.T_J_PROPOSE_PRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_J_SITUER_SIT" EntityType="Self.T_J_SITUER_SIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_CONTENU_EDITORIAL_TYPE_CET" EntityType="Self.T_R_CONTENU_EDITORIAL_TYPE_CET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_CONTRAT_CON" EntityType="Self.T_R_CONTRAT_CON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_DOMAINE_METIER_DOM" EntityType="Self.T_R_DOMAINE_METIER_DOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_LOCALISATION_LOC" EntityType="Self.T_R_LOCALISATION_LOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_METIER_MET" EntityType="Self.T_R_METIER_MET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_R_STATUT_JURIDIQUE_JUR" EntityType="Self.T_R_STATUT_JURIDIQUE_JUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_S_DATABASE_ADMIN_DBA" EntityType="Self.T_S_DATABASE_ADMIN_DBA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_S_UTILISATEUR_UTI" EntityType="Self.T_S_UTILISATEUR_UTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_X_CODE_POSTAL_CPT" EntityType="Self.T_X_CODE_POSTAL_CPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_S_DATABASE_INFO_DBI" EntityType="Self.T_S_DATABASE_INFO_DBI" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_S_DATABASE_INFO_DBI].[DBI_LIBELLE] AS [DBI_LIBELLE], 
+    [T_S_DATABASE_INFO_DBI].[DBI_TYPE] AS [DBI_TYPE], 
+    [T_S_DATABASE_INFO_DBI].[DBI_VALEUR] AS [DBI_VALEUR]
+    FROM [dbo].[T_S_DATABASE_INFO_DBI] AS [T_S_DATABASE_INFO_DBI]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO" Association="Self.FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_E_CONTACT_CTC" EntitySet="T_E_CONTACT_CTC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET" Association="Self.FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET">
+            <End Role="T_R_CONTENU_EDITORIAL_TYPE_CET" EntitySet="T_R_CONTENU_EDITORIAL_TYPE_CET" />
+            <End Role="T_E_CONTENU_EDITORIAL_EDI" EntitySet="T_E_CONTENU_EDITORIAL_EDI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI" Association="Self.FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI">
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0" Association="Self.FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0">
+            <End Role="T_R_METIER_MET" EntitySet="T_R_METIER_MET" />
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1" Association="Self.FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1">
+            <End Role="T_E_ADRESSE_ADR" EntitySet="T_E_ADRESSE_ADR" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO" Association="Self.FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0" Association="Self.FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0">
+            <End Role="T_R_STATUT_JURIDIQUE_JUR" EntitySet="T_R_STATUT_JURIDIQUE_JUR" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO" Association="Self.FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_H_PARTENAIRES_PAR" EntitySet="T_H_PARTENAIRES_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_J_PROPOSE_PRO_T_E_OFFRE_CASTING_CAST0" Association="Self.FK_T_J_PROPOSE_PRO_T_E_OFFRE_CASTING_CAST0">
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+            <End Role="T_J_PROPOSE_PRO" EntitySet="T_J_PROPOSE_PRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_J_PROPOSE_PRO_T_R_CONTRAT_CON" Association="Self.FK_T_J_PROPOSE_PRO_T_R_CONTRAT_CON">
+            <End Role="T_R_CONTRAT_CON" EntitySet="T_R_CONTRAT_CON" />
+            <End Role="T_J_PROPOSE_PRO" EntitySet="T_J_PROPOSE_PRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_J_SITUER_SIT_T_E_OFFRE_CASTING_CAST0" Association="Self.FK_T_J_SITUER_SIT_T_E_OFFRE_CASTING_CAST0">
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+            <End Role="T_J_SITUER_SIT" EntitySet="T_J_SITUER_SIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_J_SITUER_SIT_T_R_LOCALISATION_LOC" Association="Self.FK_T_J_SITUER_SIT_T_R_LOCALISATION_LOC">
+            <End Role="T_R_LOCALISATION_LOC" EntitySet="T_R_LOCALISATION_LOC" />
+            <End Role="T_J_SITUER_SIT" EntitySet="T_J_SITUER_SIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM" Association="Self.FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM">
+            <End Role="T_R_DOMAINE_METIER_DOM" EntitySet="T_R_DOMAINE_METIER_DOM" />
+            <End Role="T_R_METIER_MET" EntitySet="T_R_METIER_MET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MegaCastingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_E_ADRESSE_ADR">
+          <Key>
+            <PropertyRef Name="ADR_ID" />
+          </Key>
+          <Property Name="ADR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADR_NUM_VOIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADR_LIBELLE_RUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADR_VILLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_H_CLIENT_CLI" Relationship="Self.FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1" FromRole="T_E_ADRESSE_ADR" ToRole="T_H_CLIENT_CLI" />
+        </EntityType>
+        <EntityType Name="T_E_CONTACT_CTC">
+          <Key>
+            <PropertyRef Name="CTC_ID" />
+          </Key>
+          <Property Name="CTC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CTC_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CTC_NUM_TEL" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CTC_NUM_FAX" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CTC_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CTC_PRINCIPALE" Type="Boolean" Nullable="false" />
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_E_PROSPECT_PRO" Relationship="Self.FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO" FromRole="T_E_CONTACT_CTC" ToRole="T_E_PROSPECT_PRO" />
+        </EntityType>
+        <EntityType Name="T_E_CONTENU_EDITORIAL_EDI">
+          <Key>
+            <PropertyRef Name="EDI_ID" />
+          </Key>
+          <Property Name="EDI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EDI_DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EDI_CONTENU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CET_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_R_CONTENU_EDITORIAL_TYPE_CET" Relationship="Self.FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET" FromRole="T_E_CONTENU_EDITORIAL_EDI" ToRole="T_R_CONTENU_EDITORIAL_TYPE_CET" />
+        </EntityType>
+        <EntityType Name="T_E_OFFRE_CASTING_CAST">
+          <Key>
+            <PropertyRef Name="CAST_ID" />
+          </Key>
+          <Property Name="CAST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAST_INTITULE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAST_REFERENCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAST_DATE_DEBUT_PUBLICATION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CAST_DUREE_DIFFUSION" Type="Time" Nullable="false" Precision="2" />
+          <Property Name="CAST_DATE_DEBUT_CONTRAT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CAST_NBR_POSTE" Type="Int32" Nullable="false" />
+          <Property Name="CAST_DESCRIPTION_POSTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAST_DESCRIPTION_PROFIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" />
+          <Property Name="MET_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_H_CLIENT_CLI" Relationship="Self.FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI" FromRole="T_E_OFFRE_CASTING_CAST" ToRole="T_H_CLIENT_CLI" />
+          <NavigationProperty Name="T_R_METIER_MET" Relationship="Self.FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0" FromRole="T_E_OFFRE_CASTING_CAST" ToRole="T_R_METIER_MET" />
+          <NavigationProperty Name="T_R_CONTRAT_CON" Relationship="Self.T_J_PROPOSE_PRO" FromRole="T_E_OFFRE_CASTING_CAST" ToRole="T_R_CONTRAT_CON" />
+          <NavigationProperty Name="T_R_LOCALISATION_LOC" Relationship="Self.T_J_SITUER_SIT" FromRole="T_E_OFFRE_CASTING_CAST" ToRole="T_R_LOCALISATION_LOC" />
+        </EntityType>
+        <EntityType Name="T_E_PROSPECT_PRO">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_E_CONTACT_CTC" Relationship="Self.FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO" FromRole="T_E_PROSPECT_PRO" ToRole="T_E_CONTACT_CTC" />
+          <NavigationProperty Name="T_H_CLIENT_CLI" Relationship="Self.FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO" FromRole="T_E_PROSPECT_PRO" ToRole="T_H_CLIENT_CLI" />
+          <NavigationProperty Name="T_H_PARTENAIRES_PAR" Relationship="Self.FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO" FromRole="T_E_PROSPECT_PRO" ToRole="T_H_PARTENAIRES_PAR" />
+          <Property Name="PRO_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_H_CLIENT_CLI">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLI_SIRET" Type="Int32" />
+          <Property Name="CLI_RNA" Type="Int32" />
+          <Property Name="JUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADR_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_E_ADRESSE_ADR" Relationship="Self.FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1" FromRole="T_H_CLIENT_CLI" ToRole="T_E_ADRESSE_ADR" />
+          <NavigationProperty Name="T_E_OFFRE_CASTING_CAST" Relationship="Self.FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI" FromRole="T_H_CLIENT_CLI" ToRole="T_E_OFFRE_CASTING_CAST" />
+          <NavigationProperty Name="T_E_PROSPECT_PRO" Relationship="Self.FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO" FromRole="T_H_CLIENT_CLI" ToRole="T_E_PROSPECT_PRO" />
+          <NavigationProperty Name="T_R_STATUT_JURIDIQUE_JUR" Relationship="Self.FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0" FromRole="T_H_CLIENT_CLI" ToRole="T_R_STATUT_JURIDIQUE_JUR" />
+        </EntityType>
+        <EntityType Name="T_H_PARTENAIRES_PAR">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" />
+          <Property Name="PAR_LOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAR_MDP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_E_PROSPECT_PRO" Relationship="Self.FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO" FromRole="T_H_PARTENAIRES_PAR" ToRole="T_E_PROSPECT_PRO" />
+        </EntityType>
+        <EntityType Name="T_R_CONTENU_EDITORIAL_TYPE_CET">
+          <Key>
+            <PropertyRef Name="CET_ID" />
+          </Key>
+          <Property Name="CET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CET_LIBELLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_E_CONTENU_EDITORIAL_EDI" Relationship="Self.FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET" FromRole="T_R_CONTENU_EDITORIAL_TYPE_CET" ToRole="T_E_CONTENU_EDITORIAL_EDI" />
+        </EntityType>
+        <EntityType Name="T_R_CONTRAT_CON">
+          <Key>
+            <PropertyRef Name="CON_ID" />
+          </Key>
+          <Property Name="CON_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CON_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_E_OFFRE_CASTING_CAST" Relationship="Self.T_J_PROPOSE_PRO" FromRole="T_R_CONTRAT_CON" ToRole="T_E_OFFRE_CASTING_CAST" />
+        </EntityType>
+        <EntityType Name="T_R_DOMAINE_METIER_DOM">
+          <Key>
+            <PropertyRef Name="DOM_ID" />
+          </Key>
+          <Property Name="DOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOM_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_R_METIER_MET" Relationship="Self.FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM" FromRole="T_R_DOMAINE_METIER_DOM" ToRole="T_R_METIER_MET" />
+        </EntityType>
+        <EntityType Name="T_R_LOCALISATION_LOC">
+          <Key>
+            <PropertyRef Name="LOC_ID" />
+          </Key>
+          <Property Name="LOC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOC_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_E_OFFRE_CASTING_CAST" Relationship="Self.T_J_SITUER_SIT" FromRole="T_R_LOCALISATION_LOC" ToRole="T_E_OFFRE_CASTING_CAST" />
+        </EntityType>
+        <EntityType Name="T_R_METIER_MET">
+          <Key>
+            <PropertyRef Name="MET_ID" />
+          </Key>
+          <Property Name="MET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MET_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOM_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_E_OFFRE_CASTING_CAST" Relationship="Self.FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0" FromRole="T_R_METIER_MET" ToRole="T_E_OFFRE_CASTING_CAST" />
+          <NavigationProperty Name="T_R_DOMAINE_METIER_DOM" Relationship="Self.FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM" FromRole="T_R_METIER_MET" ToRole="T_R_DOMAINE_METIER_DOM" />
+        </EntityType>
+        <EntityType Name="T_R_STATUT_JURIDIQUE_JUR">
+          <Key>
+            <PropertyRef Name="JUR_ID" />
+          </Key>
+          <Property Name="JUR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JUR_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_H_CLIENT_CLI" Relationship="Self.FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0" FromRole="T_R_STATUT_JURIDIQUE_JUR" ToRole="T_H_CLIENT_CLI" />
+        </EntityType>
+        <EntityType Name="T_S_DATABASE_ADMIN_DBA">
+          <Key>
+            <PropertyRef Name="DBA_ID" />
+          </Key>
+          <Property Name="DBA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DBA_DATEHEURE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DBA_NOM" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBA_NATURE" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBA_COMMANDE" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_S_UTILISATEUR_UTI">
+          <Key>
+            <PropertyRef Name="UTI_ID" />
+          </Key>
+          <Property Name="UTI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UTI_NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UTI_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UTI_LOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UTI_MDP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UTI_ADMINISTRATEUR" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_X_CODE_POSTAL_CPT">
+          <Key>
+            <PropertyRef Name="CPT_ID" />
+          </Key>
+          <Property Name="CPT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPT_CODE_POSTAL" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CPT_VILLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_S_DATABASE_INFO_DBI">
+          <Key>
+            <PropertyRef Name="DBI_LIBELLE" />
+            <PropertyRef Name="DBI_TYPE" />
+            <PropertyRef Name="DBI_VALEUR" />
+          </Key>
+          <Property Name="DBI_LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBI_TYPE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBI_VALEUR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1">
+          <End Role="T_E_ADRESSE_ADR" Type="Self.T_E_ADRESSE_ADR" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_ADRESSE_ADR">
+              <PropertyRef Name="ADR_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="ADR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_E_CONTACT_CTC" Type="Self.T_E_CONTACT_CTC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_E_CONTACT_CTC">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET">
+          <End Role="T_R_CONTENU_EDITORIAL_TYPE_CET" Type="Self.T_R_CONTENU_EDITORIAL_TYPE_CET" Multiplicity="1" />
+          <End Role="T_E_CONTENU_EDITORIAL_EDI" Type="Self.T_E_CONTENU_EDITORIAL_EDI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_CONTENU_EDITORIAL_TYPE_CET">
+              <PropertyRef Name="CET_ID" />
+            </Principal>
+            <Dependent Role="T_E_CONTENU_EDITORIAL_EDI">
+              <PropertyRef Name="CET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI">
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="1" />
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0">
+          <End Role="T_R_METIER_MET" Type="Self.T_R_METIER_MET" Multiplicity="1" />
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_METIER_MET">
+              <PropertyRef Name="MET_ID" />
+            </Principal>
+            <Dependent Role="T_E_OFFRE_CASTING_CAST">
+              <PropertyRef Name="MET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO">
+          <End Role="T_E_PROSPECT_PRO" Type="Self.T_E_PROSPECT_PRO" Multiplicity="1" />
+          <End Role="T_H_PARTENAIRES_PAR" Type="Self.T_H_PARTENAIRES_PAR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="T_E_PROSPECT_PRO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="T_H_PARTENAIRES_PAR">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0">
+          <End Role="T_R_STATUT_JURIDIQUE_JUR" Type="Self.T_R_STATUT_JURIDIQUE_JUR" Multiplicity="1" />
+          <End Role="T_H_CLIENT_CLI" Type="Self.T_H_CLIENT_CLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_STATUT_JURIDIQUE_JUR">
+              <PropertyRef Name="JUR_ID" />
+            </Principal>
+            <Dependent Role="T_H_CLIENT_CLI">
+              <PropertyRef Name="JUR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM">
+          <End Role="T_R_DOMAINE_METIER_DOM" Type="Self.T_R_DOMAINE_METIER_DOM" Multiplicity="1" />
+          <End Role="T_R_METIER_MET" Type="Self.T_R_METIER_MET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_R_DOMAINE_METIER_DOM">
+              <PropertyRef Name="DOM_ID" />
+            </Principal>
+            <Dependent Role="T_R_METIER_MET">
+              <PropertyRef Name="DOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="T_J_PROPOSE_PRO">
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <End Role="T_R_CONTRAT_CON" Type="Self.T_R_CONTRAT_CON" Multiplicity="*" />
+        </Association>
+        <Association Name="T_J_SITUER_SIT">
+          <End Role="T_E_OFFRE_CASTING_CAST" Type="Self.T_E_OFFRE_CASTING_CAST" Multiplicity="*" />
+          <End Role="T_R_LOCALISATION_LOC" Type="Self.T_R_LOCALISATION_LOC" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MegaCastingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_E_ADRESSE_ADR" EntityType="Self.T_E_ADRESSE_ADR" />
+          <EntitySet Name="T_E_CONTACT_CTC" EntityType="Self.T_E_CONTACT_CTC" />
+          <EntitySet Name="T_E_CONTENU_EDITORIAL_EDI" EntityType="Self.T_E_CONTENU_EDITORIAL_EDI" />
+          <EntitySet Name="T_E_OFFRE_CASTING_CAST" EntityType="Self.T_E_OFFRE_CASTING_CAST" />
+          <EntitySet Name="T_E_PROSPECT_PRO" EntityType="Self.T_E_PROSPECT_PRO" />
+          <EntitySet Name="T_H_CLIENT_CLI" EntityType="Self.T_H_CLIENT_CLI" />
+          <EntitySet Name="T_H_PARTENAIRES_PAR" EntityType="Self.T_H_PARTENAIRES_PAR" />
+          <EntitySet Name="T_R_CONTENU_EDITORIAL_TYPE_CET" EntityType="Self.T_R_CONTENU_EDITORIAL_TYPE_CET" />
+          <EntitySet Name="T_R_CONTRAT_CON" EntityType="Self.T_R_CONTRAT_CON" />
+          <EntitySet Name="T_R_DOMAINE_METIER_DOM" EntityType="Self.T_R_DOMAINE_METIER_DOM" />
+          <EntitySet Name="T_R_LOCALISATION_LOC" EntityType="Self.T_R_LOCALISATION_LOC" />
+          <EntitySet Name="T_R_METIER_MET" EntityType="Self.T_R_METIER_MET" />
+          <EntitySet Name="T_R_STATUT_JURIDIQUE_JUR" EntityType="Self.T_R_STATUT_JURIDIQUE_JUR" />
+          <EntitySet Name="T_S_DATABASE_ADMIN_DBA" EntityType="Self.T_S_DATABASE_ADMIN_DBA" />
+          <EntitySet Name="T_S_UTILISATEUR_UTI" EntityType="Self.T_S_UTILISATEUR_UTI" />
+          <EntitySet Name="T_X_CODE_POSTAL_CPT" EntityType="Self.T_X_CODE_POSTAL_CPT" />
+          <EntitySet Name="T_S_DATABASE_INFO_DBI" EntityType="Self.T_S_DATABASE_INFO_DBI" />
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1" Association="Self.FK_T_H_CLIENT_CLI_T_E_ADRESSE_ADR1">
+            <End Role="T_E_ADRESSE_ADR" EntitySet="T_E_ADRESSE_ADR" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO" Association="Self.FK_T_E_CONTACT_CTC_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_E_CONTACT_CTC" EntitySet="T_E_CONTACT_CTC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET" Association="Self.FK_T_E_CONTENU_EDITORIAL_EDI_T_R_CONTENU_EDITORIAL_TYPE_CET">
+            <End Role="T_R_CONTENU_EDITORIAL_TYPE_CET" EntitySet="T_R_CONTENU_EDITORIAL_TYPE_CET" />
+            <End Role="T_E_CONTENU_EDITORIAL_EDI" EntitySet="T_E_CONTENU_EDITORIAL_EDI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI" Association="Self.FK_T_E_OFFRE_CASTING_CAST_T_H_CLIENT_CLI">
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0" Association="Self.FK_T_E_OFFRE_CASTING_CAST_T_R_METIER_MET0">
+            <End Role="T_R_METIER_MET" EntitySet="T_R_METIER_MET" />
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO" Association="Self.FK_T_H_CLIENT_CLI_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO" Association="Self.FK_T_H_PARTENAIRES_PAR_T_E_PROSPECT_PRO">
+            <End Role="T_E_PROSPECT_PRO" EntitySet="T_E_PROSPECT_PRO" />
+            <End Role="T_H_PARTENAIRES_PAR" EntitySet="T_H_PARTENAIRES_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0" Association="Self.FK_T_H_CLIENT_CLI_T_R_STATUT_JURIDIQUE_JUR0">
+            <End Role="T_R_STATUT_JURIDIQUE_JUR" EntitySet="T_R_STATUT_JURIDIQUE_JUR" />
+            <End Role="T_H_CLIENT_CLI" EntitySet="T_H_CLIENT_CLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM" Association="Self.FK_T_R_METIER_MET_T_R_DOMAINE_METIER_DOM">
+            <End Role="T_R_DOMAINE_METIER_DOM" EntitySet="T_R_DOMAINE_METIER_DOM" />
+            <End Role="T_R_METIER_MET" EntitySet="T_R_METIER_MET" />
+          </AssociationSet>
+          <AssociationSet Name="T_J_PROPOSE_PRO" Association="Self.T_J_PROPOSE_PRO">
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+            <End Role="T_R_CONTRAT_CON" EntitySet="T_R_CONTRAT_CON" />
+          </AssociationSet>
+          <AssociationSet Name="T_J_SITUER_SIT" Association="Self.T_J_SITUER_SIT">
+            <End Role="T_E_OFFRE_CASTING_CAST" EntitySet="T_E_OFFRE_CASTING_CAST" />
+            <End Role="T_R_LOCALISATION_LOC" EntitySet="T_R_LOCALISATION_LOC" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MegaCastingModelStoreContainer" CdmEntityContainer="MegaCastingEntities">
+          <EntitySetMapping Name="T_E_ADRESSE_ADR">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_E_ADRESSE_ADR">
+              <MappingFragment StoreEntitySet="T_E_ADRESSE_ADR">
+                <ScalarProperty Name="ADR_ID" ColumnName="ADR_ID" />
+                <ScalarProperty Name="ADR_NUM_VOIE" ColumnName="ADR_NUM_VOIE" />
+                <ScalarProperty Name="ADR_LIBELLE_RUE" ColumnName="ADR_LIBELLE_RUE" />
+                <ScalarProperty Name="ADR_VILLE" ColumnName="ADR_VILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_E_CONTACT_CTC">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_E_CONTACT_CTC">
+              <MappingFragment StoreEntitySet="T_E_CONTACT_CTC">
+                <ScalarProperty Name="CTC_ID" ColumnName="CTC_ID" />
+                <ScalarProperty Name="CTC_DESCRIPTION" ColumnName="CTC_DESCRIPTION" />
+                <ScalarProperty Name="CTC_NUM_TEL" ColumnName="CTC_NUM_TEL" />
+                <ScalarProperty Name="CTC_NUM_FAX" ColumnName="CTC_NUM_FAX" />
+                <ScalarProperty Name="CTC_EMAIL" ColumnName="CTC_EMAIL" />
+                <ScalarProperty Name="CTC_PRINCIPALE" ColumnName="CTC_PRINCIPALE" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_E_CONTENU_EDITORIAL_EDI">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_E_CONTENU_EDITORIAL_EDI">
+              <MappingFragment StoreEntitySet="T_E_CONTENU_EDITORIAL_EDI">
+                <ScalarProperty Name="EDI_ID" ColumnName="EDI_ID" />
+                <ScalarProperty Name="EDI_DESCRIPTION" ColumnName="EDI_DESCRIPTION" />
+                <ScalarProperty Name="EDI_CONTENU" ColumnName="EDI_CONTENU" />
+                <ScalarProperty Name="CET_ID" ColumnName="CET_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_E_OFFRE_CASTING_CAST">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_E_OFFRE_CASTING_CAST">
+              <MappingFragment StoreEntitySet="T_E_OFFRE_CASTING_CAST">
+                <ScalarProperty Name="CAST_ID" ColumnName="CAST_ID" />
+                <ScalarProperty Name="CAST_INTITULE" ColumnName="CAST_INTITULE" />
+                <ScalarProperty Name="CAST_REFERENCE" ColumnName="CAST_REFERENCE" />
+                <ScalarProperty Name="CAST_DATE_DEBUT_PUBLICATION" ColumnName="CAST_DATE_DEBUT_PUBLICATION" />
+                <ScalarProperty Name="CAST_DUREE_DIFFUSION" ColumnName="CAST_DUREE_DIFFUSION" />
+                <ScalarProperty Name="CAST_DATE_DEBUT_CONTRAT" ColumnName="CAST_DATE_DEBUT_CONTRAT" />
+                <ScalarProperty Name="CAST_NBR_POSTE" ColumnName="CAST_NBR_POSTE" />
+                <ScalarProperty Name="CAST_DESCRIPTION_POSTE" ColumnName="CAST_DESCRIPTION_POSTE" />
+                <ScalarProperty Name="CAST_DESCRIPTION_PROFIL" ColumnName="CAST_DESCRIPTION_PROFIL" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="MET_ID" ColumnName="MET_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_E_PROSPECT_PRO">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_E_PROSPECT_PRO">
+              <MappingFragment StoreEntitySet="T_E_PROSPECT_PRO">
+                <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_H_CLIENT_CLI">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_H_CLIENT_CLI">
+              <MappingFragment StoreEntitySet="T_H_CLIENT_CLI">
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="CLI_SIRET" ColumnName="CLI_SIRET" />
+                <ScalarProperty Name="CLI_RNA" ColumnName="CLI_RNA" />
+                <ScalarProperty Name="JUR_ID" ColumnName="JUR_ID" />
+                <ScalarProperty Name="ADR_ID" ColumnName="ADR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_H_PARTENAIRES_PAR">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_H_PARTENAIRES_PAR">
+              <MappingFragment StoreEntitySet="T_H_PARTENAIRES_PAR">
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PAR_LOGIN" ColumnName="PAR_LOGIN" />
+                <ScalarProperty Name="PAR_MDP" ColumnName="PAR_MDP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_CONTENU_EDITORIAL_TYPE_CET">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_CONTENU_EDITORIAL_TYPE_CET">
+              <MappingFragment StoreEntitySet="T_R_CONTENU_EDITORIAL_TYPE_CET">
+                <ScalarProperty Name="CET_ID" ColumnName="CET_ID" />
+                <ScalarProperty Name="CET_LIBELLE" ColumnName="CET_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_CONTRAT_CON">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_CONTRAT_CON">
+              <MappingFragment StoreEntitySet="T_R_CONTRAT_CON">
+                <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
+                <ScalarProperty Name="CON_LIBELLE" ColumnName="CON_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_DOMAINE_METIER_DOM">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_DOMAINE_METIER_DOM">
+              <MappingFragment StoreEntitySet="T_R_DOMAINE_METIER_DOM">
+                <ScalarProperty Name="DOM_ID" ColumnName="DOM_ID" />
+                <ScalarProperty Name="DOM_LIBELLE" ColumnName="DOM_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_LOCALISATION_LOC">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_LOCALISATION_LOC">
+              <MappingFragment StoreEntitySet="T_R_LOCALISATION_LOC">
+                <ScalarProperty Name="LOC_ID" ColumnName="LOC_ID" />
+                <ScalarProperty Name="LOC_LIBELLE" ColumnName="LOC_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_METIER_MET">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_METIER_MET">
+              <MappingFragment StoreEntitySet="T_R_METIER_MET">
+                <ScalarProperty Name="MET_ID" ColumnName="MET_ID" />
+                <ScalarProperty Name="MET_LIBELLE" ColumnName="MET_LIBELLE" />
+                <ScalarProperty Name="DOM_ID" ColumnName="DOM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_R_STATUT_JURIDIQUE_JUR">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_R_STATUT_JURIDIQUE_JUR">
+              <MappingFragment StoreEntitySet="T_R_STATUT_JURIDIQUE_JUR">
+                <ScalarProperty Name="JUR_ID" ColumnName="JUR_ID" />
+                <ScalarProperty Name="JUR_LIBELLE" ColumnName="JUR_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_S_DATABASE_ADMIN_DBA">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_S_DATABASE_ADMIN_DBA">
+              <MappingFragment StoreEntitySet="T_S_DATABASE_ADMIN_DBA">
+                <ScalarProperty Name="DBA_ID" ColumnName="DBA_ID" />
+                <ScalarProperty Name="DBA_DATEHEURE" ColumnName="DBA_DATEHEURE" />
+                <ScalarProperty Name="DBA_NOM" ColumnName="DBA_NOM" />
+                <ScalarProperty Name="DBA_NATURE" ColumnName="DBA_NATURE" />
+                <ScalarProperty Name="DBA_COMMANDE" ColumnName="DBA_COMMANDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_S_UTILISATEUR_UTI">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_S_UTILISATEUR_UTI">
+              <MappingFragment StoreEntitySet="T_S_UTILISATEUR_UTI">
+                <ScalarProperty Name="UTI_ID" ColumnName="UTI_ID" />
+                <ScalarProperty Name="UTI_NOM" ColumnName="UTI_NOM" />
+                <ScalarProperty Name="UTI_PRENOM" ColumnName="UTI_PRENOM" />
+                <ScalarProperty Name="UTI_LOGIN" ColumnName="UTI_LOGIN" />
+                <ScalarProperty Name="UTI_MDP" ColumnName="UTI_MDP" />
+                <ScalarProperty Name="UTI_ADMINISTRATEUR" ColumnName="UTI_ADMINISTRATEUR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_X_CODE_POSTAL_CPT">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_X_CODE_POSTAL_CPT">
+              <MappingFragment StoreEntitySet="T_X_CODE_POSTAL_CPT">
+                <ScalarProperty Name="CPT_ID" ColumnName="CPT_ID" />
+                <ScalarProperty Name="CPT_CODE_POSTAL" ColumnName="CPT_CODE_POSTAL" />
+                <ScalarProperty Name="CPT_VILLE" ColumnName="CPT_VILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_S_DATABASE_INFO_DBI">
+            <EntityTypeMapping TypeName="MegaCastingModel.T_S_DATABASE_INFO_DBI">
+              <MappingFragment StoreEntitySet="T_S_DATABASE_INFO_DBI">
+                <ScalarProperty Name="DBI_LIBELLE" ColumnName="DBI_LIBELLE" />
+                <ScalarProperty Name="DBI_TYPE" ColumnName="DBI_TYPE" />
+                <ScalarProperty Name="DBI_VALEUR" ColumnName="DBI_VALEUR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="T_J_PROPOSE_PRO" TypeName="MegaCastingModel.T_J_PROPOSE_PRO" StoreEntitySet="T_J_PROPOSE_PRO">
+            <EndProperty Name="T_E_OFFRE_CASTING_CAST">
+              <ScalarProperty Name="CAST_ID" ColumnName="CAST_ID" />
+            </EndProperty>
+            <EndProperty Name="T_R_CONTRAT_CON">
+              <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="T_J_SITUER_SIT" TypeName="MegaCastingModel.T_J_SITUER_SIT" StoreEntitySet="T_J_SITUER_SIT">
+            <EndProperty Name="T_E_OFFRE_CASTING_CAST">
+              <ScalarProperty Name="CAST_ID" ColumnName="CAST_ID" />
+            </EndProperty>
+            <EndProperty Name="T_R_LOCALISATION_LOC">
+              <ScalarProperty Name="LOC_ID" ColumnName="LOC_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

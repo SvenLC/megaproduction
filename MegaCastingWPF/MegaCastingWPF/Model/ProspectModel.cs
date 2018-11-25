@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MegaCastingWPF.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,20 +15,19 @@ namespace MegaCastingWPF.Model
         private Boolean isPartenaire;
         private Visibility isClientOpen;
         private Visibility isPartenaireOpen;
-        public List<Test> liste;
-        private Test person;
+        public List<T_E_PROSPECT_PRO> liste;
+        private T_E_PROSPECT_PRO prospect;
 
-        public Test Person
+        public T_E_PROSPECT_PRO Prospect
         {
             get
             {
-                return person;
+                return prospect;
             }
             set
             {
-                person = value;
-
-                OnPropertyChanged(nameof(Person));
+                prospect = value;
+                OnPropertyChanged(nameof(Prospect));
             }
         }
 
@@ -105,11 +105,8 @@ namespace MegaCastingWPF.Model
         {
             IsClient = false;
             IsPartenaire = false;
-            liste = new List<Test>();
-            liste.Add(new Test("Bernard"));
-            liste.Add(new Test("Thierry"));
-            liste.Add(new Test("Jean"));
-            person = new Test("Didier");
+
+            liste = MegeCastingDatabase.Current.T_E_PROSPECT_PRO.ToList();
         }
 
         public void OnPropertyChanged(string propertyName)

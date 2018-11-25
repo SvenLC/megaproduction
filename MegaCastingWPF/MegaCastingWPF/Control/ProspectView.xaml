@@ -29,14 +29,14 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="5"></ColumnDefinition>
                                     <ColumnDefinition Width="150"></ColumnDefinition>
-                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.Children>
                                     <TextBlock Grid.Column="0" FontSize="16"  VerticalAlignment="Center">Liste</TextBlock>
-                                    <TextBlock Grid.Column="1" FontSize="16"  VerticalAlignment="Center">Search:</TextBlock>
+                                    <TextBlock Grid.Column="1" FontSize="12"  VerticalAlignment="Center" FontWeight="Bold">Search </TextBlock>
                                     <TextBox Grid.Column="3" TextChanged="TextBoxSearch_TextChanged"></TextBox>
                                     <Button Background="Transparent" BorderBrush="Transparent" Grid.Column="5" Click="ButtonListe_Click">
                                         <Button.Style>
@@ -52,7 +52,17 @@
                                                 </Setter>
                                             </Style>
                                         </Button.Style>
-                                        <iconPacks:PackIconModern Width="16" Height="16" Kind="List" VerticalAlignment="Center" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Children>
+                                                <TextBlock Text="Liste" Grid.Column="0" FontWeight="Bold"/>
+                                                <iconPacks:PackIconModern Width="16" Height="16" Kind="List" VerticalAlignment="Center" Grid.Column="2"/>
+                                            </Grid.Children>
+                                        </Grid>
                                     </Button>
                                     <Button Background="Transparent" BorderBrush="Transparent" Grid.Column="7" Click="ButtonVignette_Click">
                                         <Button.Style>
@@ -68,7 +78,18 @@
                                                 </Setter>
                                             </Style>
                                         </Button.Style>
-                                        <iconPacks:PackIconModern Width="16" Height="16" Kind="Window" VerticalAlignment="Center" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Children>
+                                                <TextBlock Text="Vignette" Grid.Column="0" FontWeight="Bold"/>
+                                                <iconPacks:PackIconModern Width="16" Height="16" Kind="Window" VerticalAlignment="Center" Grid.Column="2"/>
+                                            </Grid.Children>
+                                        </Grid>
+                                        
                                     </Button>
                                 </Grid.Children>
                             </Grid>
@@ -104,7 +125,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.Children>
                                         <TextBlock Text="Nom" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
-                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Person.Nom}"/>
+                                        <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.PRO_NAME}"/>
                                         <TextBlock Text="Prénom" FontSize="12" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
                                         <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2"/>
                                     </Grid.Children>
