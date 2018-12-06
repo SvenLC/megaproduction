@@ -16,6 +16,7 @@
             <Style TargetType="{x:Type Controls:WindowButtonCommands}"
                    BasedOn="{StaticResource MahApps.Metro.Styles.WindowButtonCommands.Win10}" />
             <Style TargetType="Custom:CustomGroupBox" BasedOn="{StaticResource MetroGroupBox}" />
+            <Style TargetType="Custom:CustomDataGrid" BasedOn="{StaticResource MetroDataGrid}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MegaCastingWPF.Model
+namespace MegaCastingWPF.Model.Views
 {
-    public class SettingsModel : INotifyPropertyChanged
+    public class SettingsViewModel : INotifyPropertyChanged
     {
 
         private Visibility isAccentOpen;
@@ -49,7 +49,7 @@ namespace MegaCastingWPF.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public SettingsModel()
+        public SettingsViewModel()
         {
             IsCouleurOpen = Visibility.Visible;
             IsAccentOpen = Visibility.Visible;

@@ -5,7 +5,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                      xmlns:views="clr-namespace:MegaCastingWPF.Control"
+                      xmlns:views="clr-namespace:MegaCastingWPF.Control.UserControls.Views"
                       mc:Ignorable="d"
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
@@ -129,10 +129,7 @@
 
             </controls:HamburgerMenu>
         </Grid.Children>
-
-
     </Grid>
-
 </controls:MetroWindow>
 
 

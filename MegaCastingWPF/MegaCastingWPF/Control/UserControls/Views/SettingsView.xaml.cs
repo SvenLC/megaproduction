@@ -1,21 +1,21 @@
 ﻿using MahApps.Metro;
-using MegaCastingWPF.Model;
+using MegaCastingWPF.Model.Views;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MegaCastingWPF.Control
+namespace MegaCastingWPF.Control.UserControls.Views
 {
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class SettingsView : UserControl
+    public partial class SettingsView : BaseView
     {
-        SettingsModel Model;
+        SettingsViewModel Model;
 
         public SettingsView()
         {
             InitializeComponent();
-            Model = new SettingsModel();
+            Model = new SettingsViewModel();
             this.DataContext = Model;
         }
 
@@ -33,12 +33,10 @@ namespace MegaCastingWPF.Control
 
         private void ButtonExpendCouleur_Click(object sender, RoutedEventArgs e)
         {
-
             if (Model.IsCouleurOpen == Visibility.Visible)
                 Model.IsCouleurOpen = Visibility.Collapsed;
             else
                 Model.IsCouleurOpen = Visibility.Visible;
-
         }
 
         private void ButtonExpendAccent_Click(object sender, RoutedEventArgs e)

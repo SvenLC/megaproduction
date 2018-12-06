@@ -1,4 +1,5 @@
 ﻿using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace MegaCastingWPF.Control.Custom
 {
     public class CustomGroupBox : GroupBox
     {
-        private T_E_PROSPECT_PRO prospect;
+        private BaseExtend prospect;
 
-        public T_E_PROSPECT_PRO Prospect
+        public BaseExtend Prospect
         {
             get
             {
@@ -31,7 +32,7 @@ namespace MegaCastingWPF.Control.Custom
         }
 
         public static RoutedEvent ClickEvent =
-        EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CustomGroupBox));
+        EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(BaseExtend));
 
         public event RoutedEventHandler Click
         {
@@ -48,6 +49,12 @@ namespace MegaCastingWPF.Control.Custom
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
+            OnClick();
+        }
+
+        protected override void OnMouseRightButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseRightButtonUp(e);
             OnClick();
         }
     }
