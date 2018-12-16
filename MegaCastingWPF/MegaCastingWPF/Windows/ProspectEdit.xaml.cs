@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MegaCastingWPF.Control.Custom;
 using MegaCastingWPF.Database;
 using MegaCastingWPF.Model.Views.Edit;
 using System;
@@ -32,6 +34,10 @@ namespace MegaCastingWPF.Windows
 
             this.DataContext = Model;
 
+            Model.Content = new RelatedListe<T_E_CONTACT_CTC>(Model.StoreObject.PRO_ID);
+
+            GridContact.Children.Add(Model.Content);
+
             this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.ToList();
         }
 
@@ -45,6 +51,31 @@ namespace MegaCastingWPF.Windows
         {
             this.DialogResult = false;
             this.Close();
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Model.Content.Update();
+        }
+
+        private void ButtonCreate_Click(object sender, RoutedEventArgs e)
+        {
+            T_E_CONTACT_CTC contact = new T_E_CONTACT_CTC();
+            contact.PRO_ID = Model.StoreObject.PRO_ID;
+
+            bool succes = contact.Create();
+
+            if (succes)
+            {
+                Model.StoreObject.T_E_CONTACT_CTC.Add(contact);
+            }
+
+            Model.Content.Reload(Model.StoreObject.T_E_CONTACT_CTC.ToList());
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //Model.StoreObject.Delete();
         }
     }
 }

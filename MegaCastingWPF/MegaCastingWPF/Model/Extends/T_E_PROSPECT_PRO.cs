@@ -36,28 +36,120 @@ namespace MegaCastingWPF.Database
 
         public override string GetHeader()
         {
-            return this.PRO_ID.ToString();
+            return this.PRO_ID.ToString() + " - " + this.PRO_NAME;
         }
 
         public override List<TextBlock> PreviewGroupBox()
         {
             List<TextBlock> liste = new List<TextBlock>();
 
-            TextBlock TBC = new TextBlock()
+            TextBlock TBC;
+
+            if (this.T_H_PARTENAIRES_PAR != null)
             {
-                Text = this.PRO_NAME
-            };
+                TBC = new TextBlock()
+                {
+                    Text = "Partenaire",
+                    FontWeight = FontWeight.FromOpenTypeWeight(750)
+                };
 
-            TBC.SetValue(Grid.ColumnProperty, 0);
+                TBC.SetValue(Grid.ColumnProperty, 0);
 
-            liste.Add(TBC);
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_PARTENAIRES_PAR.PAR_LOGIN
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+            }
+
+            if (this.T_H_CLIENT_CLI != null)
+            {
+                TBC = new TextBlock()
+                {
+                    Text = "Client",
+                    FontWeight = FontWeight.FromOpenTypeWeight(750)
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.T_R_STATUT_JURIDIQUE_JUR.ToString()
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.CLI_RNA.ToString()
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.CLI_SIRET.ToString()
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = "Adresse",
+                    FontWeight = FontWeight.FromOpenTypeWeight(750)
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+
+                TBC = new TextBlock()
+                {
+                    Text = this.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE
+                };
+
+                TBC.SetValue(Grid.ColumnProperty, 0);
+
+                liste.Add(TBC);
+            }
 
             return liste;
         }
 
-        public override List<DataGridTextColumn> previewList()
+        public override List<DataGridColumn> previewList()
         {
-            List<DataGridTextColumn> liste = new List<DataGridTextColumn>();
+            List<DataGridColumn> liste = new List<DataGridColumn>();
 
             liste.Add(new DataGridTextColumn()
             {
@@ -126,8 +218,31 @@ namespace MegaCastingWPF.Database
             return liste;
         }
 
-        public override bool Create() => Update();
+        public override bool Create()
+        {
+            bool isSucces = this.Update();
 
+            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Add(this);
+
+            if (isSucces)
+            {
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+        }
 
         public override bool Update()
         {
@@ -143,18 +258,58 @@ namespace MegaCastingWPF.Database
                 }
                 catch (Exception)
                 {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
         }
 
         public override bool Delete()
         {
-            throw new NotImplementedException();
+            if (this.T_H_CLIENT_CLI != null)
+            {
+                Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Remove(this.T_H_CLIENT_CLI);
+
+            }
+            if (this.T_H_PARTENAIRES_PAR != null)
+            {
+                Database.MegeCastingDatabase.Current.T_H_PARTENAIRES_PAR.Remove(this.T_H_PARTENAIRES_PAR);
+
+            }
+
+            if (this.T_E_CONTACT_CTC.Count > 0)
+            {
+                foreach (T_E_CONTACT_CTC item in this.T_E_CONTACT_CTC.ToList())
+                {
+                    Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Remove(item);
+                }
+            }
+            
+
+            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Remove(this);
+
+            try
+            {
+                MegeCastingDatabase.Current.SaveChanges();
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return true;
+            }
+            catch (Exception)
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
         }
+
+        public override List<BaseExtend> getSource()
+        {
+            return MegeCastingDatabase.Current.T_E_PROSPECT_PRO.ToList().Cast<BaseExtend>().ToList();
+        }
+
     }
 }

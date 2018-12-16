@@ -8,7 +8,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class SettingsView : BaseView
+    public partial class SettingsView : UserControl
     {
         SettingsViewModel Model;
 

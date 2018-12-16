@@ -11,11 +11,11 @@ using System.Windows;
 
 namespace MegaCastingWPF.Model.Views
 {
-    public class ProspectViewModel : BaseViewModel
+    public class ProspectViewModel : BaseViewModel<T_E_PROSPECT_PRO>
     {
         public ProspectViewModel()
         {
-            Content = new Liste<T_E_PROSPECT_PRO>(MegeCastingDatabase.Current.T_E_PROSPECT_PRO.ToList());
+            Content = new Liste<T_E_PROSPECT_PRO>();
         }
     }
 }

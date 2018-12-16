@@ -5,18 +5,31 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:Converter="clr-namespace:MegaCastingWPF.Converter"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:Rule="clr-namespace:MegaCastingWPF.Rule"
                       mc:Ignorable="d"
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
-                      WindowStartupLocation="CenterScreen">
+                      WindowStartupLocation="CenterScreen" d:DesignHeight="767.779">
+    
     <controls:MetroWindow.Resources>
-        <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DataDictionary/CustomControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </ResourceDictionary>
     </controls:MetroWindow.Resources>
+
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="357*"/>
+                <ColumnDefinition Width="389*"/>
+            </Grid.ColumnDefinitions>
             <Grid.Children>
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Grid.ColumnSpan="2">
                     <Grid Margin="5,0,5,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -27,7 +40,7 @@
                             <RowDefinition  Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.Children>
-                            <TextBlock Text="Prospects" FontSize="16" Grid.Row="0" />
+                            <TextBlock Text="Prospect" FontSize="16" Grid.Row="0" />
                             <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
                             <Grid Margin="0,10,0,10" Grid.Row="2" >
                                 <Grid.ColumnDefinitions>
@@ -40,7 +53,15 @@
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="Nom" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.PRO_NAME}"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.PRO_NAME" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                 </Grid.Children>
                             </Grid>
                         </Grid.Children>
@@ -77,9 +98,25 @@
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="Login" FontSize="12" Grid.Row="0" VerticalAlignment="Center" />
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Path=Prospect.T_H_PARTENAIRES_PAR.PAR_LOGIN}" />
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" >
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_LOGIN" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="7" Max="25"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <TextBlock Text="Mot de passe" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Path=Prospect.T_H_PARTENAIRES_PAR.PAR_MDP}" />
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_MDP" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="10" Max="25"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                 </Grid.Children>
                             </Grid>
                         </Grid.Children>
@@ -119,11 +156,27 @@
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="RNA" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.CLI_RNA}" />
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_RNA" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:NumberRule />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <TextBlock Text="Siret" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.CLI_SIRET}"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:NumberRule />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <TextBlock Text="Statut juridique" FontSize="12" Grid.Row="2" VerticalAlignment="Center" />
-                                    <ComboBox  Grid.Row="2" Grid.Column="2" x:Name="CBX_Statut"></ComboBox>
+                                    <ComboBox SelectedIndex="0" Grid.Row="2" Grid.Column="2" x:Name="CBX_Statut" DisplayMemberPath="JUR_LIBELLE" SelectedItem="{Binding StoreObject.T_H_CLIENT_CLI.T_R_STATUT_JURIDIQUE_JUR}"></ComboBox>
                                     <Grid Margin="5,0,5,5" Grid.Row="4" Grid.ColumnSpan="3">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -149,17 +202,109 @@
                                                 </Grid.RowDefinitions>
                                                 <Grid.Children>
                                                     <TextBlock Text="Numéro de voie" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE}"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                                        <TextBox.Text>
+                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE" UpdateSourceTrigger="PropertyChanged" >
+                                                                <Binding.ValidationRules>
+                                                                    <Rule:TextRule Min="1" Max="25"/>
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                     <TextBlock Text="Libellé rue" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE}"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                                        <TextBox.Text>
+                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE" UpdateSourceTrigger="PropertyChanged" >
+                                                                <Binding.ValidationRules>
+                                                                    <Rule:TextRule Min="1" Max="150"/>
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                     <TextBlock Text="Ville" FontSize="12" Grid.Row="2" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE}"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2">
+                                                        <TextBox.Text>
+                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE" UpdateSourceTrigger="PropertyChanged" >
+                                                                <Binding.ValidationRules>
+                                                                    <Rule:TextRule Min="1" Max="50"/>
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                 </Grid.Children>
                                             </Grid>
                                         </Grid.Children>
                                     </Grid>
                                 </Grid.Children>
                             </Grid>
+                        </Grid.Children>
+                    </Grid>
+                    <Grid Margin="5,0,5,30" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <TextBlock Text="Contact" FontSize="16" Grid.Row="0" />
+                            <Separator Grid.Row="1" ></Separator>
+                            <Grid Grid.Column="0" Grid.Row="2" Margin="5,15,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Children>
+                                    <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="0" Click="ButtonCreate_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Children>
+                                                <TextBlock Text="Ajouter" Grid.Column="0" FontSize="14"/>
+                                                <iconPacks:PackIconModern Width="14" Height="14" VerticalAlignment="Center" Kind="UserAdd" Grid.Column="2"/>
+                                            </Grid.Children>
+                                        </Grid>
+                                    </Button>
+                                    <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="2" Click="ButtonEdit_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Children>
+                                                <TextBlock Text="Modifier" Grid.Column="0" FontSize="14" />
+                                                <iconPacks:PackIconModern Width="14" Height="14" Kind="Edit" VerticalAlignment="Center" Grid.Column="2" />
+                                            </Grid.Children>
+                                        </Grid>
+                                    </Button>
+                                    <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="4" Click="ButtonDelete_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Children>
+                                                <TextBlock Text="Supprimer" Grid.Column="0" FontSize="14"/>
+                                                <iconPacks:PackIconModern Width="14" Height="14" Kind="UserDelete" VerticalAlignment="Center" Grid.Column="2"/>
+                                            </Grid.Children>
+                                        </Grid>
+                                    </Button>
+                                </Grid.Children>
+                            </Grid>
+                            <Separator Grid.Row="3" Background="Gray" Margin="5,5,5,5"></Separator>
+                            <Border Grid.Row="4" Margin="5,5,5,5" BorderBrush="{DynamicResource AccentColorBrush}" Background="White" BorderThickness="1">
+                                <Grid x:Name="GridContact"></Grid>
+                            </Border>
+                            
                         </Grid.Children>
                     </Grid>
                     <Grid>

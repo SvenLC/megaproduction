@@ -1,5 +1,6 @@
 ﻿using MegaCastingWPF.Control.Custom;
 using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,23 @@ namespace MegaCastingWPF.Control.UserControls.Views
 {
     public abstract class BaseView : UserControl
     {
-        public void loadVignette<T>(T Model,Grid ListContent) where T : BaseViewModel
+        public void loadVignette<T,E>(T Model,Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend, new()
         {
-            Model.Content = new Vignette<T_E_PROSPECT_PRO>(MegeCastingDatabase.Current.T_E_PROSPECT_PRO.ToList());
             ListContent.Children.Clear();
-            ListContent.Children.Add(Model.Content as Vignette<T_E_PROSPECT_PRO>);
+            tbx.Text = "";
+
+            Model.Content = new Vignette<E>();
+            ListContent.Children.Add(Model.Content as Vignette<E>);
         }
 
-        public void loadListe<T>(T Model, Grid ListContent) where T : BaseViewModel
+        public void loadListe<T, E>(T Model, Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend, new()
         {
-            Model.Content = new Liste<T_E_PROSPECT_PRO>(MegeCastingDatabase.Current.T_E_PROSPECT_PRO.ToList());
             ListContent.Children.Clear();
-            ListContent.Children.Add(Model.Content as Liste<T_E_PROSPECT_PRO>);
+            tbx.Text = "";
+
+
+            Model.Content = new Liste<E>();
+            ListContent.Children.Add(Model.Content as Liste<E>);
         }
     }
 }

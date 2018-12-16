@@ -1,4 +1,5 @@
-﻿using MegaCastingWPF.Interface;
+﻿using MahApps.Metro.IconPacks;
+using MegaCastingWPF.Interface;
 using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace MegaCastingWPF.Control.Custom
 {
     public abstract class Content<T> : Grid, ICrud where T : BaseExtend, new()
     {
-        public abstract void Reload(string contain = "");
+        public abstract void Reload(List<T> _StoreSource, string contain = "");
 
         private T storeObject;
         public T StoreObject
@@ -27,18 +28,7 @@ namespace MegaCastingWPF.Control.Custom
             }
         }
 
-        private List<T> storeSource;
-        public List<T> StoreSource
-        {
-            get
-            {
-                return storeSource;
-            }
-            set
-            {
-                storeSource = value;
-            }
-        }
+        public List<T> StoreSource => new T().getSource().Cast<T>().ToList();
 
         public abstract T GetSelectedElement();
 
@@ -46,23 +36,50 @@ namespace MegaCastingWPF.Control.Custom
         {
             StoreObject = new T();
 
-            //TODO : deselect all
+            StoreObject.Create();
 
-            storeObject.Create();
+            this.Reload(this.StoreSource);
         }
 
         public void Update()
         {
-            storeObject.Update();
+            if (StoreObject != null)
+            {
+                storeObject.Update();
+
+                this.Reload(this.StoreSource);
+            }
         }
 
         public void Delete()
         {
-            storeObject.Delete();
+            if (StoreObject != null)
+            {
+                StoreObject.Delete();
+                this.Reload(this.StoreSource);
+            }
+
         }
 
         public ContextMenu getContextMenu()
         {
+            var IconEdit = new PackIconMaterial()
+            {
+                Kind = PackIconMaterialKind.Pen,
+                Margin = new Thickness(4, 4, 2, 4),
+                Width = 14,
+                Height = 14,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            var IconDelete = new PackIconMaterial()
+            {
+                Kind = PackIconMaterialKind.Delete,
+                Margin = new Thickness(4, 4, 2, 4),
+                Width = 14,
+                Height = 14,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
             //Contexte menu
             ContextMenu contextMenu = new ContextMenu();
 
@@ -73,6 +90,8 @@ namespace MegaCastingWPF.Control.Custom
 
             menuItem.Click += new RoutedEventHandler(ContextMenu_Update);
 
+            menuItem.Icon = IconEdit;
+
             contextMenu.Items.Add(menuItem);
 
             menuItem = new MenuItem()
@@ -81,6 +100,8 @@ namespace MegaCastingWPF.Control.Custom
             };
 
             menuItem.Click += new RoutedEventHandler(ContextMenu_Delete);
+
+            menuItem.Icon = IconDelete;
 
             contextMenu.Items.Add(menuItem);
 

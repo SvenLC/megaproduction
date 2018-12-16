@@ -47,19 +47,22 @@ namespace MegaCastingWPF.Control.UserControls.Views
 
         private void ButtonVignette_Click(object sender, RoutedEventArgs e)
         {
-            this.loadVignette(Model, ListContent);
+            this.loadVignette<ProspectViewModel, T_E_PROSPECT_PRO>(Model, ListContent, FilterTextBox);
         }
 
         private void ButtonListe_Click(object sender, RoutedEventArgs e)
         {
-            this.loadListe(Model, ListContent);
+            this.loadListe<ProspectViewModel, T_E_PROSPECT_PRO>(Model, ListContent, FilterTextBox);
         }
 
-        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxSearch_KeyUp(object sender, KeyEventArgs e)
         {
             TextBox TBX = sender as TextBox;
-            Model.Content.Reload(TBX.Text);
-        }
 
+            if (e.Key == Key.Enter)
+            {
+                Model.Content.Reload(Model.Content.StoreSource, TBX.Text);
+            }
+        }
     }
 }

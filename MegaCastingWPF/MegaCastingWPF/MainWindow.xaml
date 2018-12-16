@@ -5,12 +5,11 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                      xmlns:views="clr-namespace:MegaCastingWPF.Control.UserControls.Views"
                       mc:Ignorable="d"
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen">
-
+    
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <Button x:Name="LinkWebSite" Click="LinkWebSite_Click">
@@ -22,114 +21,8 @@
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="153*"></ColumnDefinition>
-            <ColumnDefinition Width="37*"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid.Resources>
-
-            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
-                <Grid Height="48">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               FontSize="16"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontFamily="Segoe MDL2 Assets"
-                               Foreground="White"
-                               Text="{Binding Glyph}" />
-                    <TextBlock Grid.Column="1"
-                               VerticalAlignment="Center"
-                               FontSize="16"
-                               Foreground="White"
-                               Text="{Binding Label}" />
-                </Grid>
-            </DataTemplate>
-
-            <DataTemplate x:Key="OptionsMenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
-                <Grid Height="48">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               FontSize="16"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontFamily="Segoe MDL2 Assets"
-                               Foreground="White"
-                               Text="{Binding Glyph}" />
-                    <TextBlock Grid.Column="1"
-                               VerticalAlignment="Center"
-                               FontSize="16"
-                               Foreground="White"
-                               Text="{Binding Label}" />
-                </Grid>
-            </DataTemplate>
-
-        </Grid.Resources>
-        <Grid.Children>
-            <controls:HamburgerMenu x:Name="HamburgerMenuControl"
-                                IsPaneOpen="False"
-                                ItemTemplate="{StaticResource MenuItemTemplate}"
-                                OptionsItemTemplate="{StaticResource OptionsMenuItemTemplate}"
-                                ItemClick="HamburgerMenuControl_OnItemClick"
-                                OptionsItemClick="HamburgerMenuControl_OnItemClick"
-                                DisplayMode="CompactInline" Grid.ColumnSpan="2">
-
-                <!--  Items  -->
-                <controls:HamburgerMenu.ItemsSource>
-                    <controls:HamburgerMenuItemCollection>
-                        <controls:HamburgerMenuGlyphItem Glyph=""
-                                                     Label="Home">
-                            <controls:HamburgerMenuGlyphItem.Tag>
-                                <views:HomeView />
-                            </controls:HamburgerMenuGlyphItem.Tag>
-                        </controls:HamburgerMenuGlyphItem>
-
-                        <controls:HamburgerMenuGlyphItem Glyph=""
-                                                     Label="Prospect">
-                            <controls:HamburgerMenuGlyphItem.Tag>
-                                <views:ProspectView />
-                            </controls:HamburgerMenuGlyphItem.Tag>
-                        </controls:HamburgerMenuGlyphItem>
-
-                        <controls:HamburgerMenuGlyphItem Glyph=""
-                                                     Label="Settings">
-                            <controls:HamburgerMenuGlyphItem.Tag>
-                                <views:SettingsView />
-                            </controls:HamburgerMenuGlyphItem.Tag>
-                        </controls:HamburgerMenuGlyphItem>
-                    </controls:HamburgerMenuItemCollection>
-                </controls:HamburgerMenu.ItemsSource>
-
-                <!--  Options  -->
-                <controls:HamburgerMenu.OptionsItemsSource>
-                    <controls:HamburgerMenuItemCollection>
-                        <controls:HamburgerMenuGlyphItem Glyph=""
-                                                     Label="About">
-                            <controls:HamburgerMenuGlyphItem.Tag>
-                                <views:AboutView />
-                            </controls:HamburgerMenuGlyphItem.Tag>
-                        </controls:HamburgerMenuGlyphItem>
-                    </controls:HamburgerMenuItemCollection>
-                </controls:HamburgerMenu.OptionsItemsSource>
-
-                <controls:HamburgerMenu.Content>
-                    <Grid Grid.Column="0" Grid.Row="0" x:Name="GridContenu"></Grid>
-                </controls:HamburgerMenu.Content>
-
-            </controls:HamburgerMenu>
-        </Grid.Children>
-    </Grid>
+    <Grid x:Name="GridContenu"></Grid>
+    
 </controls:MetroWindow>
 
 

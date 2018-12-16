@@ -7,6 +7,15 @@
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:local="clr-namespace:MegaCastingWPF.Control.UserControls.Views"
              mc:Ignorable="d">
+
+    <local:BaseView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DataDictionary/CustomControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </local:BaseView.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -42,21 +51,8 @@
                             <ColumnDefinition Width="5"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.Children>
-                            <TextBlock Grid.Column="0" FontSize="20"  VerticalAlignment="Bottom" Margin="0,0,0,3" FontFamily="Tahoma">Liste</TextBlock>
-                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="2" Click="ButtonCreate_Click" Margin="0,0,0,3" Foreground="{DynamicResource AccentColorBrush}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" >
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Button}">
-                                                    <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Button.Style>
+                            <TextBlock Grid.Column="0" FontSize="20"  VerticalAlignment="Bottom" Margin="0,0,0,3" FontFamily="Tahoma">Prospects</TextBlock>
+                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="2" Click="ButtonCreate_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -69,20 +65,7 @@
                                     </Grid.Children>
                                 </Grid>
                             </Button>
-                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="4" Click="ButtonEdit_Click" Margin="0,0,0,3"  Foreground="{DynamicResource AccentColorBrush}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" >
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Button}">
-                                                    <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Button.Style>
+                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="4" Click="ButtonEdit_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -95,20 +78,7 @@
                                     </Grid.Children>
                                 </Grid>
                             </Button>
-                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="6" Click="ButtonDelete_Click" Margin="0,0,0,3" Foreground="{DynamicResource AccentColorBrush}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" >
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Button}">
-                                                    <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Button.Style>
+                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="6" Click="ButtonDelete_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -131,22 +101,9 @@
                                  Width="150"
                                  BorderThickness="0 0 0 1"
                                  SnapsToDevicePixels="True"
-                                 TextChanged="TextBoxSearch_TextChanged"
+                                 KeyUp="TextBoxSearch_KeyUp"
                                  Text="{Binding MainViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" />
-                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="12" Click="ButtonListe_Click" Margin="0,0,0,3" Foreground="{DynamicResource AccentColorBrush}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" >
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Button}">
-                                                    <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Button.Style>
+                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="12" Click="ButtonListe_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -159,20 +116,7 @@
                                     </Grid.Children>
                                 </Grid>
                             </Button>
-                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="14" Click="ButtonVignette_Click" Margin="0,0,0,3" Foreground="{DynamicResource AccentColorBrush}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" >
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Button}">
-                                                    <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Button.Style>
+                            <Button VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Grid.Column="14" Click="ButtonVignette_Click" Margin="0,0,0,3" Style="{StaticResource withOutEffectButton}" Foreground="{DynamicResource AccentColorBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>

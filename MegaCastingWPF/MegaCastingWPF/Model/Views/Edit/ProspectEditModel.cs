@@ -1,4 +1,5 @@
-﻿using MegaCastingWPF.Database;
+﻿using MegaCastingWPF.Control.Custom;
+using MegaCastingWPF.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,39 +10,39 @@ using System.Windows;
 
 namespace MegaCastingWPF.Model.Views.Edit
 {
-    public class ProspectEditModel : INotifyPropertyChanged
+    public class ProspectEditModel : BaseEditModel<T_E_PROSPECT_PRO>
     {
-        private T_E_PROSPECT_PRO prospect;
-
-        public ProspectEditModel(T_E_PROSPECT_PRO _prospect = null)
+        public ProspectEditModel(T_E_PROSPECT_PRO _storeObject = null)
         {
-            if (_prospect == null)
-                prospect = new T_E_PROSPECT_PRO();
+            if (_storeObject == null)
+                StoreObject = new T_E_PROSPECT_PRO();
             else
-                prospect = _prospect;
+                StoreObject = _storeObject;
         }
 
         public Boolean IsClient
         {
             get
             {
-                return prospect.T_H_CLIENT_CLI != null;
+                return StoreObject.T_H_CLIENT_CLI != null;
             }
             set
             {
                 if (!IsClient)
                 {
-                    prospect.T_H_CLIENT_CLI = new T_H_CLIENT_CLI();
-                    prospect.T_H_CLIENT_CLI.PRO_ID = prospect.PRO_ID;
+                    StoreObject.T_H_CLIENT_CLI = new T_H_CLIENT_CLI();
+                    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = new T_E_ADRESSE_ADR();
+                    StoreObject.T_H_CLIENT_CLI.PRO_ID = StoreObject.PRO_ID;
 
-                    OnPropertyChanged(nameof(Prospect));
+                    OnPropertyChanged(nameof(StoreObject));
                     OnPropertyChanged(nameof(IsClient));
                 }
                 else
                 {
-                    prospect.T_H_CLIENT_CLI = null;
+                    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = null;
+                    StoreObject.T_H_CLIENT_CLI = null;
 
-                    OnPropertyChanged(nameof(Prospect));
+                    OnPropertyChanged(nameof(StoreObject));
                     OnPropertyChanged(nameof(IsClient));
                 }
             }
@@ -51,45 +52,41 @@ namespace MegaCastingWPF.Model.Views.Edit
         {
             get
             {
-                return prospect.T_H_PARTENAIRES_PAR != null;
+                return StoreObject.T_H_PARTENAIRES_PAR != null;
             }
             set
             {
                 if (!IsPartenaire)
                 {
-                    prospect.T_H_PARTENAIRES_PAR = new T_H_PARTENAIRES_PAR();
-                    prospect.T_H_PARTENAIRES_PAR.PRO_ID = prospect.PRO_ID;
+                    StoreObject.T_H_PARTENAIRES_PAR = new T_H_PARTENAIRES_PAR();
+                    StoreObject.T_H_PARTENAIRES_PAR.PRO_ID = StoreObject.PRO_ID;
 
-                    OnPropertyChanged(nameof(Prospect));
+                    OnPropertyChanged(nameof(StoreObject));
                     OnPropertyChanged(nameof(IsPartenaire));
                 }
                 else
                 {
-                    prospect.T_H_PARTENAIRES_PAR = null;
+                    StoreObject.T_H_PARTENAIRES_PAR = null;
 
-                    OnPropertyChanged(nameof(Prospect));
+                    OnPropertyChanged(nameof(StoreObject));
                     OnPropertyChanged(nameof(IsPartenaire));
                 }
             }
         }
 
-        public T_E_PROSPECT_PRO Prospect
+        protected RelatedListe<T_E_CONTACT_CTC> content;
+
+        public RelatedListe<T_E_CONTACT_CTC> Content
         {
             get
             {
-                return prospect;
+                return content;
             }
             set
             {
-                prospect = value;
+                content = value;
+                OnPropertyChanged(nameof(Content));
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
