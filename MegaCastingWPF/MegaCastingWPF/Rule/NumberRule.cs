@@ -10,9 +10,17 @@ namespace MegaCastingWPF.Rule
 {
     public class NumberRule : ValidationRule
     {
+        private bool _isObligated;
 
         public NumberRule()
         {
+            IsObligated = true;
+        }
+
+        public bool IsObligated
+        {
+            get { return _isObligated; }
+            set { _isObligated = value; }
         }
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
@@ -21,10 +29,19 @@ namespace MegaCastingWPF.Rule
 
             try
             {
-                if (int.TryParse((String) value, out result))
+                if ((int.TryParse((String) value, out result)))
                     return ValidationResult.ValidResult;
                 else
-                    return new ValidationResult(false, "La valeur doit être un nombre.");
+                {
+                    if (IsObligated)
+                    {
+                        return new ValidationResult(false, "La valeur doit être un nombre.");
+                    }
+                    else
+                    {
+                        return ValidationResult.ValidResult;
+                    }
+                }
 
             }
             catch (Exception e)

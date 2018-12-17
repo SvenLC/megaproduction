@@ -22,25 +22,34 @@ namespace MegaCastingWPF.Windows
     /// <summary>
     /// Logique d'interaction pour ContactEdit.xaml
     /// </summary>
-    public partial class ContactEdit : MetroWindow
+    public partial class MetierEdit : MetroWindow
     {
-        ContactEditModel Model;
+        MetierEditModel Model;
 
-        public ContactEdit(T_E_CONTACT_CTC _Prospect = null)
+        public MetierEdit(T_R_METIER_MET _Prospect = null)
         {
             InitializeComponent();
 
-            Model = new ContactEditModel(_Prospect);
+            Model = new MetierEditModel(_Prospect);
 
             this.DataContext = Model;
+
+            this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.ToList();
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)
         {
             if (Validator.IsValid(this))
             {
-                this.DialogResult = true;
-                this.Close();
+                if (CBX_Statut.SelectedItem == null)
+                {
+                    CBX_Statut.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    this.DialogResult = true;
+                    Close();
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using MegaCastingWPF.Model.Extends;
+using MegaCastingWPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,74 @@ namespace MegaCastingWPF.Database
     {
         public override bool Create()
         {
-            throw new NotImplementedException();
+            bool isSucces = this.Update();
+
+            if (isSucces)
+            {
+                Database.MegeCastingDatabase.Current.T_R_METIER_MET.Add(this);
+
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+        }
+
+        public override bool Update()
+        {
+            MetierEdit windowEdit = new MetierEdit(this);
+            windowEdit.ShowDialog();
+
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
         }
 
         public override bool Delete()
         {
-            throw new NotImplementedException();
+            T_R_METIER_MET metier = Database.MegeCastingDatabase.Current.T_R_METIER_MET.Where(x => x.MET_ID == this.MET_ID).First();
+
+            Database.MegeCastingDatabase.Current.T_R_METIER_MET.Remove(metier);
+
+            try
+            {
+                MegeCastingDatabase.Current.SaveChanges();
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return true;
+            }
+            catch (Exception)
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+
+
         }
 
         public override string GetHeader()
@@ -63,6 +126,11 @@ namespace MegaCastingWPF.Database
                 Text = this.MET_LIBELLE
             };
 
+            TBC = new TextBlock()
+            {
+                Text = this.T_R_DOMAINE_METIER_DOM.DOM_LIBELLE
+            };
+
             TBC.SetValue(Grid.ColumnProperty, 0);
 
             liste.Add(TBC);
@@ -90,13 +158,16 @@ namespace MegaCastingWPF.Database
                 Binding = new Binding("MET_LIBELLE")
             });
 
+            liste.Add(new DataGridTextColumn()
+            {
+                Header = "Domaine",
+                Width = new DataGridLength(100),
+                FontSize = 12,
+                Binding = new Binding("T_R_DOMAINE_METIER_DOM.DOM_LIBELLE")
+            });
+
 
             return liste;
-        }
-
-        public override bool Update()
-        {
-            throw new NotImplementedException();
         }
 
     }

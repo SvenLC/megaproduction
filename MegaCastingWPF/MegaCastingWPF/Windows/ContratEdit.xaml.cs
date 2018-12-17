@@ -22,15 +22,15 @@ namespace MegaCastingWPF.Windows
     /// <summary>
     /// Logique d'interaction pour ContactEdit.xaml
     /// </summary>
-    public partial class ContactEdit : MetroWindow
+    public partial class ContratEdit : MetroWindow
     {
-        ContactEditModel Model;
+        ContratEditModel Model;
 
-        public ContactEdit(T_E_CONTACT_CTC _Prospect = null)
+        public ContratEdit(T_R_CONTRAT_CON _Prospect = null)
         {
             InitializeComponent();
 
-            Model = new ContactEditModel(_Prospect);
+            Model = new ContratEditModel(_Prospect);
 
             this.DataContext = Model;
         }

@@ -30,6 +30,7 @@ namespace MegaCastingWPF.Model.Views.Edit
                 storeObject = value;
             }
         }
+
     }
 
 }

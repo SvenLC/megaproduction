@@ -1,4 +1,5 @@
 ﻿using MegaCastingWPF.Model.Extends;
+using MegaCastingWPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,73 @@ namespace MegaCastingWPF.Database
     {
         public override bool Create()
         {
-            throw new NotImplementedException();
+            bool isSucces = this.Update();
+
+
+            if (isSucces)
+            {
+                Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Add(this);
+
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+        }
+
+        public override bool Update()
+        {
+            ContratEdit windowEdit = new ContratEdit(this);
+            windowEdit.ShowDialog();
+
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
         }
 
         public override bool Delete()
         {
-            throw new NotImplementedException();
+            T_R_CONTRAT_CON objectSelect = Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Where(x => x.CON_ID == this.CON_ID).First();
+
+            Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Remove(objectSelect);
+
+            try
+            {
+                MegeCastingDatabase.Current.SaveChanges();
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return true;
+            }
+            catch (Exception)
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
         }
 
         public override string GetHeader()
@@ -92,11 +154,6 @@ namespace MegaCastingWPF.Database
 
 
             return liste;
-        }
-
-        public override bool Update()
-        {
-            throw new NotImplementedException();
         }
 
     }

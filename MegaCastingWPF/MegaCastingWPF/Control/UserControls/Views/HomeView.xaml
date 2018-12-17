@@ -95,6 +95,11 @@
                                 <views:ProspectView />
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=BookOpen}" x:Name="Offres" Label="Offres">
+                            <controls:HamburgerMenuIconItem.Tag>
+                                <views:OffreView />
+                            </controls:HamburgerMenuIconItem.Tag>
+                        </controls:HamburgerMenuIconItem>
                         <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=SecurityAccount}" x:Name="Utilisateurs" Label="Utilisateurs">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <views:UtilisateurView />
@@ -136,12 +141,12 @@
                                 <views:SettingsView />
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Help}"
+                        <!--<controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Help}"
                                                      Label="About">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <views:AboutView />
                             </controls:HamburgerMenuIconItem.Tag>
-                        </controls:HamburgerMenuIconItem>
+                        </controls:HamburgerMenuIconItem>-->
                     </controls:HamburgerMenuItemCollection>
                 </controls:HamburgerMenu.OptionsItemsSource>
 

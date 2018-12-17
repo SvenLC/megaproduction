@@ -22,15 +22,15 @@ namespace MegaCastingWPF.Windows
     /// <summary>
     /// Logique d'interaction pour ContactEdit.xaml
     /// </summary>
-    public partial class ContactEdit : MetroWindow
+    public partial class LocalisationEdit : MetroWindow
     {
-        ContactEditModel Model;
+        LocalisationEditModel Model;
 
-        public ContactEdit(T_E_CONTACT_CTC _Prospect = null)
+        public LocalisationEdit(T_R_LOCALISATION_LOC _Prospect = null)
         {
             InitializeComponent();
 
-            Model = new ContactEditModel(_Prospect);
+            Model = new LocalisationEditModel(_Prospect);
 
             this.DataContext = Model;
         }
@@ -42,6 +42,7 @@ namespace MegaCastingWPF.Windows
                 this.DialogResult = true;
                 this.Close();
             }
+            
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)

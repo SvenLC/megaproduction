@@ -1,4 +1,5 @@
 ﻿using MegaCastingWPF.Model.Extends;
+using MegaCastingWPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,74 @@ namespace MegaCastingWPF.Database
     {
         public override bool Create()
         {
-            throw new NotImplementedException();
+            bool isSucces = this.Update();
+
+            if (isSucces)
+            {
+                Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Add(this);
+
+
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+        }
+
+        public override bool Update()
+        {
+            LocalisationEdit windowEdit = new LocalisationEdit(this);
+            windowEdit.ShowDialog();
+
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                try
+                {
+                    MegeCastingDatabase.Current.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Database.MegeCastingDatabase.ReinitializeDatabase();
+                    return false;
+                }
+            }
+            else
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
         }
 
         public override bool Delete()
         {
-            throw new NotImplementedException();
-        }
+            T_R_LOCALISATION_LOC objectSelect = Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Where(x => x.LOC_ID == this.LOC_ID).First();
 
+            Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Remove(objectSelect);
+
+            try
+            {
+                MegeCastingDatabase.Current.SaveChanges();
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return true;
+            }
+            catch (Exception)
+            {
+                Database.MegeCastingDatabase.ReinitializeDatabase();
+                return false;
+            }
+        }
         public override string GetHeader()
         {
             return this.LOC_ID.ToString();
@@ -92,11 +153,6 @@ namespace MegaCastingWPF.Database
 
 
             return liste;
-        }
-
-        public override bool Update()
-        {
-            throw new NotImplementedException();
         }
 
 

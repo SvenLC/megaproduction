@@ -56,6 +56,9 @@ namespace MegaCastingWPF.Control.Custom
             if (StoreObject != null)
             {
                 StoreObject.Delete();
+
+                StoreObject = null;
+
                 this.Reload(this.StoreSource);
             }
 

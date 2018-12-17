@@ -222,10 +222,10 @@ namespace MegaCastingWPF.Database
         {
             bool isSucces = this.Update();
 
-            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Add(this);
-
             if (isSucces)
             {
+                Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Add(this);
+
                 try
                 {
                     MegeCastingDatabase.Current.SaveChanges();
@@ -271,27 +271,27 @@ namespace MegaCastingWPF.Database
 
         public override bool Delete()
         {
-            if (this.T_H_CLIENT_CLI != null)
+            T_E_PROSPECT_PRO objectSelect = Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Where(x => x.PRO_ID == this.PRO_ID).First();
+
+            if (objectSelect.T_H_CLIENT_CLI != null)
             {
-                Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Remove(this.T_H_CLIENT_CLI);
+                Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Remove(objectSelect.T_H_CLIENT_CLI);
 
             }
-            if (this.T_H_PARTENAIRES_PAR != null)
+            if (objectSelect.T_H_PARTENAIRES_PAR != null)
             {
-                Database.MegeCastingDatabase.Current.T_H_PARTENAIRES_PAR.Remove(this.T_H_PARTENAIRES_PAR);
-
+                Database.MegeCastingDatabase.Current.T_H_PARTENAIRES_PAR.Remove(objectSelect.T_H_PARTENAIRES_PAR);
             }
 
-            if (this.T_E_CONTACT_CTC.Count > 0)
+            if (objectSelect.T_E_CONTACT_CTC.Count > 0)
             {
-                foreach (T_E_CONTACT_CTC item in this.T_E_CONTACT_CTC.ToList())
+                foreach (T_E_CONTACT_CTC item in objectSelect.T_E_CONTACT_CTC.ToList())
                 {
                     Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Remove(item);
                 }
             }
-            
 
-            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Remove(this);
+            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Remove(objectSelect);
 
             try
             {

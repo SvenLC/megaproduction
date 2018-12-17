@@ -11,7 +11,7 @@
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen" d:DesignHeight="767.779">
-    
+
     <controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -84,6 +84,7 @@
                                     Width="Auto"
                                     Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
                                     OnLabel="" OffLabel=""
+                                    IsCheckedChanged="isPartenaireSwitch_IsCheckedChanged"
                                     IsChecked="{Binding IsPartenaire}" HorizontalAlignment="Center"/>
                             <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
                             <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Visibility="{Binding IsPartenaire, Converter={StaticResource BoolToVisibilityConverter}}">
@@ -102,7 +103,7 @@
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_LOGIN" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:TextRule Min="7" Max="25"/>
+                                                    <Rule:TextRule Min="7" Max="25" x:Name="TextRule1"/>
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -112,7 +113,7 @@
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_MDP" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:TextRule Min="10" Max="25"/>
+                                                    <Rule:TextRule Min="10" Max="25"  x:Name="TextRule2"/>
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -135,12 +136,13 @@
                         <Grid.Children>
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16">Client</TextBlock>
                             <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
-                            <controls:ToggleSwitch Grid.Column="3" x:Name="isClientSwitch"
-                                    VerticalAlignment="Center"
+                            <controls:ToggleSwitch Grid.Column="2" x:Name="isClientSwitch"
+                                    VerticalAlignment="Bottom"
                                     Width="Auto"
                                     Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
                                     OnLabel="" OffLabel=""
-                                    IsChecked="{Binding IsClient}" HorizontalAlignment="Center"/>
+                                    IsCheckedChanged="isClientSwitch_IsCheckedChanged"
+                                    IsChecked="{Binding IsClient}" HorizontalAlignment="Center" Margin="0,0,0,1"/>
                             <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Visibility="{Binding IsClient, Converter={StaticResource BoolToVisibilityConverter}}" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -160,7 +162,7 @@
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_RNA" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:NumberRule />
+                                                    <Rule:NumberRule   x:Name="NumberRule1" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -170,7 +172,7 @@
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:NumberRule />
+                                                    <Rule:NumberRule   x:Name="NumberRule2"/>
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -206,7 +208,7 @@
                                                         <TextBox.Text>
                                                             <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
-                                                                    <Rule:TextRule Min="1" Max="25"/>
+                                                                    <Rule:TextRule Min="1" Max="25"   x:Name="TextRule3"/>
                                                                 </Binding.ValidationRules>
                                                             </Binding>
                                                         </TextBox.Text>
@@ -216,7 +218,7 @@
                                                         <TextBox.Text>
                                                             <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
-                                                                    <Rule:TextRule Min="1" Max="150"/>
+                                                                    <Rule:TextRule Min="1" Max="150"  x:Name="TextRule4"/>
                                                                 </Binding.ValidationRules>
                                                             </Binding>
                                                         </TextBox.Text>
@@ -226,7 +228,7 @@
                                                         <TextBox.Text>
                                                             <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
-                                                                    <Rule:TextRule Min="1" Max="50"/>
+                                                                    <Rule:TextRule Min="1" Max="50"   x:Name="TextRule5"/>
                                                                 </Binding.ValidationRules>
                                                             </Binding>
                                                         </TextBox.Text>
@@ -304,7 +306,7 @@
                             <Border Grid.Row="4" Margin="5,5,5,5" BorderBrush="{DynamicResource AccentColorBrush}" Background="White" BorderThickness="1">
                                 <Grid x:Name="GridContact"></Grid>
                             </Border>
-                            
+
                         </Grid.Children>
                     </Grid>
                     <Grid>

@@ -16,10 +16,10 @@ namespace MegaCastingWPF.Database
         {
             bool isSucces = this.Update();
 
-            Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Add(this);
-
             if (isSucces)
             {
+                Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Add(this);
+
                 try
                 {
                     MegeCastingDatabase.Current.SaveChanges();
@@ -65,7 +65,9 @@ namespace MegaCastingWPF.Database
 
         public override bool Delete()
         {
-            Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Remove(this);
+            T_S_UTILISATEUR_UTI objectSelect = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_ID == this.UTI_ID).First();
+
+            Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Remove(objectSelect);
 
             try
             {
