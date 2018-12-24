@@ -1,0 +1,183 @@
+﻿<controls:MetroWindow x:Class="MegaCastingWPF.Windows.ProspectEdit"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Converter="clr-namespace:MegaCastingWPF.Converter"
+                      mc:Ignorable="d"
+                      Title="MegaCasting"
+                      WindowTransitionsEnabled="False"
+                      WindowStartupLocation="CenterScreen">
+    <controls:MetroWindow.Resources>
+        <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </controls:MetroWindow.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.Children>
+                <StackPanel Orientation="Vertical">
+                    <Grid Margin="5,0,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                            <RowDefinition  Height="10"></RowDefinition>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <TextBlock Text="Prospects" FontSize="16" Grid.Row="0" />
+                            <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                            <Grid Margin="0,10,0,10" Grid.Row="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Children>
+                                    <TextBlock Text="Nom" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.PRO_NAME}"/>
+                                </Grid.Children>
+                            </Grid>
+                        </Grid.Children>
+                    </Grid>
+                    <Grid Margin="5,0,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                            <RowDefinition  Height="15"></RowDefinition>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16">Partenaire</TextBlock>
+                            <controls:ToggleSwitch Grid.Column="4" x:Name="isPartenaireSwitch"
+                                    VerticalAlignment="Center"
+                                    Width="Auto"
+                                    Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                    OnLabel="" OffLabel=""
+                                    IsChecked="{Binding IsPartenaire}" HorizontalAlignment="Center"/>
+                            <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                            <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Visibility="{Binding IsPartenaire, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Children>
+                                    <TextBlock Text="Login" FontSize="12" Grid.Row="0" VerticalAlignment="Center" />
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Path=Prospect.T_H_PARTENAIRES_PAR.PAR_LOGIN}" />
+                                    <TextBlock Text="Mot de passe" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Path=Prospect.T_H_PARTENAIRES_PAR.PAR_MDP}" />
+                                </Grid.Children>
+                            </Grid>
+                        </Grid.Children>
+                    </Grid>
+                    <Grid Margin="5,0,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                            <RowDefinition  Height="15"></RowDefinition>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16">Client</TextBlock>
+                            <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                            <controls:ToggleSwitch Grid.Column="3" x:Name="isClientSwitch"
+                                    VerticalAlignment="Center"
+                                    Width="Auto"
+                                    Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                    OnLabel="" OffLabel=""
+                                    IsChecked="{Binding IsClient}" HorizontalAlignment="Center"/>
+                            <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Visibility="{Binding IsClient, Converter={StaticResource BoolToVisibilityConverter}}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Children>
+                                    <TextBlock Text="RNA" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.CLI_RNA}" />
+                                    <TextBlock Text="Siret" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.CLI_SIRET}"/>
+                                    <TextBlock Text="Statut juridique" FontSize="12" Grid.Row="2" VerticalAlignment="Center" />
+                                    <ComboBox  Grid.Row="2" Grid.Column="2" x:Name="CBX_Statut"></ComboBox>
+                                    <Grid Margin="5,0,5,5" Grid.Row="4" Grid.ColumnSpan="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition  Height="auto"></RowDefinition>
+                                            <RowDefinition  Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Children>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="14">Adresse</TextBlock>
+                                            <Grid Margin="0,10,0,10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition  Height="auto"></RowDefinition>
+                                                    <RowDefinition  Height="auto"></RowDefinition>
+                                                    <RowDefinition  Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.Children>
+                                                    <TextBlock Text="Numéro de voie" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE}"/>
+                                                    <TextBlock Text="Libellé rue" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE}"/>
+                                                    <TextBlock Text="Ville" FontSize="12" Grid.Row="2" VerticalAlignment="Center"/>
+                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2" Text="{Binding Prospect.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE}"/>
+                                                </Grid.Children>
+                                            </Grid>
+                                        </Grid.Children>
+                                    </Grid>
+                                </Grid.Children>
+                            </Grid>
+                        </Grid.Children>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Children>
+                            <Button Grid.Column="1" Click="ButtonValidate_Click">Valider</Button>
+                            <Button Grid.Column="3" Click="ButtonCancel_Click">Annuler</Button>
+                        </Grid.Children>
+                    </Grid>
+                </StackPanel>
+            </Grid.Children>
+        </Grid>
+    </ScrollViewer>
+
+</controls:MetroWindow>

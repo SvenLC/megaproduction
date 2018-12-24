@@ -4,11 +4,23 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:views="clr-namespace:MegaCastingWPF.Control"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:views="clr-namespace:MegaCastingWPF.Control.UserControls.Views"
                       mc:Ignorable="d"
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen">
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button x:Name="LinkWebSite" Click="LinkWebSite_Click">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconModern Width="16" Height="16" Kind="Link" VerticalAlignment="Center" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="WebSite" />
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -112,17 +124,12 @@
                 </controls:HamburgerMenu.OptionsItemsSource>
 
                 <controls:HamburgerMenu.Content>
-                    <Grid Grid.Column="0" Grid.Row="0" x:Name="GridContenu">
-
-                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="0" x:Name="GridContenu"></Grid>
                 </controls:HamburgerMenu.Content>
 
             </controls:HamburgerMenu>
         </Grid.Children>
-
-
     </Grid>
-
 </controls:MetroWindow>
 
 

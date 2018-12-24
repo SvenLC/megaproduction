@@ -1,0 +1,17 @@
+﻿<local:BaseView x:Class="MegaCastingWPF.Control.UserControls.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MegaCastingWPF.Control.UserControls.Views"
+             mc:Ignorable="d">
+    <Grid>
+
+        <controls:Flyout Header="Flyout" Position="Right" Width="200">
+            <!-- Your custom content here -->
+        </controls:Flyout>
+
+
+    </Grid>
+</local:BaseView>
