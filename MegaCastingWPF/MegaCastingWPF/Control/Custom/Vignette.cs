@@ -19,14 +19,15 @@ namespace MegaCastingWPF.Control.Custom
             throw new NotImplementedException();
         }
 
-        public Vignette(List<T> _StoreSource)
+        public Vignette()
         {
-            StoreSource = _StoreSource;
-
-            this.Reload();
+            if (StoreSource == null)
+                this.Reload(this.StoreSource);
+            else
+                this.Reload(this.StoreSource);
         }
 
-        public override void Reload(string contain = "")
+        public override void Reload(List<T> _StoreSource, string contain = "")
         {
             this.Children.Clear();
 

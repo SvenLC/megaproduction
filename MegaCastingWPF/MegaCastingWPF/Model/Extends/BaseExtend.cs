@@ -14,9 +14,11 @@ namespace MegaCastingWPF.Model.Extends
 
         public abstract string GetHeader();
 
+        public abstract List<BaseExtend> getSource();
+
         public abstract List<TextBlock> PreviewGroupBox();
 
-        public abstract List<DataGridTextColumn> previewList();
+        public abstract List<DataGridColumn> previewList();
 
         public abstract bool Create();
 

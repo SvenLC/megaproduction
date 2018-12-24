@@ -5,7 +5,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class AboutView : BaseView
+    public partial class AboutView
     {
         public AboutView()
         {

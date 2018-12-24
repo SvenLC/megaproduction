@@ -1,0 +1,139 @@
+﻿<controls:MetroWindow x:Class="MegaCastingWPF.Windows.OffreEdit"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Converter="clr-namespace:MegaCastingWPF.Converter"
+                      xmlns:Rule="clr-namespace:MegaCastingWPF.Rule"
+                      mc:Ignorable="d"
+                      Title="MegaCasting"
+                      WindowTransitionsEnabled="False"
+                      WindowStartupLocation="CenterScreen">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.Children>
+                <StackPanel Orientation="Vertical">
+                    <Grid Margin="5,0,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                            <RowDefinition  Height="10"></RowDefinition>
+                            <RowDefinition  Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Children>
+                            <TextBlock Text="Offre" FontSize="16" Grid.Row="0" />
+                            <Separator Grid.Row="1" Grid.ColumnSpan="3"></Separator>
+                            <Grid Margin="0,10,0,10" Grid.Row="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Children>
+                                    <TextBlock Text="Intitulé" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.CAST_INTITULE" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBlock Text="Référence" FontSize="12" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.CAST_REFERENCE" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBlock Text="Date de publication" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <DatePicker x:Name="Date1" Grid.Row="4" Grid.Column="2" SelectedDate="{Binding StoreObject.CAST_DATE_DEBUT_PUBLICATION}"/>
+                                    <TextBlock Text="Heure" FontSize="12" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <controls:TimePicker x:Name="Duree" Grid.Row="6" Grid.Column="2" SelectedTime="{Binding StoreObject.CAST_DUREE_DIFFUSION}"/>
+                                    <TextBlock Text="Date de début" FontSize="12" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <DatePicker x:Name="Date2" Grid.Row="8" Grid.Column="2" SelectedDate="{Binding StoreObject.CAST_DATE_DEBUT_CONTRAT}"/>
+                                    <TextBlock Text="Nombre de poste" FontSize="12" Grid.Row="10" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="10" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:NumberRule   x:Name="NumberRule2"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBlock Text="Description du Poste" FontSize="12" Grid.Row="12" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="12" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.CAST_DESCRIPTION_POSTE" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBlock Text="Description du Profil" FontSize="12" Grid.Row="14" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="14" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.CAST_DESCRIPTION_PROFIL" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBlock Text="Domaine" FontSize="12" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="16" Grid.Column="2" x:Name="CBX_Prospect" DisplayMemberPath="T_E_PROSPECT_PRO.PRO_NAME" SelectedItem="{Binding StoreObject.T_H_CLIENT_CLI}"></ComboBox>
+                                    <TextBlock Text="Domaine" FontSize="12" Grid.Row="18" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="18" Grid.Column="2" x:Name="CBX_Metier" DisplayMemberPath="MET_LIBELLE" SelectedItem="{Binding StoreObject.T_R_METIER_MET}"></ComboBox>
+                                </Grid.Children>
+                            </Grid>
+                        </Grid.Children>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Children>
+                            <Button Grid.Column="1" Click="ButtonValidate_Click">Valider</Button>
+                            <Button Grid.Column="3" Click="ButtonCancel_Click">Annuler</Button>
+                        </Grid.Children>
+                    </Grid>
+                </StackPanel>
+            </Grid.Children>
+        </Grid>
+    </ScrollViewer>
+</controls:MetroWindow>

@@ -1,8 +1,12 @@
 ﻿using MahApps.Metro.Controls;
+using MegaCastingWPF.Control.UserControls.Views;
+using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,20 +26,12 @@ namespace MegaCastingWPF
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
-        {
-
-            GridContenu.Children.Clear();
-            HamburgerMenuGlyphItem item = e.ClickedItem as HamburgerMenuGlyphItem;
-            GridContenu.Children.Add(item.Tag as UIElement);
-
-            //this.HamburgerMenuControl.Content = e.ClickedItem;
-            //this.HamburgerMenuControl.IsPaneOpen = false;
+            GridContenu.Children.Add(new ConnectionView(this)); 
         }
 
 
@@ -51,10 +47,51 @@ namespace MegaCastingWPF
 
                 p.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw (ex);
             }
+        }
+
+        public bool connected(String UserName, String PassWord)
+        {
+
+            if (Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_LOGIN == UserName).Any())
+            {
+                T_S_UTILISATEUR_UTI utilisateur = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_LOGIN == UserName).First();
+
+                if (comparePassWord(PassWord, utilisateur.UTI_MDP))
+                {
+                    GridContenu.Children.Clear();
+                    GridContenu.Children.Add(new HomeView(utilisateur));
+
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        public Boolean comparePassWord(String PasswordFromBox, string PasswordUser)
+        {
+            /* Fetch the stored value */
+            string savedPasswordHash = PasswordUser;
+            /* Extract the bytes */
+            byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+            /* Get the salt */
+            byte[] salt = new byte[16];
+            Array.Copy(hashBytes, 0, salt, 0, 16);
+            /* Compute the hash on the password the user entered */
+            var pbkdf2 = new Rfc2898DeriveBytes(PasswordFromBox, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+            /* Compare the results */
+            for (int i = 0; i < 20; i++)
+                if (hashBytes[i + 16] != hash[i])
+                    return false;
+
+            return true;
+
         }
     }
 }

@@ -14,11 +14,9 @@ namespace MegaCastingWPF.Control.Custom
 {
     public class Liste<T> : Content<T> where T : BaseExtend, new()
     {
-        public Liste(List<T> _StoreSource)
+        public Liste()
         {
-            StoreSource = _StoreSource;
-
-            this.Reload();
+            this.Reload(this.StoreSource);
         }
 
         public override T GetSelectedElement()
@@ -26,7 +24,7 @@ namespace MegaCastingWPF.Control.Custom
             throw new NotImplementedException();
         }
 
-        public override void Reload(string contain = "")
+        public override void Reload(List<T> _StoreSource, string contain = "")
         {
             this.Children.Clear();
 
@@ -39,12 +37,15 @@ namespace MegaCastingWPF.Control.Custom
 
             dataGrid.SelectionChanged += new SelectionChangedEventHandler(selectionChanged);
 
-            foreach (DataGridTextColumn Column in StoreSource.First().previewList())
+            if (StoreSource.Any())
             {
-                dataGrid.Columns.Add(Column);
+                foreach (DataGridColumn Column in StoreSource.First().previewList())
+                {
+                    dataGrid.Columns.Add(Column);
+                }
             }
 
-            dataGrid.ItemsSource = StoreSource.Where(x => x.IsRelated(contain));
+            dataGrid.ItemsSource = _StoreSource.Where(x => x.IsRelated(contain));
 
             dataGrid.ContextMenu = this.getContextMenu();
 

@@ -1,5 +1,6 @@
 ﻿using MegaCastingWPF.Control.Custom;
 using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Model.Views
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel<T> : INotifyPropertyChanged where T : BaseExtend, new()
     {
-        protected Content<T_E_PROSPECT_PRO> content;
+        protected Content<T> content;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Content<T_E_PROSPECT_PRO> Content
+        public Content<T> Content
         {
             get
             {

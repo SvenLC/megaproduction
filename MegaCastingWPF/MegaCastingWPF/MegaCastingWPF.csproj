@@ -111,25 +111,129 @@
     <Compile Include="Control\Custom\Content.cs" />
     <Compile Include="Control\Custom\CustomDataGrid.cs" />
     <Compile Include="Control\Custom\Liste.cs" />
+    <Compile Include="Control\Custom\RelatedListe.cs" />
     <Compile Include="Control\Custom\Vignette.cs" />
     <Compile Include="Control\UserControls\Views\BaseView.cs" />
+    <Compile Include="Control\UserControls\Views\ConnectionView.xaml.cs">
+      <DependentUpon>ConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\ContratView.xaml.cs">
+      <DependentUpon>ContratView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\DomaineMetierView.xaml.cs">
+      <DependentUpon>DomaineMetierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\LocalisationView.xaml.cs">
+      <DependentUpon>LocalisationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\MetierView.xaml.cs">
+      <DependentUpon>MetierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\OffreView.xaml.cs">
+      <DependentUpon>OffreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\StatutView.xaml.cs">
+      <DependentUpon>StatutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\UtilisateurView.xaml.cs">
+      <DependentUpon>UtilisateurView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\lenghtToVisibilityConverter.cs" />
     <Compile Include="Interface\ICrud.cs" />
     <Compile Include="Model\Extends\BaseExtend.cs" />
+    <Compile Include="Model\Extends\T_E_CONTACT_CTC.cs" />
+    <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST.cs" />
     <Compile Include="Model\Extends\T_E_PROSPECT_PRO.cs" />
+    <Compile Include="Model\Extends\T_R_CONTRAT_CON.cs" />
+    <Compile Include="Model\Extends\T_R_DOMAINE_METIER_DOM.cs" />
+    <Compile Include="Model\Extends\T_R_LOCALISATION_LOC.cs" />
+    <Compile Include="Model\Extends\T_R_METIER_MET.cs" />
+    <Compile Include="Model\Extends\T_R_STATUT_JURIDIQUE_JUR.cs" />
+    <Compile Include="Model\Extends\T_S_UTILISATEUR_UTI.cs" />
     <Compile Include="Model\Views\BaseViewModel.cs" />
+    <Compile Include="Model\Views\ConnectionViewModel.cs" />
+    <Compile Include="Model\Views\ContratViewModel.cs" />
+    <Compile Include="Model\Views\DomaineMetierViewModel.cs" />
+    <Compile Include="Model\Views\Edit\BaseEditModel.cs" />
+    <Compile Include="Model\Views\Edit\ContactEditModel.cs" />
+    <Compile Include="Model\Views\Edit\ContratEditModel.cs" />
+    <Compile Include="Model\Views\Edit\DomaineMetierEditModel.cs" />
+    <Compile Include="Model\Views\Edit\LocalisationEditModel.cs" />
+    <Compile Include="Model\Views\Edit\MetierEditModel.cs" />
+    <Compile Include="Model\Views\Edit\OffreEditModel.cs" />
     <Compile Include="Model\Views\Edit\ProspectEditModel.cs" />
+    <Compile Include="Model\Views\Edit\StatutEditModel.cs" />
+    <Compile Include="Model\Views\Edit\UtilisateurEditModel.cs" />
+    <Compile Include="Model\Views\HomeViewModel.cs" />
+    <Compile Include="Model\Views\LocalisationViewModel.cs" />
+    <Compile Include="Model\Views\MetierViewModel.cs" />
+    <Compile Include="Model\Views\OffreViewModel.cs" />
+    <Compile Include="Model\Views\StatutViewModel.cs" />
+    <Compile Include="Model\Views\UtilisateurViewModel.cs" />
+    <Compile Include="Model\Windows\MainWindowsModel.cs" />
+    <Compile Include="Rule\NumberRule.cs" />
+    <Compile Include="Rule\TextRule.cs" />
+    <Compile Include="Rule\Validator.cs" />
+    <Compile Include="Windows\ContactEdit.xaml.cs">
+      <DependentUpon>ContactEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ContratEdit.xaml.cs">
+      <DependentUpon>ContratEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DomaineMetierEdit.xaml.cs">
+      <DependentUpon>DomaineMetierEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LocalisationEdit.xaml.cs">
+      <DependentUpon>LocalisationEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MetierEdit.xaml.cs">
+      <DependentUpon>MetierEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\OffreEdit.xaml.cs">
+      <DependentUpon>OffreEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ProspectEdit.xaml.cs">
       <DependentUpon>ProspectEdit.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\StatutEdit.xaml.cs">
+      <DependentUpon>StatutEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UtilisateurEdit.xaml.cs">
+      <DependentUpon>UtilisateurEdit.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\UserControls\Views\AboutView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\UserControls\Views\ConnectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControls\Views\ContratView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControls\Views\DomaineMetierView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\UserControls\Views\HomeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\LocalisationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControls\Views\MetierView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControls\Views\OffreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\UserControls\Views\ProspectView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +242,18 @@
     <Page Include="Control\UserControls\Views\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\StatutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControls\Views\UtilisateurView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataDictionary\CustomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -231,9 +347,41 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\ContactEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ContratEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DomaineMetierEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LocalisationEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MetierEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OffreEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ProspectEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Windows\StatutEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UtilisateurEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
