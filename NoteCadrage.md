@@ -52,23 +52,23 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 ## Contraintes
 
 - Client lourd
-    - Doit être accessible de tout les postes de l'entreprise.
-    - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
-    - Interface simple, ergonomique et intuitive
-    - Gestion des ressources (contenu éditorial)
+  - Doit être accessible de tout les postes de l'entreprise.
+  - Permettre de retrouver facilement une annonce, de l'éditer ou d'en créer de nouvelle, de créer facilement des partenaires de diffusions et des clients.
+  - Interface simple, ergonomique et intuitive
+  - Gestion des ressources (contenu éditorial)
 - Client léger (site internet)
-    - Site dynamique exploitant la base de données centralisée.
-    - Multi-support
-    - Moteur de recherche dynamique
-    - Visualiser les ressources (contenu éditorial)
+  - Site dynamique exploitant la base de données centralisée.
+  - Multi-support
+  - Moteur de recherche dynamique
+  - Visualiser les ressources (contenu éditorial)
 - API rest full
-    - gérer l'autorisation des utilisateurs pour contacter l'API.
-    - gérer l'accès publique/privée à certaines données.
+  - gérer l'autorisation des utilisateurs pour contacter l'API.
+  - gérer l'accès publique/privée à certaines données.
 - Base de donnée
-    - Gérer les différents utilisateurs pour cloisonner les accès et gérer précisément les accès de chaques utilisateurs.
-    - Installation sur un serveur dédié.
-    - Gérer le système d'information de megacasting en respectant les standards.
-    - Stocker les ressources (contenu éditorial)
+  - Gérer les différents utilisateurs pour cloisonner les accès et gérer précisément les accès de chaques utilisateurs.
+  - Installation sur un serveur dédié.
+  - Gérer le système d'information de megacasting en respectant les standards.
+  - Stocker les ressources (contenu éditorial)
 
 ## Dates importantes
 
