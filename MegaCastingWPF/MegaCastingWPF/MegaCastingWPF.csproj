@@ -111,17 +111,93 @@
     </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\lenghtToVisibilityConverter.cs" />
+    <Compile Include="Database\APIObject.cs" />
+    <Compile Include="Database\Database.Context.cs">
+      <DependentUpon>Database.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Database\Database.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Database\Database.Designer.cs">
+      <DependentUpon>Database.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Database\MegaCastingAPIEntities.cs" />
+    <Compile Include="Database\T_E_ADRESSE_ADR.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_E_CONTACT_CTC.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_E_CONTENU_EDITORIAL_EDI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_E_OFFRE_CASTING_CAST.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_E_PROSPECT_PRO.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_H_CLIENT_CLI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_H_PARTENAIRES_PAR.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_CONTENU_EDITORIAL_TYPE_CET.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_CONTRAT_CON.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_DOMAINE_METIER_DOM.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_LOCALISATION_LOC.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_METIER_MET.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_R_STATUT_JURIDIQUE_JUR.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_S_DATABASE_ADMIN_DBA.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_S_DATABASE_INFO_DBI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_S_UTILISATEUR_UTI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\T_X_CODE_POSTAL_CPT.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interface\ICrud.cs" />
     <Compile Include="Model\Extends\BaseExtend.cs" />
+    <Compile Include="Model\Extends\T_E_ADRESSE_ADR.cs" />
     <Compile Include="Model\Extends\T_E_CONTACT_CTC.cs" />
+    <Compile Include="Model\Extends\T_E_CONTENU_EDITORIAL_EDI.cs" />
     <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST.cs" />
     <Compile Include="Model\Extends\T_E_PROSPECT_PRO.cs" />
+    <Compile Include="Model\Extends\T_H_CLIENT_CLI.cs" />
+    <Compile Include="Model\Extends\T_H_PARTENAIRES_PAR.cs" />
+    <Compile Include="Model\Extends\T_R_CONTENU_EDITORIAL_TYPE_CET.cs" />
     <Compile Include="Model\Extends\T_R_CONTRAT_CON.cs" />
     <Compile Include="Model\Extends\T_R_DOMAINE_METIER_DOM.cs" />
     <Compile Include="Model\Extends\T_R_LOCALISATION_LOC.cs" />
     <Compile Include="Model\Extends\T_R_METIER_MET.cs" />
     <Compile Include="Model\Extends\T_R_STATUT_JURIDIQUE_JUR.cs" />
+    <Compile Include="Model\Extends\T_S_DATABASE_ADMIN_DBA.cs" />
+    <Compile Include="Model\Extends\T_S_DATABASE_INFO_DBI.cs" />
     <Compile Include="Model\Extends\T_S_UTILISATEUR_UTI.cs" />
+    <Compile Include="Model\Extends\T_X_CODE_POSTAL_CPT.cs" />
     <Compile Include="Model\Views\BaseViewModel.cs" />
     <Compile Include="Model\Views\ConnectionViewModel.cs" />
     <Compile Include="Model\Views\ContratViewModel.cs" />
@@ -247,73 +323,7 @@
     <Compile Include="Control\UserControls\Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\Database.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Database.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Database.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Database\MegeCastingDatabase.cs" />
-    <Compile Include="Database\T_E_ADRESSE_ADR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_CONTACT_CTC.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_CONTENU_EDITORIAL_EDI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_OFFRE_CASTING_CAST.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_PROSPECT_PRO.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_H_CLIENT_CLI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_H_PARTENAIRES_PAR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_CONTENU_EDITORIAL_TYPE_CET.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_CONTRAT_CON.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_DOMAINE_METIER_DOM.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_LOCALISATION_LOC.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_METIER_MET.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_STATUT_JURIDIQUE_JUR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_DATABASE_ADMIN_DBA.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_DATABASE_INFO_DBI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_UTILISATEUR_UTI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_X_CODE_POSTAL_CPT.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -375,10 +385,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Database\Database.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Database\Database.edmx.diagram">
       <DependentUpon>Database.edmx</DependentUpon>
     </None>
@@ -392,20 +398,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Database\Database.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database\Database.Context.tt">
+      <DependentUpon>Database.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.Context.cs</LastGenOutput>
-      <DependentUpon>Database.edmx</DependentUpon>
     </Content>
     <Content Include="Database\Database.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Database.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -273,9 +273,17 @@ namespace MegaCastingWPF.Database
         {
             T_E_PROSPECT_PRO objectSelect = Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Where(x => x.PRO_ID == this.PRO_ID).First();
 
+
             if (objectSelect.T_H_CLIENT_CLI != null)
             {
-                Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Remove(objectSelect.T_H_CLIENT_CLI);
+
+                if (!objectSelect.T_H_CLIENT_CLI.T_E_OFFRE_CASTING_CAST.Any())
+                {
+                    Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Remove(objectSelect.T_H_CLIENT_CLI);
+                }
+                else
+                {
+                }
 
             }
             if (objectSelect.T_H_PARTENAIRES_PAR != null)

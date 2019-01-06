@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -68,6 +69,14 @@ namespace MegaCastingWPF.Database
         {
             T_R_DOMAINE_METIER_DOM objectSelect = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Where(x => x.DOM_ID == this.DOM_ID).First();
 
+            if (objectSelect.T_R_METIER_MET.Any())
+            {
+                foreach (T_R_METIER_MET item in objectSelect.T_R_METIER_MET.ToList())
+                {
+                    Database.MegeCastingDatabase.Current.T_R_METIER_MET.Remove(item);
+                }
+            }
+
             Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Remove(objectSelect);
 
             try
@@ -78,6 +87,7 @@ namespace MegaCastingWPF.Database
             }
             catch (Exception)
             {
+                MessageBox.Show("Il y a un métier attaché à une offre.");
                 Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }

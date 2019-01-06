@@ -9,9 +9,9 @@ namespace MegaCastingWPF.Interface
     public interface ICrud
     {
 
-        void Create();
-        void Update();
-        void Delete();
+        bool Create();
+        bool Update();
+        bool Delete();
 
     }
 }

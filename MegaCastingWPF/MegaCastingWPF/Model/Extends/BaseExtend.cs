@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MegaCastingWPF.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows.Controls;
 
 namespace MegaCastingWPF.Model.Extends
 {
-    public abstract class BaseExtend
+    public abstract class BaseExtend : ICrud
     {
 
         public abstract bool IsRelated(string contain = "");

@@ -1,4 +1,5 @@
-﻿using MegaCastingWPF.Model.Extends;
+﻿using MegaCastingWPF.Interface;
+using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,21 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Database
 {
-    public partial class T_R_CONTENU_EDITORIAL_TYPE_CET : BaseExtend
+    public partial class T_R_CONTENU_EDITORIAL_TYPE_CET : ICrud
     {
+        public bool Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -32,16 +32,18 @@ namespace MegaCastingWPF.Control.Custom
 
         public abstract T GetSelectedElement();
 
-        public void Create()
+        public bool Create()
         {
             StoreObject = new T();
 
             StoreObject.Create();
 
             this.Reload(this.StoreSource);
+
+            return true;
         }
 
-        public void Update()
+        public bool Update()
         {
             if (StoreObject != null)
             {
@@ -49,9 +51,11 @@ namespace MegaCastingWPF.Control.Custom
 
                 this.Reload(this.StoreSource);
             }
+
+            return true;
         }
 
-        public void Delete()
+        public bool Delete()
         {
             if (StoreObject != null)
             {
@@ -61,6 +65,8 @@ namespace MegaCastingWPF.Control.Custom
 
                 this.Reload(this.StoreSource);
             }
+
+            return true;
 
         }
 
@@ -114,5 +120,6 @@ namespace MegaCastingWPF.Control.Custom
         private void ContextMenu_Update(object sender, RoutedEventArgs e) => Update();
 
         private void ContextMenu_Delete(object sender, RoutedEventArgs e) => Delete();
+
     }
 }
