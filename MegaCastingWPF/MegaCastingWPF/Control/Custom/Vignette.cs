@@ -12,7 +12,7 @@ using System.Windows.Controls.Primitives;
 
 namespace MegaCastingWPF.Control.Custom
 {
-    public class Vignette<T> : Content<T> where T : BaseExtend, new()
+    public class Vignette<T> : Content<T> where T : BaseExtend<T>, new()
     {
         public override T GetSelectedElement()
         {

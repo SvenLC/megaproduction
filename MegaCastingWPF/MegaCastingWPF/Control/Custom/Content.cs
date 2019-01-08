@@ -11,7 +11,7 @@ using System.Windows.Controls;
 
 namespace MegaCastingWPF.Control.Custom
 {
-    public abstract class Content<T> : Grid, ICrud where T : BaseExtend, new()
+    public abstract class Content<T> : Grid, ICrud<T> where T : BaseExtend<T>, new()
     {
         public abstract void Reload(List<T> _StoreSource, string contain = "");
 
@@ -121,5 +121,14 @@ namespace MegaCastingWPF.Control.Custom
 
         private void ContextMenu_Delete(object sender, RoutedEventArgs e) => Delete();
 
+        public List<T> list()
+        {
+            throw new NotImplementedException();
+        }
+
+        public T get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Database
 {
-    public class APIObject <T> where T : ICrud, new()
+    public class APIObject <T> where T : ICrud<T>, new()
     {
         public string Path = "";
 
@@ -19,7 +19,7 @@ namespace MegaCastingWPF.Database
 
         public T get(int id)
         {
-            throw new NotImplementedException();
+            return new T().get(id);
         }
 
         public bool add(T objet)
@@ -39,7 +39,7 @@ namespace MegaCastingWPF.Database
 
         public List<T> list()
         {
-            throw new NotImplementedException();
+            return new T().list();
         }
 
     }

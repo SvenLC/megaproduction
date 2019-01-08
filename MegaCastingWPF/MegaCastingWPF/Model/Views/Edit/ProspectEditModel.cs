@@ -1,5 +1,5 @@
 ﻿using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,27 +24,31 @@ namespace MegaCastingWPF.Model.Views.Edit
         {
             get
             {
-                return StoreObject.T_H_CLIENT_CLI != null;
+                //return StoreObject.T_H_CLIENT_CLI != null;
+
+                throw new NotImplementedException();
             }
             set
             {
-                if (!IsClient)
-                {
-                    StoreObject.T_H_CLIENT_CLI = new T_H_CLIENT_CLI();
-                    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = new T_E_ADRESSE_ADR();
-                    StoreObject.T_H_CLIENT_CLI.PRO_ID = StoreObject.PRO_ID;
+                //if (!IsClient)
+                //{
+                //    StoreObject.T_H_CLIENT_CLI = new T_H_CLIENT_CLI();
+                //    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = new T_E_ADRESSE_ADR();
+                //    StoreObject.T_H_CLIENT_CLI.PRO_ID = StoreObject.PRO_ID;
 
-                    OnPropertyChanged(nameof(StoreObject));
-                    OnPropertyChanged(nameof(IsClient));
-                }
-                else
-                {
-                    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = null;
-                    StoreObject.T_H_CLIENT_CLI = null;
+                //    OnPropertyChanged(nameof(StoreObject));
+                //    OnPropertyChanged(nameof(IsClient));
+                //}
+                //else
+                //{
+                //    StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR = null;
+                //    StoreObject.T_H_CLIENT_CLI = null;
 
-                    OnPropertyChanged(nameof(StoreObject));
-                    OnPropertyChanged(nameof(IsClient));
-                }
+                //    OnPropertyChanged(nameof(StoreObject));
+                //    OnPropertyChanged(nameof(IsClient));
+                //}
+
+                throw new NotImplementedException();
             }
         }
 
@@ -52,25 +56,29 @@ namespace MegaCastingWPF.Model.Views.Edit
         {
             get
             {
-                return StoreObject.T_H_PARTENAIRES_PAR != null;
+                //return StoreObject.T_H_PARTENAIRES_PAR != null;
+                throw new NotImplementedException();
+
             }
             set
             {
-                if (!IsPartenaire)
-                {
-                    StoreObject.T_H_PARTENAIRES_PAR = new T_H_PARTENAIRES_PAR();
-                    StoreObject.T_H_PARTENAIRES_PAR.PRO_ID = StoreObject.PRO_ID;
+                //if (!IsPartenaire)
+                //{
+                //    StoreObject.T_H_PARTENAIRES_PAR = new T_H_PARTENAIRES_PAR();
+                //    StoreObject.T_H_PARTENAIRES_PAR.PRO_ID = StoreObject.PRO_ID;
 
-                    OnPropertyChanged(nameof(StoreObject));
-                    OnPropertyChanged(nameof(IsPartenaire));
-                }
-                else
-                {
-                    StoreObject.T_H_PARTENAIRES_PAR = null;
+                //    OnPropertyChanged(nameof(StoreObject));
+                //    OnPropertyChanged(nameof(IsPartenaire));
+                //}
+                //else
+                //{
+                //    StoreObject.T_H_PARTENAIRES_PAR = null;
 
-                    OnPropertyChanged(nameof(StoreObject));
-                    OnPropertyChanged(nameof(IsPartenaire));
-                }
+                //    OnPropertyChanged(nameof(StoreObject));
+                //    OnPropertyChanged(nameof(IsPartenaire));
+                //}
+                throw new NotImplementedException();
+
             }
         }
 

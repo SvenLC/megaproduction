@@ -1,5 +1,5 @@
 ﻿using MahApps.Metro.Controls;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views.Edit;
 using MegaCastingWPF.Rule;
 using System;
@@ -39,48 +39,19 @@ namespace MegaCastingWPF.Windows
         {
             if (Validator.IsValid(this))
             {
-                if (PassWord.Password != "")
+                if (PassWord.Password == "")
                 {
-                    byte[] salt;
-                    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-
-                    var pbkdf2 = new Rfc2898DeriveBytes(PassWord.Password, salt, 10000);
-                    byte[] hash = pbkdf2.GetBytes(20);
-
-                    byte[] hashBytes = new byte[36];
-                    Array.Copy(salt, 0, hashBytes, 0, 16);
-                    Array.Copy(hash, 0, hashBytes, 16, 20);
-
-                    string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                    Model.StoreObject.UTI_MDP = savedPasswordHash;
+                    PassWord.BorderBrush = Brushes.Red;
 
                 }
                 else
                 {
-                    if (Model.StoreObject.UTI_MDP == "" || Model.StoreObject.UTI_MDP == null)
-                    {
-                        byte[] salt;
-                        new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                    Model.StoreObject.UTI_MDP = PassWord.Password;
 
-                        var pbkdf2 = new Rfc2898DeriveBytes("", salt, 10000);
-                        byte[] hash = pbkdf2.GetBytes(20);
-
-                        byte[] hashBytes = new byte[36];
-                        Array.Copy(salt, 0, hashBytes, 0, 16);
-                        Array.Copy(hash, 0, hashBytes, 16, 20);
-
-                        string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                        Model.StoreObject.UTI_MDP = savedPasswordHash;
-                    }
+                    this.DialogResult = true;
+                    this.Close();
                 }
-
-                this.DialogResult = true;
-                this.Close();
-
             }
-            
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)

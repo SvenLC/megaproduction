@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Model.Views
 {
-    public class BaseViewModel<T> : INotifyPropertyChanged where T : BaseExtend, new()
+    public class BaseViewModel<T> : INotifyPropertyChanged where T : BaseExtend<T>, new()
     {
         protected Content<T> content;
 

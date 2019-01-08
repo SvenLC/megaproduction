@@ -1,43 +1,69 @@
 ﻿using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace MegaCastingWPF.Database
+namespace MegaCastingWPF.Model.Extends
 {
-    public partial class T_R_DOMAINE_METIER_DOM : BaseExtend
+    public class T_R_DOMAINE_METIER_DOM : BaseExtend<T_R_DOMAINE_METIER_DOM>
     {
+
+        [JsonProperty(PropertyName = "DOM_ID")]
+        public int DOM_ID { get; set; }
+        [JsonProperty(PropertyName = "DOM_LIBELLE")]
+        public string DOM_LIBELLE { get; set; }
+
         public override bool Create()
         {
-            bool isSucces = this.Update();
 
-            if (isSucces)
+            DomaineMetierEdit windowEdit = new DomaineMetierEdit(this);
+            windowEdit.ShowDialog();
+
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
             {
-                Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Add(this);
-
-
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
+
         }
 
         public override bool Update()
@@ -49,48 +75,54 @@ namespace MegaCastingWPF.Database
             {
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path + "/" + this.DOM_ID, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
         }
 
         public override bool Delete()
         {
-            T_R_DOMAINE_METIER_DOM objectSelect = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Where(x => x.DOM_ID == this.DOM_ID).First();
+            HttpResponseMessage response = null;
 
-            if (objectSelect.T_R_METIER_MET.Any())
+            using (var client = new HttpClient())
             {
-                foreach (T_R_METIER_MET item in objectSelect.T_R_METIER_MET.ToList())
-                {
-                    Database.MegeCastingDatabase.Current.T_R_METIER_MET.Remove(item);
-                }
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path + "/" + this.DOM_ID).Result;
             }
 
-            Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Remove(objectSelect);
-
-            try
+            if (response != null && response.IsSuccessStatusCode)
             {
-                MegeCastingDatabase.Current.SaveChanges();
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return true;
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Il y a un métier attaché à une offre.");
-                Database.MegeCastingDatabase.ReinitializeDatabase();
-                return false;
-            }
+
+            MessageBox.Show("Un métier est associée à ce domaine de métier.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
 
         public override string GetHeader()
@@ -98,9 +130,33 @@ namespace MegaCastingWPF.Database
             return this.DOM_ID.ToString();
         }
 
-        public override List<BaseExtend> getSource()
+        public override List<T_R_DOMAINE_METIER_DOM> getSource()
         {
-            return MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.ToList().Cast<BaseExtend>().ToList();
+            List<T_R_DOMAINE_METIER_DOM> liste = new List<T_R_DOMAINE_METIER_DOM>();
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject googleSearch = JObject.Parse(json);
+                    // get JSON result objects into a list
+                    IList<JToken> results = googleSearch["DomaineMetier"].Children().ToList();
+                    // serialize JSON results into .NET objects
+                    IList<T_R_DOMAINE_METIER_DOM> searchResults = new List<T_R_DOMAINE_METIER_DOM>();
+                    foreach (JToken result in results)
+                    {
+                        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                        T_R_DOMAINE_METIER_DOM searchResult = result.ToObject<T_R_DOMAINE_METIER_DOM>();
+                        searchResults.Add(searchResult);
+                    }
+                    liste = searchResults.ToList();
+                }
+            }
+
+            return liste;
         }
 
         public override bool IsRelated(string DOMtain = "")
@@ -169,6 +225,31 @@ namespace MegaCastingWPF.Database
         public override string ToString()
         {
             return this.DOM_LIBELLE;
+        }
+
+        public override List<T_R_DOMAINE_METIER_DOM> list()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T_R_DOMAINE_METIER_DOM get(int id)
+        {
+            T_R_DOMAINE_METIER_DOM searchResult = new T_R_DOMAINE_METIER_DOM();
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["DomaineMetier"].ToObject<T_R_DOMAINE_METIER_DOM>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }

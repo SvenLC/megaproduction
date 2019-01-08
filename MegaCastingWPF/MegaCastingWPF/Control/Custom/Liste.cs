@@ -1,6 +1,5 @@
-﻿using MegaCastingWPF.Database;
+﻿using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Interface;
-using MegaCastingWPF.Model.Extends;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ using System.Windows.Data;
 
 namespace MegaCastingWPF.Control.Custom
 {
-    public class Liste<T> : Content<T> where T : BaseExtend, new()
+    public class Liste<T> : Content<T> where T : BaseExtend<T>, new()
     {
         public Liste()
         {

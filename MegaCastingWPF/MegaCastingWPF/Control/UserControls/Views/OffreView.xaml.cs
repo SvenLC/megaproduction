@@ -1,5 +1,5 @@
 ﻿using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views;
 using MegaCastingWPF.Windows;
 using System;
@@ -27,7 +27,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
             Model = new OffreViewModel();
             this.DataContext = Model;
 
-            ListContent.Children.Add(Model.Content as Liste<T_E_OFFRE_CASTING_CAST>);
+            ListContent.Children.Add(Model.Content as Liste<T_E_OFFRE_CASTING_CAST_FORMA>);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -47,12 +47,12 @@ namespace MegaCastingWPF.Control.UserControls.Views
 
         private void ButtonVignette_Click(object sender, RoutedEventArgs e)
         {
-            this.loadVignette<OffreViewModel, T_E_OFFRE_CASTING_CAST>(Model, ListContent, FilterTextBox);
+            this.loadVignette<OffreViewModel, T_E_OFFRE_CASTING_CAST_FORMA>(Model, ListContent, FilterTextBox);
         }
 
         private void ButtonListe_Click(object sender, RoutedEventArgs e)
         {
-            this.loadListe<OffreViewModel, T_E_OFFRE_CASTING_CAST>(Model, ListContent, FilterTextBox);
+            this.loadListe<OffreViewModel, T_E_OFFRE_CASTING_CAST_FORMA>(Model, ListContent, FilterTextBox);
         }
 
         private void TextBoxSearch_KeyUp(object sender, KeyEventArgs e)

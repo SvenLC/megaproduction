@@ -1,42 +1,68 @@
 ﻿using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace MegaCastingWPF.Database
+namespace MegaCastingWPF.Model.Extends
 {
-    public partial class T_R_CONTRAT_CON : BaseExtend
+    public class T_R_CONTRAT_CON : BaseExtend<T_R_CONTRAT_CON>
     {
+        [JsonProperty(PropertyName = "CON_ID")]
+        public int CON_ID { get; set; }
+        [JsonProperty(PropertyName = "CON_LIBELLE")]
+        public string CON_LIBELLE { get; set; }
+
         public override bool Create()
         {
-            bool isSucces = this.Update();
 
+            ContratEdit windowEdit = new ContratEdit(this);
+            windowEdit.ShowDialog();
 
-            if (isSucces)
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
             {
-                Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Add(this);
-
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
+
         }
 
         public override bool Update()
@@ -48,39 +74,54 @@ namespace MegaCastingWPF.Database
             {
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path + "/" + this.CON_ID, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
         }
 
         public override bool Delete()
         {
-            T_R_CONTRAT_CON objectSelect = Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Where(x => x.CON_ID == this.CON_ID).First();
+            HttpResponseMessage response = null;
 
-            Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Remove(objectSelect);
-
-            try
+            using (var client = new HttpClient())
             {
-                MegeCastingDatabase.Current.SaveChanges();
-                Database.MegeCastingDatabase.ReinitializeDatabase();
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path + "/" + this.CON_ID).Result;
+            }
+
+            if (response != null && response.IsSuccessStatusCode)
+            {
                 return true;
             }
-            catch (Exception)
-            {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
-                return false;
-            }
+
+            MessageBox.Show("Une offre est associée à ce contrat.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
 
         public override string GetHeader()
@@ -88,9 +129,33 @@ namespace MegaCastingWPF.Database
             return this.CON_ID.ToString();
         }
 
-        public override List<BaseExtend> getSource()
+        public override List<T_R_CONTRAT_CON> getSource()
         {
-            return MegeCastingDatabase.Current.T_R_CONTRAT_CON.ToList().Cast<BaseExtend>().ToList();
+            List<T_R_CONTRAT_CON> liste = new List<T_R_CONTRAT_CON>();
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject googleSearch = JObject.Parse(json);
+                    // get JSON result objects into a list
+                    IList<JToken> results = googleSearch["contrat"].Children().ToList();
+                    // serialize JSON results into .NET objects
+                    IList<T_R_CONTRAT_CON> searchResults = new List<T_R_CONTRAT_CON>();
+                    foreach (JToken result in results)
+                    {
+                        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                        T_R_CONTRAT_CON searchResult = result.ToObject<T_R_CONTRAT_CON>();
+                        searchResults.Add(searchResult);
+                    }
+                    liste = searchResults.ToList();
+                }
+            }
+
+            return liste;
         }
 
         public override bool IsRelated(string contain = "")
@@ -156,5 +221,14 @@ namespace MegaCastingWPF.Database
             return liste;
         }
 
+        public override List<T_R_CONTRAT_CON> list()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T_R_CONTRAT_CON get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

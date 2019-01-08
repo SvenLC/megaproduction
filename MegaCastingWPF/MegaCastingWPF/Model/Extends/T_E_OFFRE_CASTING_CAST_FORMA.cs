@@ -14,37 +14,50 @@ using System.Windows.Data;
 
 namespace MegaCastingWPF.Model.Extends
 {
-    public class T_E_OFFRE_CASTING_CAST : BaseExtend<T_E_OFFRE_CASTING_CAST_FORMA>
+    public class T_E_OFFRE_CASTING_CAST_FORMA : BaseExtend<T_E_OFFRE_CASTING_CAST_FORMA>
     {
 
         [JsonProperty(PropertyName = "CAST_ID")]
         public int CAST_ID { get; set; }
+
         [JsonProperty(PropertyName = "CAST_INTITULE")]
         public string CAST_INTITULE { get; set; }
+
         [JsonProperty(PropertyName = "CAST_REFERENCE")]
         public string CAST_REFERENCE { get; set; }
+
         [JsonProperty(PropertyName = "CAST_DATE_DEBUT_PUBLICATION")]
         public System.DateTime CAST_DATE_DEBUT_PUBLICATION { get; set; }
+
         [JsonProperty(PropertyName = "CAST_DUREE_DIFFUSION")]
         public System.Int32 CAST_DUREE_DIFFUSION { get; set; }
+
         [JsonProperty(PropertyName = "CAST_DATE_DEBUT_CONTRAT")]
         public System.DateTime CAST_DATE_DEBUT_CONTRAT { get; set; }
+
         [JsonProperty(PropertyName = "CAST_NBR_POSTE")]
         public int CAST_NBR_POSTE { get; set; }
+
         [JsonProperty(PropertyName = "CAST_DESCRIPTION_POSTE")]
         public string CAST_DESCRIPTION_POSTE { get; set; }
+
         [JsonProperty(PropertyName = "CAST_DESCRIPTION_PROFIL")]
         public string CAST_DESCRIPTION_PROFIL { get; set; }
-        [JsonProperty(PropertyName = "PRO_ID")]
-        public int PRO_ID { get; set; }
-        [JsonProperty(PropertyName = "MET_ID")]
-        public int MET_ID { get; set; }
-        [JsonProperty(PropertyName = "CTC_ID")]
-        public int CTC_ID { get; set; }
-        [JsonProperty(PropertyName = "LOC_ID")]
-        public int LOC_ID { get; set; }
-        [JsonProperty(PropertyName = "CON_ID")]
-        public int CON_ID { get; set; }
+
+        [JsonProperty(PropertyName = "PRO_NAME")]
+        public int PRO_NAME { get; set; }
+
+        [JsonProperty(PropertyName = "MET_LIBELLE")]
+        public int MET_LIBELLE { get; set; }
+
+        [JsonProperty(PropertyName = "CTC_EMAIL")]
+        public int CTC_EMAIL { get; set; }
+
+        [JsonProperty(PropertyName = "LOC_LIBELLE")]
+        public int LOC_LIBELLE { get; set; }
+
+        [JsonProperty(PropertyName = "CON_LIBELLE")]
+        public int CON_LIBELLE { get; set; }
 
         public override bool Create()
         {
@@ -131,27 +144,27 @@ namespace MegaCastingWPF.Model.Extends
         {
             List<T_E_OFFRE_CASTING_CAST_FORMA> liste = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
 
-            using (var client = new HttpClient())
-            {
-                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = response.Content;
-                    string json = responseContent.ReadAsStringAsync().Result;
-                    JObject googleSearch = JObject.Parse(json);
-                    // get JSON result objects into a list
-                    IList<JToken> results = googleSearch["offres"].Children().ToList();
-                    // serialize JSON results into .NET objects
-                    IList<T_E_OFFRE_CASTING_CAST_FORMA> searchResults = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
-                    foreach (JToken result in results)
-                    {
-                        // JToken.ToObject is a helper method that uses JsonSerializer internally
-                        T_E_OFFRE_CASTING_CAST_FORMA searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST_FORMA>();
-                        searchResults.Add(searchResult);
-                    }
-                    liste = searchResults.ToList();
-                }
-            }
+            //using (var client = new HttpClient())
+            //{
+            //    var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/offreCastings/formated").Result;
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        var responseContent = response.Content;
+            //        string json = responseContent.ReadAsStringAsync().Result;
+            //        JObject googleSearch = JObject.Parse(json);
+            //        // get JSON result objects into a list
+            //        IList<JToken> results = googleSearch["offres"].Children().ToList();
+            //        // serialize JSON results into .NET objects
+            //        IList<T_E_OFFRE_CASTING_CAST_FORMA> searchResults = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
+            //        foreach (JToken result in results)
+            //        {
+            //            // JToken.ToObject is a helper method that uses JsonSerializer internally
+            //            T_E_OFFRE_CASTING_CAST_FORMA searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST_FORMA>();
+            //            searchResults.Add(searchResult);
+            //        }
+            //        liste = searchResults.ToList();
+            //    }
+            //}
 
             return liste;
         }

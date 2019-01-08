@@ -1,5 +1,5 @@
 ﻿using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views;
 using System;
 using System.Collections.Generic;

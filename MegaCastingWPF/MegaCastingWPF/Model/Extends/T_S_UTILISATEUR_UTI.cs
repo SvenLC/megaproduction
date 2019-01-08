@@ -1,41 +1,78 @@
 ﻿using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace MegaCastingWPF.Database
+namespace MegaCastingWPF.Model.Extends
 {
-    public partial class T_S_UTILISATEUR_UTI : BaseExtend
+    public class T_S_UTILISATEUR_UTI : BaseExtend<T_S_UTILISATEUR_UTI>
     {
+
+
+        [JsonProperty(PropertyName = "UTI_ID")]
+        public int UTI_ID { get; set; }
+        [JsonProperty(PropertyName = "UTI_NOM")]
+        public string UTI_NOM { get; set; }
+        [JsonProperty(PropertyName = "UTI_PRENOM")]
+        public string UTI_PRENOM { get; set; }
+        [JsonProperty(PropertyName = "UTI_LOGIN")]
+        public string UTI_LOGIN { get; set; }
+        [JsonProperty(PropertyName = "UTI_MDP")]
+        public string UTI_MDP { get; set; }
+        [JsonProperty(PropertyName = "UTI_ADMINISTRATEUR")]
+        public bool UTI_ADMINISTRATEUR { get; set; }
+
         public override bool Create()
         {
-            bool isSucces = this.Update();
 
-            if (isSucces)
+            UtilisateurEdit windowEdit = new UtilisateurEdit(this);
+            windowEdit.ShowDialog();
+
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
             {
-                Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Add(this);
-
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
+
         }
 
         public override bool Update()
@@ -47,39 +84,54 @@ namespace MegaCastingWPF.Database
             {
                 try
                 {
-                    MegeCastingDatabase.Current.SaveChanges();
-                    return true;
+                    using (var client = new HttpClient())
+                    {
+
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
                 }
                 catch (Exception)
                 {
-                    Database.MegeCastingDatabase.ReinitializeDatabase();
                     return false;
                 }
             }
             else
             {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
                 return false;
             }
         }
 
         public override bool Delete()
         {
-            T_S_UTILISATEUR_UTI objectSelect = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_ID == this.UTI_ID).First();
+            HttpResponseMessage response = null;
 
-            Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Remove(objectSelect);
-
-            try
+            using (var client = new HttpClient())
             {
-                MegeCastingDatabase.Current.SaveChanges();
-                Database.MegeCastingDatabase.ReinitializeDatabase();
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID).Result;
+            }
+
+            if (response != null && response.IsSuccessStatusCode)
+            {
                 return true;
             }
-            catch (Exception)
-            {
-                Database.MegeCastingDatabase.ReinitializeDatabase();
-                return false;
-            }
+
+            MessageBox.Show("Cet utilisateur ne peut pas être supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
 
         public override string GetHeader()
@@ -87,9 +139,35 @@ namespace MegaCastingWPF.Database
             return this.UTI_ID + " - " + this.UTI_LOGIN;
         }
 
-        public override List<BaseExtend> getSource()
+        public override List<T_S_UTILISATEUR_UTI> getSource()
         {
-            return MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.ToList().Cast<BaseExtend>().ToList();
+            List<T_S_UTILISATEUR_UTI> liste = new List<T_S_UTILISATEUR_UTI>();
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject googleSearch = JObject.Parse(json);
+                    // get JSON result objects into a list
+                    IList<JToken> results = googleSearch["utilisateurs"].Children().ToList();
+                    // serialize JSON results into .NET objects
+                    IList<T_S_UTILISATEUR_UTI> searchResults = new List<T_S_UTILISATEUR_UTI>();
+                    foreach (JToken result in results)
+                    {
+                        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                        T_S_UTILISATEUR_UTI searchResult = result.ToObject<T_S_UTILISATEUR_UTI>();
+                        searchResults.Add(searchResult);
+                    }
+                    liste = searchResults.ToList();
+                }
+            }
+
+            return liste;
+
+            throw new NotImplementedException();
         }
 
         public override bool IsRelated(string contain = "")
@@ -136,6 +214,17 @@ namespace MegaCastingWPF.Database
 
             liste.Add(TBC);
 
+            TBC = new TextBlock()
+            {
+                Text = this.UTI_ADMINISTRATEUR.ToString()
+            };
+
+            TBC.SetValue(Grid.ColumnProperty, 0);
+
+            liste.Add(TBC);
+
+
+
             return liste;
         }
 
@@ -157,14 +246,6 @@ namespace MegaCastingWPF.Database
                 Width = new DataGridLength(100),
                 FontSize = 12,
                 Binding = new Binding("UTI_LOGIN")
-            });
-
-            liste.Add(new DataGridTextColumn()
-            {
-                Header = "MDP",
-                Width = new DataGridLength(100),
-                FontSize = 12,
-                Binding = new Binding("UTI_MDP")
             });
 
             liste.Add(new DataGridTextColumn()
@@ -193,5 +274,80 @@ namespace MegaCastingWPF.Database
             return liste;
         }
 
+        public override List<T_S_UTILISATEUR_UTI> list()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T_S_UTILISATEUR_UTI get(int id)
+        {
+            T_S_UTILISATEUR_UTI searchResult = null;
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss.ToObject<T_S_UTILISATEUR_UTI>();
+                }
+            }
+
+            return searchResult;
+        }
+
+        public static string connect(string userName, string passWord)
+        {
+            string id = "";
+
+            using (var client = new HttpClient())
+            {
+
+                #region ReadList
+                    //var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/auth/login").Result;
+                    //if (response.IsSuccessStatusCode)
+                    //{
+                    //    var responseContent = response.Content;
+                    //    string json = responseContent.ReadAsStringAsync().Result;
+                    //    JObject googleSearch = JObject.Parse(json);
+                    //    // get JSON result objects into a list
+                    //    IList<JToken> results = googleSearch["utilisateurs"].Children().ToList();
+                    //    // serialize JSON results into .NET objects
+                    //    IList<T_S_UTILISATEUR_UTI> searchResults = new List<T_S_UTILISATEUR_UTI>();
+                    //    foreach (JToken result in results)
+                    //    {
+                    //        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                    //        T_S_UTILISATEUR_UTI searchResult = result.ToObject<T_S_UTILISATEUR_UTI>();
+                    //        searchResults.Add(searchResult);
+                    //    }
+                    //}
+                #endregion
+
+                ConnectionModel model = new ConnectionModel(userName, passWord);
+
+                string json = JsonConvert.SerializeObject(model, Formatting.Indented);
+
+                var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                var byteContent = new ByteArrayContent(buffer);
+
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                HttpResponseMessage response = client.PostAsync("https://megacastingprivateapi.azurewebsites.net/auth/login", byteContent).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string responseJson = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(responseJson);
+                    id = (string)rss["UTI_ID"];
+                }
+
+            }
+
+            return id;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using MegaCastingWPF.Model;
+﻿using MegaCastingWPF.Model.Extends;
 using System.Windows.Controls;
 using System.Windows;
 using System.ComponentModel;
@@ -26,24 +26,22 @@ namespace MegaCastingWPF.Control.UserControls.Views
 
             this.DataContext = Model;
 
-            HamburgerMenuItemCollection itemCollection = HamburgerMenuControl.ItemsSource as HamburgerMenuItemCollection;
-
-            if (!utilisateur.UTI_ADMINISTRATEUR)
-            {
-                itemCollection.Remove(Utilisateurs);
-                itemCollection.Remove(Domaines);
-                itemCollection.Remove(Metiers);
-                itemCollection.Remove(Contrats);
-                itemCollection.Remove(Localisations);
-                itemCollection.Remove(Status);
-            }
+            //HamburgerMenuItemCollection itemCollection = HamburgerMenuControl.ItemsSource as HamburgerMenuItemCollection;
+            //if (!utilisateur.UTI_ADMINISTRATEUR)
+            //{
+            //    itemCollection.Remove(Utilisateurs);
+            //    itemCollection.Remove(Domaines);
+            //    itemCollection.Remove(Metiers);
+            //    itemCollection.Remove(Contrats);
+            //    itemCollection.Remove(Localisations);
+            //    itemCollection.Remove(Status);
+            //}
 
             Model.Utilisateur = utilisateur;
         }
 
         private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
         {
-
             GridContenu.Children.Clear();
             HamburgerMenuIconItem item = e.ClickedItem as HamburgerMenuIconItem;
             GridContenu.Children.Add(item.Tag as UIElement);
