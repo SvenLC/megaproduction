@@ -29,6 +29,7 @@ namespace MegaCastingWPF.Control.Custom
 
         public CustomGroupBox() : base()
         {
+
         }
 
         public static RoutedEvent ClickEvent =

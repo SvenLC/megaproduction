@@ -17,8 +17,6 @@ namespace MegaCastingWPF.Model.Extends
 {
     public class T_S_UTILISATEUR_UTI : BaseExtend<T_S_UTILISATEUR_UTI>
     {
-
-
         [JsonProperty(PropertyName = "UTI_ID")]
         public int UTI_ID { get; set; }
         [JsonProperty(PropertyName = "UTI_NOM")]
@@ -44,6 +42,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -77,6 +76,8 @@ namespace MegaCastingWPF.Model.Extends
 
         public override bool Update()
         {
+            HttpResponseMessage response = null;
+            HttpResponseMessage response2 = null;
             UtilisateurEdit windowEdit = new UtilisateurEdit(this);
             windowEdit.ShowDialog();
 
@@ -87,6 +88,8 @@ namespace MegaCastingWPF.Model.Extends
                     using (var client = new HttpClient())
                     {
 
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
                         var buffer = System.Text.Encoding.UTF8.GetBytes(json);
@@ -94,12 +97,26 @@ namespace MegaCastingWPF.Model.Extends
 
                         byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                        HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID, byteContent).Result;
-
-                        if (response.IsSuccessStatusCode)
+                        if (this.UTI_MDP == "")
                         {
-                            return true;
+                            response = client.PutAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID, byteContent).Result;
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                return true;
+                            }
                         }
+                        else
+                        {
+                            response2 = client.PutAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID, byteContent).Result;
+                            response = client.PutAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/mdp/" + this.UTI_ID, byteContent).Result;
+                            if (response.IsSuccessStatusCode && response2.IsSuccessStatusCode)
+                            {
+                                return true;
+                            }
+                        }
+
+                        
 
                     }
 
@@ -122,6 +139,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + this.UTI_ID).Result;
             }
 
@@ -145,6 +164,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -285,6 +306,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Path + "/" + id).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -305,25 +328,26 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                 #region ReadList
-                    //var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/auth/login").Result;
-                    //if (response.IsSuccessStatusCode)
-                    //{
-                    //    var responseContent = response.Content;
-                    //    string json = responseContent.ReadAsStringAsync().Result;
-                    //    JObject googleSearch = JObject.Parse(json);
-                    //    // get JSON result objects into a list
-                    //    IList<JToken> results = googleSearch["utilisateurs"].Children().ToList();
-                    //    // serialize JSON results into .NET objects
-                    //    IList<T_S_UTILISATEUR_UTI> searchResults = new List<T_S_UTILISATEUR_UTI>();
-                    //    foreach (JToken result in results)
-                    //    {
-                    //        // JToken.ToObject is a helper method that uses JsonSerializer internally
-                    //        T_S_UTILISATEUR_UTI searchResult = result.ToObject<T_S_UTILISATEUR_UTI>();
-                    //        searchResults.Add(searchResult);
-                    //    }
-                    //}
+                //var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/auth/login").Result;
+                //if (response.IsSuccessStatusCode)
+                //{
+                //    var responseContent = response.Content;
+                //    string json = responseContent.ReadAsStringAsync().Result;
+                //    JObject googleSearch = JObject.Parse(json);
+                //    // get JSON result objects into a list
+                //    IList<JToken> results = googleSearch["utilisateurs"].Children().ToList();
+                //    // serialize JSON results into .NET objects
+                //    IList<T_S_UTILISATEUR_UTI> searchResults = new List<T_S_UTILISATEUR_UTI>();
+                //    foreach (JToken result in results)
+                //    {
+                //        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                //        T_S_UTILISATEUR_UTI searchResult = result.ToObject<T_S_UTILISATEUR_UTI>();
+                //        searchResults.Add(searchResult);
+                //    }
+                //}
                 #endregion
 
                 ConnectionModel model = new ConnectionModel(userName, passWord);
@@ -343,6 +367,7 @@ namespace MegaCastingWPF.Model.Extends
                     string responseJson = responseContent.ReadAsStringAsync().Result;
                     JObject rss = JObject.Parse(responseJson);
                     id = (string)rss["UTI_ID"];
+                    Database.MegaCastingAPIEntities.token = (string)rss["UTI_TOKEN"];
                 }
 
             }

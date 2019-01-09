@@ -14,7 +14,7 @@ namespace MegaCastingWPF.Database
         public APIObject<T_E_ADRESSE_ADR> T_E_ADRESSE_ADR;
         public APIObject<T_E_CONTACT_CTC> T_E_CONTACT_CTC;
         public APIObject<T_E_CONTENU_EDITORIAL_EDI> T_E_CONTENU_EDITORIAL_EDI;
-        public APIObject<T_E_OFFRE_CASTING_CAST_FORMA> T_E_OFFRE_CASTING_CAST;
+        public APIObject<T_E_OFFRE_CASTING_CAST> T_E_OFFRE_CASTING_CAST;
         public APIObject<T_E_PROSPECT_PRO> T_E_PROSPECT_PRO;
         public APIObject<T_H_CLIENT_CLI> T_H_CLIENT_CLI;
         public APIObject<T_H_PARTENAIRES_PAR> T_H_PARTENAIRES_PAR;
@@ -29,12 +29,14 @@ namespace MegaCastingWPF.Database
         public APIObject<T_S_UTILISATEUR_UTI> T_S_UTILISATEUR_UTI;
         public APIObject<T_X_CODE_POSTAL_CPT> T_X_CODE_POSTAL_CPT;
 
+        public static string token = "";
+
         public MegaCastingAPIEntities()
         {
             this.T_E_ADRESSE_ADR = new APIObject<T_E_ADRESSE_ADR>(PATH + "/adresses");
             this.T_E_CONTACT_CTC = new APIObject<T_E_CONTACT_CTC>(PATH + "/contacts");
             this.T_E_CONTENU_EDITORIAL_EDI = new APIObject<T_E_CONTENU_EDITORIAL_EDI>(PATH + "/contenus");
-            this.T_E_OFFRE_CASTING_CAST = new APIObject<T_E_OFFRE_CASTING_CAST_FORMA>(PATH + "/offreCastings");
+            this.T_E_OFFRE_CASTING_CAST = new APIObject<T_E_OFFRE_CASTING_CAST>(PATH + "/offreCastings");
             this.T_E_PROSPECT_PRO = new APIObject<T_E_PROSPECT_PRO>(PATH + "/prospects");
             this.T_H_CLIENT_CLI = new APIObject<T_H_CLIENT_CLI>(PATH + "/clients");
             this.T_H_PARTENAIRES_PAR = new APIObject<T_H_PARTENAIRES_PAR>(PATH + "/partenaires");

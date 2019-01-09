@@ -1,11 +1,15 @@
 ﻿using MegaCastingWPF.Interface;
 using MegaCastingWPF.Model.Extends;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MegaCastingWPF.Model.Extends
 {
@@ -24,32 +28,107 @@ namespace MegaCastingWPF.Model.Extends
 
         public bool Create()
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
-        public bool Delete()
-        {
-            throw new NotImplementedException();
-        }
+                    string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public T_E_PROSPECT_PRO get()
-        {
-            throw new NotImplementedException();
-        }
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                    var byteContent = new ByteArrayContent(buffer);
 
-        public List<T_E_PROSPECT_PRO> list()
-        {
-            throw new NotImplementedException();
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Path, byteContent).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Update()
         {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                    string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Path + "/" + this.PRO_ID, byteContent).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete()
+        {
+            HttpResponseMessage response = null;
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Path + "/" + this.PRO_ID).Result;
+            }
+
+            return true;
+        }
+
+        public List<T_H_CLIENT_CLI> list()
+        {
             throw new NotImplementedException();
         }
 
-        T_H_CLIENT_CLI ICrud<T_H_CLIENT_CLI>.get(int id)
+        public T_H_CLIENT_CLI get(int id)
         {
-            throw new NotImplementedException();
+            T_H_CLIENT_CLI searchResult = null;
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["client"].ToObject<T_H_CLIENT_CLI>();
+                }
+            }
+
+            return searchResult;
         }
 
         List<T_H_CLIENT_CLI> ICrud<T_H_CLIENT_CLI>.list()

@@ -99,9 +99,9 @@
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="Login" FontSize="12" Grid.Row="0" VerticalAlignment="Center" />
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" >
+                                    <TextBox x:Name="TBX_PAR_LOGIN" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" >
                                         <TextBox.Text>
-                                            <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_LOGIN" UpdateSourceTrigger="PropertyChanged" >
+                                            <Binding Mode="OneWay" Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_LOGIN" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
                                                     <Rule:TextRule Min="7" Max="25" x:Name="TextRule1"/>
                                                 </Binding.ValidationRules>
@@ -109,11 +109,11 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <TextBlock Text="Mot de passe" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                    <TextBox x:Name="TBX_PAR_MDP" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
                                         <TextBox.Text>
-                                            <Binding Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_MDP" UpdateSourceTrigger="PropertyChanged" >
+                                            <Binding Mode="OneWay" Path="StoreObject.T_H_PARTENAIRES_PAR.PAR_MDP" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:TextRule Min="10" Max="25"  x:Name="TextRule2"/>
+                                                    <Rule:TextRule Min="6" Max="25"  x:Name="TextRule2"/>
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -158,9 +158,9 @@
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="RNA" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                    <TextBox x:Name="TBX_CLI_RNA" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
                                         <TextBox.Text>
-                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_RNA" UpdateSourceTrigger="PropertyChanged" >
+                                            <Binding Mode="OneWay" Path="StoreObject.T_H_CLIENT_CLI.CLI_RNA" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
                                                     <Rule:NumberRule   x:Name="NumberRule1" />
                                                 </Binding.ValidationRules>
@@ -168,9 +168,9 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <TextBlock Text="Siret" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                    <TextBox x:Name="TBX_CLI_SIRET" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
                                         <TextBox.Text>
-                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
+                                            <Binding Mode="OneWay" Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
                                                     <Rule:NumberRule   x:Name="NumberRule2"/>
                                                 </Binding.ValidationRules>
@@ -178,7 +178,7 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <TextBlock Text="Statut juridique" FontSize="12" Grid.Row="2" VerticalAlignment="Center" />
-                                    <ComboBox SelectedIndex="0" Grid.Row="2" Grid.Column="2" x:Name="CBX_Statut" DisplayMemberPath="JUR_LIBELLE" SelectedItem="{Binding StoreObject.T_H_CLIENT_CLI.T_R_STATUT_JURIDIQUE_JUR}"></ComboBox>
+                                    <ComboBox SelectedIndex="0" Grid.Row="2" Grid.Column="2" x:Name="CBX_Statut" DisplayMemberPath="JUR_LIBELLE" SelectedItem="{Binding StoreObject.T_H_CLIENT_CLI.T_R_STATUT_JURIDIQUE_JUR,Mode=OneWay}"></ComboBox>
                                     <Grid Margin="5,0,5,5" Grid.Row="4" Grid.ColumnSpan="3">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -204,9 +204,9 @@
                                                 </Grid.RowDefinitions>
                                                 <Grid.Children>
                                                     <TextBlock Text="Numéro de voie" FontSize="12" Grid.Row="0" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
+                                                    <TextBox x:Name="TBX_ADR_NUM_VOIE"  controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2">
                                                         <TextBox.Text>
-                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE" UpdateSourceTrigger="PropertyChanged" >
+                                                            <Binding Mode="OneWay" Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_NUM_VOIE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
                                                                     <Rule:TextRule Min="1" Max="25"   x:Name="TextRule3"/>
                                                                 </Binding.ValidationRules>
@@ -214,9 +214,9 @@
                                                         </TextBox.Text>
                                                     </TextBox>
                                                     <TextBlock Text="Libellé rue" FontSize="12" Grid.Row="1" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
+                                                    <TextBox x:Name="TBX_ADR_LIBELLE_RUE" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="1" Grid.Column="2">
                                                         <TextBox.Text>
-                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE" UpdateSourceTrigger="PropertyChanged" >
+                                                            <Binding Mode="OneWay" Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_LIBELLE_RUE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
                                                                     <Rule:TextRule Min="1" Max="150"  x:Name="TextRule4"/>
                                                                 </Binding.ValidationRules>
@@ -224,9 +224,9 @@
                                                         </TextBox.Text>
                                                     </TextBox>
                                                     <TextBlock Text="Ville" FontSize="12" Grid.Row="2" VerticalAlignment="Center"/>
-                                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2">
+                                                    <TextBox x:Name="TBX_ADR_VILLE" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="2" Grid.Column="2">
                                                         <TextBox.Text>
-                                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE" UpdateSourceTrigger="PropertyChanged" >
+                                                            <Binding Mode="OneWay" Path="StoreObject.T_H_CLIENT_CLI.T_E_ADRESSE_ADR.ADR_VILLE" UpdateSourceTrigger="PropertyChanged" >
                                                                 <Binding.ValidationRules>
                                                                     <Rule:TextRule Min="1" Max="50"   x:Name="TextRule5"/>
                                                                 </Binding.ValidationRules>

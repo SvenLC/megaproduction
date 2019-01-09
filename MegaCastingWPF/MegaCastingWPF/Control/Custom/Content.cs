@@ -38,8 +38,6 @@ namespace MegaCastingWPF.Control.Custom
 
             StoreObject.Create();
 
-            this.Reload(this.StoreSource);
-
             return true;
         }
 
@@ -49,7 +47,6 @@ namespace MegaCastingWPF.Control.Custom
             {
                 storeObject.Update();
 
-                this.Reload(this.StoreSource);
             }
 
             return true;
@@ -62,10 +59,7 @@ namespace MegaCastingWPF.Control.Custom
                 StoreObject.Delete();
 
                 StoreObject = null;
-
-                this.Reload(this.StoreSource);
             }
-
             return true;
 
         }

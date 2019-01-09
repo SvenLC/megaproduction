@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +15,7 @@ using System.Windows.Data;
 
 namespace MegaCastingWPF.Model.Extends
 {
-    public class T_E_OFFRE_CASTING_CAST : BaseExtend<T_E_OFFRE_CASTING_CAST_FORMA>
+    public class T_E_OFFRE_CASTING_CAST : BaseExtend<T_E_OFFRE_CASTING_CAST>
     {
 
         [JsonProperty(PropertyName = "CAST_ID")]
@@ -48,78 +49,109 @@ namespace MegaCastingWPF.Model.Extends
 
         public override bool Create()
         {
-            //bool isSucces = this.Update();
 
-            //if (isSucces)
-            //{
-            //    Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Add(this);
+            OffreEdit windowEdit = new OffreEdit(this);
+            windowEdit.ShowDialog();
 
-            //    try
-            //    {
-            //        MegeCastingDatabase.Current.SaveChanges();
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
-            throw new NotImplementedException();
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public override bool Update()
         {
-            //OffreEdit windowEdit = new OffreEdit(this);
-            //windowEdit.ShowDialog();
+            OffreEdit windowEdit = new OffreEdit(this);
+            windowEdit.ShowDialog();
 
-            //if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
-            //{
-            //    try
-            //    {
-            //        MegeCastingDatabase.Current.SaveChanges();
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
-            throw new NotImplementedException();
+                        string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                        var byteContent = new ByteArrayContent(buffer);
+
+                        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                        HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path + "/" + this.CAST_ID, byteContent).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+
+                    }
+
+                    return false;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool Delete()
         {
-            //T_E_OFFRE_CASTING_CAST objectSelect = Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Where(x => x.CAST_ID == this.CAST_ID).First();
+            HttpResponseMessage response = null;
 
-            //Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Remove(objectSelect);
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
-            //try
-            //{
-            //    MegeCastingDatabase.Current.SaveChanges();
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return true;
-            //}
-            //catch (Exception)
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
 
-            throw new NotImplementedException();
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path + "/" + this.CAST_ID).Result;
+            }
+
+            if (response != null && response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            MessageBox.Show("Une erreur est survenue lors de la supression.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
 
         public override string GetHeader()
@@ -127,12 +159,15 @@ namespace MegaCastingWPF.Model.Extends
             return this.CAST_ID.ToString();
         }
 
-        public override List<T_E_OFFRE_CASTING_CAST_FORMA> getSource()
+        public override List<T_E_OFFRE_CASTING_CAST> getSource()
         {
-            List<T_E_OFFRE_CASTING_CAST_FORMA> liste = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
+            List<T_E_OFFRE_CASTING_CAST> liste = new List<T_E_OFFRE_CASTING_CAST>();
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -142,11 +177,11 @@ namespace MegaCastingWPF.Model.Extends
                     // get JSON result objects into a list
                     IList<JToken> results = googleSearch["offres"].Children().ToList();
                     // serialize JSON results into .NET objects
-                    IList<T_E_OFFRE_CASTING_CAST_FORMA> searchResults = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
+                    IList<T_E_OFFRE_CASTING_CAST> searchResults = new List<T_E_OFFRE_CASTING_CAST>();
                     foreach (JToken result in results)
                     {
                         // JToken.ToObject is a helper method that uses JsonSerializer internally
-                        T_E_OFFRE_CASTING_CAST_FORMA searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST_FORMA>();
+                        T_E_OFFRE_CASTING_CAST searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST>();
                         searchResults.Add(searchResult);
                     }
                     liste = searchResults.ToList();
@@ -367,14 +402,29 @@ namespace MegaCastingWPF.Model.Extends
             return liste;
         }
 
-        public override List<T_E_OFFRE_CASTING_CAST_FORMA> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_E_OFFRE_CASTING_CAST> list() => getSource();
 
-        public override T_E_OFFRE_CASTING_CAST_FORMA get(int id)
+        public override T_E_OFFRE_CASTING_CAST get(int id)
         {
-            throw new NotImplementedException();
+            T_E_OFFRE_CASTING_CAST searchResult = new T_E_OFFRE_CASTING_CAST();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["offre"].ToObject<T_E_OFFRE_CASTING_CAST>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }

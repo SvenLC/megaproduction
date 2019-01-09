@@ -35,6 +35,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -77,6 +78,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -113,6 +115,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path + "/" + this.DOM_ID).Result;
             }
 
@@ -136,6 +140,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -227,10 +233,7 @@ namespace MegaCastingWPF.Model.Extends
             return this.DOM_LIBELLE;
         }
 
-        public override List<T_R_DOMAINE_METIER_DOM> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_R_DOMAINE_METIER_DOM> list() => getSource();
 
         public override T_R_DOMAINE_METIER_DOM get(int id)
         {
@@ -238,6 +241,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.Path + "/" + id).Result;
                 if (response.IsSuccessStatusCode)
                 {

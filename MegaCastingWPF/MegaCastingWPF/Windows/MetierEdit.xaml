@@ -49,7 +49,7 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <TextBlock Text="Domaine" FontSize="12" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                                    <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="2" x:Name="CBX_Statut" DisplayMemberPath="DOM_LIBELLE" SelectedItem="{Binding StoreObject.T_R_DOMAINE_METIER_DOM}"></ComboBox>
+                                    <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="2" x:Name="CBX_Statut" DisplayMemberPath="DOM_LIBELLE"></ComboBox>
                                 </Grid.Children>
                             </Grid>
                         </Grid.Children>

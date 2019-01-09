@@ -34,6 +34,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -76,6 +77,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -112,6 +114,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path + "/" + this.CON_ID).Result;
             }
 
@@ -135,6 +139,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -221,14 +227,28 @@ namespace MegaCastingWPF.Model.Extends
             return liste;
         }
 
-        public override List<T_R_CONTRAT_CON> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_R_CONTRAT_CON> list() => getSource();
 
         public override T_R_CONTRAT_CON get(int id)
         {
-            throw new NotImplementedException();
+            T_R_CONTRAT_CON searchResult = new T_R_CONTRAT_CON();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["contrat"].ToObject<T_R_CONTRAT_CON>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }

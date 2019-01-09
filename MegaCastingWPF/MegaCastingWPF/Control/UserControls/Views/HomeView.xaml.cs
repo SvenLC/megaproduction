@@ -26,16 +26,16 @@ namespace MegaCastingWPF.Control.UserControls.Views
 
             this.DataContext = Model;
 
-            //HamburgerMenuItemCollection itemCollection = HamburgerMenuControl.ItemsSource as HamburgerMenuItemCollection;
-            //if (!utilisateur.UTI_ADMINISTRATEUR)
-            //{
-            //    itemCollection.Remove(Utilisateurs);
-            //    itemCollection.Remove(Domaines);
-            //    itemCollection.Remove(Metiers);
-            //    itemCollection.Remove(Contrats);
-            //    itemCollection.Remove(Localisations);
-            //    itemCollection.Remove(Status);
-            //}
+            HamburgerMenuItemCollection itemCollection = HamburgerMenuControl.ItemsSource as HamburgerMenuItemCollection;
+            if (!utilisateur.UTI_ADMINISTRATEUR)
+            {
+                itemCollection.Remove(Utilisateurs);
+                itemCollection.Remove(Domaines);
+                itemCollection.Remove(Metiers);
+                itemCollection.Remove(Contrats);
+                itemCollection.Remove(Localisations);
+                itemCollection.Remove(Status);
+            }
 
             Model.Utilisateur = utilisateur;
         }

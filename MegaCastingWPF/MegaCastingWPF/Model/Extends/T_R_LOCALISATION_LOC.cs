@@ -35,6 +35,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -77,6 +78,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -113,6 +115,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Path + "/" + this.LOC_ID).Result;
             }
 
@@ -136,9 +140,13 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                     var responseContent = response.Content;
                     string json = responseContent.ReadAsStringAsync().Result;
                     JObject googleSearch = JObject.Parse(json);
@@ -222,14 +230,28 @@ namespace MegaCastingWPF.Model.Extends
             return liste;
         }
 
-        public override List<T_R_LOCALISATION_LOC> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_R_LOCALISATION_LOC> list() => getSource();
 
         public override T_R_LOCALISATION_LOC get(int id)
         {
-            throw new NotImplementedException();
+            T_R_LOCALISATION_LOC searchResult = new T_R_LOCALISATION_LOC();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["Localisation"].ToObject<T_R_LOCALISATION_LOC>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }

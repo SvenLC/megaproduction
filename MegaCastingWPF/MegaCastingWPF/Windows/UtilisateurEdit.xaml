@@ -70,7 +70,7 @@
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.UTI_LOGIN" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
-                                                    <Rule:TextRule Min="1" Max="60"/>
+                                                    <Rule:TextRule Min="6" Max="60"/>
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>

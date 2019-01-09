@@ -53,6 +53,12 @@
                                     <RowDefinition  Height="auto"></RowDefinition>
                                     <RowDefinition  Height="15"></RowDefinition>
                                     <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
+                                    <RowDefinition  Height="15"></RowDefinition>
+                                    <RowDefinition  Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.Children>
                                     <TextBlock Text="Intitulé" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
@@ -78,13 +84,21 @@
                                     <TextBlock Text="Date de publication" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
                                     <DatePicker x:Name="Date1" Grid.Row="4" Grid.Column="2" SelectedDate="{Binding StoreObject.CAST_DATE_DEBUT_PUBLICATION}"/>
                                     <TextBlock Text="Heure" FontSize="12" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
-                                    <controls:TimePicker x:Name="Duree" Grid.Row="6" Grid.Column="2" SelectedTime="{Binding StoreObject.CAST_DUREE_DIFFUSION}"/>
+                                    <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="6" Grid.Column="2">
+                                        <TextBox.Text>
+                                            <Binding Path="StoreObject.CAST_DUREE_DIFFUSION" UpdateSourceTrigger="PropertyChanged" >
+                                                <Binding.ValidationRules>
+                                                    <Rule:NumberRule   x:Name="NumberRule3"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <TextBlock Text="Date de début" FontSize="12" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"/>
                                     <DatePicker x:Name="Date2" Grid.Row="8" Grid.Column="2" SelectedDate="{Binding StoreObject.CAST_DATE_DEBUT_CONTRAT}"/>
                                     <TextBlock Text="Nombre de poste" FontSize="12" Grid.Row="10" VerticalAlignment="Center"/>
                                     <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="10" Grid.Column="2">
                                         <TextBox.Text>
-                                            <Binding Path="StoreObject.T_H_CLIENT_CLI.CLI_SIRET" UpdateSourceTrigger="PropertyChanged" >
+                                            <Binding Path="StoreObject.CAST_NBR_POSTE" UpdateSourceTrigger="PropertyChanged" >
                                                 <Binding.ValidationRules>
                                                     <Rule:NumberRule   x:Name="NumberRule2"/>
                                                 </Binding.ValidationRules>
@@ -111,10 +125,16 @@
                                             </Binding>
                                         </TextBox.Text>
                                     </TextBox>
-                                    <TextBlock Text="Domaine" FontSize="12" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center"/>
-                                    <ComboBox SelectedIndex="0" Grid.Row="16" Grid.Column="2" x:Name="CBX_Prospect" DisplayMemberPath="T_E_PROSPECT_PRO.PRO_NAME" SelectedItem="{Binding StoreObject.T_H_CLIENT_CLI}"></ComboBox>
-                                    <TextBlock Text="Domaine" FontSize="12" Grid.Row="18" Grid.Column="0" VerticalAlignment="Center"/>
-                                    <ComboBox SelectedIndex="0" Grid.Row="18" Grid.Column="2" x:Name="CBX_Metier" DisplayMemberPath="MET_LIBELLE" SelectedItem="{Binding StoreObject.T_R_METIER_MET}"></ComboBox>
+                                    <TextBlock Text="Propect" FontSize="12" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" SelectionChanged="CBX_Localisation_SelectionChanged" Grid.Row="16" Grid.Column="2" x:Name="CBX_Prospect" DisplayMemberPath="PRO_NAME" ></ComboBox>
+                                    <TextBlock Text="Métier" FontSize="12" Grid.Row="18" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="18" Grid.Column="2" x:Name="CBX_Metier" DisplayMemberPath="MET_LIBELLE" ></ComboBox>
+                                    <TextBlock Text="Propect" FontSize="12" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="20" Grid.Column="2" x:Name="CBX_Localisation" DisplayMemberPath="LOC_LIBELLE" ></ComboBox>
+                                    <TextBlock Text="Métier" FontSize="12" Grid.Row="22" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="22" Grid.Column="2" x:Name="CBX_Contrat" DisplayMemberPath="CON_LIBELLE" ></ComboBox>
+                                    <TextBlock Text="Métier" FontSize="12" Grid.Row="24" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <ComboBox SelectedIndex="0" Grid.Row="24" Grid.Column="2" x:Name="CBX_Contact" DisplayMemberPath="CTC_DESCRIPTION" ></ComboBox>
                                 </Grid.Children>
                             </Grid>
                         </Grid.Children>

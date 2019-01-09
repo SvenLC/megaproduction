@@ -33,16 +33,20 @@ namespace MegaCastingWPF.Control.UserControls.Views
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             Model.Content.Update();
+
+            Model.Content.Reload(Model.Content.StoreSource, FilterTextBox.Text);
         }
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
             Model.Content.Create();
+            Model.Content.Reload(Model.Content.StoreSource, FilterTextBox.Text);
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             Model.Content.Delete();
+            Model.Content.Reload(Model.Content.StoreSource, FilterTextBox.Text);
         }
 
         private void ButtonVignette_Click(object sender, RoutedEventArgs e)
