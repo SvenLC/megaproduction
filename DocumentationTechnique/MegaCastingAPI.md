@@ -27,7 +27,6 @@ megacasting.database.windows.net
 
 ## Notice d'installation
 
-<<<<<<< HEAD
 https://vmokshagroup.com/blog/building-restful-apis-using-node-js-express-js-and-ms-sql-server
 https://medium.freecodecamp.org/how-to-deploy-your-super-cool-node-app-to-azure-from-github-47ebff6c5448
 
@@ -49,7 +48,6 @@ fichier config.json
   }
 }
 
-=======
 ## Librairies node
 
 ### Sequelize-auto
@@ -105,4 +103,3 @@ Déploiement d'un wiki à l'aide de wikijs sur l'hébergeur Heroku.
 Documentation disponible ici -> https://github.com/Requarks/wiki
 
 script de déploiement pour Heroku
->>>>>>> 43693d983931d88965b19356347e42c7743c5555

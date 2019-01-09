@@ -4,6 +4,7 @@
 
 | Numéro | Date     | responsable | descriptif                     |
 | ------ | -------- | ----------- | ------------------------------ |
+| 1.4.0  | 09/01/18 | S. Le Cann  | Modifications des règles       |
 | 1.3.0  | 15/11/18 | S. Le Cann  | Modifications des règles       |
 | 1.2.0  | 14/11/18 | S. Le Cann  | Mise en page, ajouts de règles |
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout règles                   |
@@ -53,18 +54,16 @@
   
 ### Offre de casting
 
-- Une offre de casting correspond à un et un seul client.
-- Une offre de casting correspond a un et un seul métier
 - Une offre de casting correspond à une et une seule localisation
 - Une offre de casting peut être crée par un et un seul utilisateur
 - Une offre de casting peut être modifier par un ou plusieurs utilisateurs
 - Une offre de casting peut être validée par un ou plusieurs utilisateurs
 - Une offre de casting peut être supprimé par un ou plusieurs utilisateurs
-- Une offre de casting est lié à un et un seul métier
-- Une offre de casting est lié à un et un seul domaine de métier
-- Une offre de casting est lié à un et un seul type de contrat
-- Une offre de casting a une et une seule localisation
-- Une offre de casting correspond à une et une seule fiche de contact
+- Une offre de casting correspond à un et un seul client
+- Une offre de casting est liée à un et un seul métier
+- Une offre de casting est liée à un et un seul type de contrat
+- Une offre de casting est liée a une et une seule localisation
+- Une offre de casting est liée a un et un seul contact
 - Une offre de casting publiée sur le site web est visible par tout le monde
 
 ### Adresse et fiche contact

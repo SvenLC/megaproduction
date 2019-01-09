@@ -2,6 +2,7 @@
 
 | Numéro | Date     | responsable | descriptif                           |
 | ------ | -------- | ----------- | ------------------------------------ |
+| 1.4.0  | 09/10/18 | S. Le Cann  | Réorganisation et ajouts d'entités   |
 | 1.3.0  | 15/11/18 | S. Le Cann  | Réorganisation et ajouts d'entités   |
 | 1.2.0  | 14/11/18 | S. Le Cann  | Ajout des entitées                   |
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout des entitées, ajout des champs |
@@ -9,119 +10,150 @@
 
 ## Entité Utilisateur
 
-| Libellé de la propriété | Nom du champ | Type |
-| ----------------------- | ------------ | ---- |
-| Identifiant             | uti_id       | N    |
-| Nom                     | uti_nom      | A    |
-| Prenom                  | uti_prenom   | A    |
-| Login                   | uti_login    | A    |
-| Mot de passe            | uti_mdp      | AN   |
-| Est administrateur      | uti_admin    | B    |
+| Libellé de la propriété | Nom du champ       | Type |
+| ----------------------- | ------------------ | ---- |
+| Identifiant             | UTI_ID             | N    |
+| Nom                     | UTI_NOM            | A    |
+| Prenom                  | UTI_PRENOM         | A    |
+| Login                   | UTI_LOGIN          | A    |
+| Mot de passe            | UTI_MDP            | AN   |
+| Est administrateur      | UTI_ADMINISTRATEUR | B    |
 
 ## Entité Prospect
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | pro_id       | N    |
-| Dénomination            | pro_denom    | AN   |
+| Identifiant             | PRO_ID       | N    |
+| NOM                     | PRO_NAME     | AN   |
 
 ## Entité client
 
 | Libellé de la propriété   | Nom du champ | Type |
 | ------------------------- | ------------ | ---- |
-| Identifiant               | cli_id       | N    |
-| numéro de siret           | cli_siret    | AN   |
-| numéro RNA (Associations) | cli_rna      | AN   |
+| Identifiant               | CLI_ID       | N    |
+| numéro de siret           | CLI_SIRET    | AN   |
+| numéro RNA (Associations) | CLI_RNA      | AN   |
   
 ## Entité partenaires de diffusions
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | par_id       | N    |
-| Login                   | par_login    | AN   |
-| mots de passe           | par_mdp      | AN   |
+| Identifiant             | PAR_ID       | N    |
+| Login                   | PAR_LOGIN    | AN   |
+| mots de passe           | PAR_MDP      | AN   |
   
 ## Entité Offres de castings
 
-| Libellé de la propriété         | Nom du champ       | Type |
-| ------------------------------- | ------------------ | ---- |
-| Identifiant                     | cas_id             | N    |
-| Intitulé                        | cas_intit          | AN   |
-| Référence                       | cas_ref            | AN   |
-| Date de début de publication    | cas_date_deb_pub   | DATE |
-| Durée de diffusion              | cas_dur_diff       | N    |
-| Date de début du contrat        | cas_date_deb_contr | DATE |
-| Nombre de poste                 | cas_nbr_post       | N    |
-| Description du poste            | cas_desc_post      | AN   |
-| Description du profil recherché | cas_desc_prof_rech | AN   |
+| Libellé de la propriété         | Nom du champ                | Type |
+| ------------------------------- | --------------------------- | ---- |
+| Identifiant                     | CAST_ID                     | N    |
+| Intitulé                        | CAST_INTITULE               | AN   |
+| Référence                       | CAST_REFERENCE              | AN   |
+| Date de début de publication    | CAST_DATE_DEBUT_PUBLICATION | DATE |
+| Durée de diffusion              | CAST_DUREE_DIFFUSION        | N    |
+| Date de début du contrat        | CAST_DATE_DEBUT_CONTRAT     | DATE |
+| Nombre de poste                 | CAST_NBR_POSTE              | N    |
+| Description du poste            | CAST_DESCRIPTION_POSTE      | AN   |
+| Description du profil recherché | CAST_DESCRIPTION_PROFIL     | AN   |
 
 ## Fiche de contact
 
-| Libellé de la propriété | Nom du champ   | Type |
-| ----------------------- | -------------- | ---- |
-| Identifiant             | ctc_id         | N    |
-| Description             | ctc_desc       | A    |
-| numéro de téléphone     | ctc_tel        | AN   |
-| numéro de fax           | ctc_fax        | AN   |
-| adresse email           | ctc_email      | AN   |
-| Est principale          | ctc_principale | B    |
+| Libellé de la propriété | Nom du champ    | Type |
+| ----------------------- | --------------- | ---- |
+| Identifiant             | CTC_ID          | N    |
+| Description             | CTC_DESCRIPTION | A    |
+| numéro de téléphone     | CTC_NUM_TEL     | AN   |
+| numéro de fax           | CTC_NUM_FAX     | AN   |
+| adresse email           | CTC_EMAIL       | AN   |
+| Est principale          | CTC_PRINCIPALE  | B    |
 
 ## Entité Adresse
 
-| Libellé de la propriété | Nom du champ | Type |
-| ----------------------- | ------------ | ---- |
-| Numéro de la voie       | adr_num_voie | N    |
-| Libellé de la rue       | adr_lib_rue  | AN   |
-| Code postal             | adr_cp       | N    |
-| Ville                   | adr_ville    | A    |
+| Libellé de la propriété | Nom du champ    | Type |
+| ----------------------- | --------------- | ---- |
+| Identifiant             | ADR_ID          | N    |
+| Numéro de la voie       | ADR_NUM_VOIE    | N    |
+| Libellé de la rue       | ADR_LIBELLE_RUE | AN   |
+| Ville                   | adr_ville       | A    |
 
 ## Entité Localisation
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | loc_id       | AN   |
-| libelle                 | loc_libelle  | AN   |
+| Identifiant             | LOC_ID       | AN   |
+| libelle                 | LOC_LIBELLE  | AN   |
 
 ## Entité Code postal
 
 | Libellé de la propriété | Nom du champ    | Type |
 | ----------------------- | --------------- | ---- |
-| Identifiant             | cpl_id          | N    |
-| Code postal             | cpl_code_postal | N    |
-| Nom                     | cpl_nom         | N    |
+| Code commune            | CPT_COMMUNE     | N    |
+| Code postal             | CPT_CODEPOST    | N    |
+| Code département        | CPT_DEPARTEMENT | N    |
+| Code Insee              | CPT_INSEE       | N    |
 
 ## Entité Domaines de métiers
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | dom_id       | N    |
-| Libellé                 | dom_lib      | A    |
+| Identifiant             | DOM_ID       | N    |
+| Libellé                 | DOM_LIBELLE  | A    |
 
 ## Entité Métiers
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | met_id       | N    |
-| Libellé                 | met_lib      | A    |
+| Identifiant             | MET_ID       | N    |
+| Libellé                 | MET_LIBELLE  | A    |
 
 ## Entité Contrats
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | con_id       | N    |
-| Libellé                 | con_lib      | A    |
+| Identifiant             | CON_ID       | N    |
+| Libellé                 | CON_LIBELLE  | A    |
 
 ## Entité Statuts juridique
 
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
-| Identifiant             | jur_id       | N    |
-| Libellé                 | jur_libelle  | A    |
+| Identifiant             | JUR_ID       | N    |
+| Libellé                 | JUR_LIBELLE  | A    |
 
 ## Contenu éditorial
 
+| Libellé de la propriété | Nom du champ    | Type |
+| ----------------------- | --------------- | ---- |
+| Identifiant             | EDI_ID          | N    |
+| Description             | EDI_DESCRIPTION | AN   |
+| Contenu                 | EDI_CONTENU     | AN   |
+
+## Type de contenu éditorial
+
 | Libellé de la propriété | Nom du champ | Type |
 | ----------------------- | ------------ | ---- |
+| Identifiant             | CET_ID       | N    |
+| Libellé                 | CET_LIBELLE  | AN   |
+
+## Information base de données
+
+| Libellé de la propriété | Nom du champ | Type |
+| ----------------------- | ------------ | ---- |
+| Libelle                 | DBI_LIBELLE  | AN   |
+| Type                    | DBI_TYPE     | AN   |
+| Valeur                  | DBI_VALEUR   | AN   |
+
+## Administration de la base de données
+
+| Libellé de la propriété | Nom du champ  | Type |
+| ----------------------- | ------------- | ---- |
+| Identifiant             | DBA_ID        | N    |
+| Horodatage              | DBA_DATEHEURE | DATE |
+| Nom                     | DBA_NOM       | A    |
+| Nature                  | DBA_NATURE    | AN   |
+| Commande                | DBA_COMMANDE  | AN   |
+
+
 
 
 https://sqlpro.developpez.com/cours/normes/#L3.1
