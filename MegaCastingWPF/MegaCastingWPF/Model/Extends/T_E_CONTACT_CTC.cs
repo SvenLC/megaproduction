@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Windows;
+using Newtonsoft.Json.Linq;
 
 namespace MegaCastingWPF.Model.Extends
 {
@@ -109,93 +113,166 @@ namespace MegaCastingWPF.Model.Extends
 
         public override bool Create()
         {
-            //bool isSucces = this.Update();
+            ContactEdit windowEdit = new ContactEdit(this);
+            windowEdit.ShowDialog();
 
-            //if (isSucces)
-            //{
-            //    try
-            //    {
-            //        if (this.PRO_ID != 0)
-            //        {
-            //            Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.Where(x => x.PRO_ID == this.PRO_ID).First().T_E_CONTACT_CTC.Add(this);
-            //        }
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-            throw new NotImplementedException();
         }
 
         public override bool Update()
         {
-            //ContactEdit windowEdit = new ContactEdit(this);
-            //windowEdit.ShowDialog();
+            ContactEdit windowEdit = new ContactEdit(this);
+            windowEdit.ShowDialog();
 
-            //if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
-            //{
-            //    try
-            //    {
-            //        MegeCastingDatabase.Current.SaveChanges();
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
-
-            throw new NotImplementedException();
+            if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool Delete()
         {
-            //Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Remove(this);
+            HttpResponseMessage response = null;
 
-            //try
-            //{
-            //    MegeCastingDatabase.Current.SaveChanges();
-            //    return true;
-            //}
-            //catch (Exception)
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
-            throw new NotImplementedException();
+                response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Path + "/" + this.CTC_ID).Result;
+            }
+
+            return true;
+        }
+
+        public bool saveCreate()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                    string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    HttpResponseMessage response = client.PostAsync(Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Path, byteContent).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool saveUpdate()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                    string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    HttpResponseMessage response = client.PutAsync(Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Path + "/" + this.CTC_ID, byteContent).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public override List<T_E_CONTACT_CTC> getSource()
         {
-            //return MegeCastingDatabase.Current.T_E_CONTACT_CTC.ToList().Cast<BaseExtend>().ToList();
+            List<T_E_CONTACT_CTC> liste = new List<T_E_CONTACT_CTC>();
 
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Path).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject googleSearch = JObject.Parse(json);
+                    // get JSON result objects into a list
+                    IList<JToken> results = googleSearch["contact"].Children().ToList();
+                    // serialize JSON results into .NET objects
+                    IList<T_E_CONTACT_CTC> searchResults = new List<T_E_CONTACT_CTC>();
+                    foreach (JToken result in results)
+                    {
+                        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                        T_E_CONTACT_CTC searchResult = result.ToObject<T_E_CONTACT_CTC>();
+                        searchResults.Add(searchResult);
+                    }
+                    liste = searchResults.ToList();
+                }
+            }
+
+            return liste;
         }
 
-        public override List<T_E_CONTACT_CTC> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_E_CONTACT_CTC> list() => getSource();
 
         public override T_E_CONTACT_CTC get(int id)
         {
-            throw new NotImplementedException();
+            T_E_CONTACT_CTC searchResult = new T_E_CONTACT_CTC();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["contact"].ToObject<T_E_CONTACT_CTC>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }

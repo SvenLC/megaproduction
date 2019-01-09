@@ -39,10 +39,9 @@ namespace MegaCastingWPF.Windows
         {
             if (Validator.IsValid(this))
             {
-                if (PassWord.Password == "")
+                if ((PassWord.Password == "" || (PassWord.Password.Length < 6 || PassWord.Password.Length > 50)) && Model.StoreObject.UTI_ID == 0)
                 {
                     PassWord.BorderBrush = Brushes.Red;
-
                 }
                 else
                 {

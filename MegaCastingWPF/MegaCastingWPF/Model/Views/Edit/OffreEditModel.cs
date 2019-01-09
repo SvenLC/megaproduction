@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Model.Views.Edit
 {
-    class OffreEditModel : BaseEditModel<T_E_OFFRE_CASTING_CAST_FORMA>
+    class OffreEditModel : BaseEditModel<T_E_OFFRE_CASTING_CAST>
     {
-        public OffreEditModel(T_E_OFFRE_CASTING_CAST_FORMA _storeObject = null)
+        public OffreEditModel(T_E_OFFRE_CASTING_CAST _storeObject = null)
         {
             if (_storeObject == null)
-                StoreObject = new T_E_OFFRE_CASTING_CAST_FORMA();
+                StoreObject = new T_E_OFFRE_CASTING_CAST();
             else
                 StoreObject = _storeObject;
         }

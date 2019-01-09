@@ -57,6 +57,7 @@ namespace MegaCastingWPF
         {
 
             string result = T_S_UTILISATEUR_UTI.connect(UserName, PassWord);
+
             int id = 0;
 
             #region Old

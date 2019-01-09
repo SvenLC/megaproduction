@@ -34,6 +34,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -76,6 +77,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -112,6 +114,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.Path + "/" + this.JUR_ID).Result;
             }
 
@@ -120,7 +124,7 @@ namespace MegaCastingWPF.Model.Extends
                 return true;
             }
 
-            MessageBox.Show("Une offre est associée à ce statut.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Un prospect est associé à ce statut.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             return false;
         }
 
@@ -135,6 +139,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -226,10 +232,7 @@ namespace MegaCastingWPF.Model.Extends
             return this.JUR_LIBELLE;
         }
 
-        public override List<T_R_STATUT_JURIDIQUE_JUR> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_R_STATUT_JURIDIQUE_JUR> list() => getSource();
 
         public override T_R_STATUT_JURIDIQUE_JUR get(int id)
         {
@@ -237,6 +240,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.Path + "/" + id).Result;
                 if (response.IsSuccessStatusCode)
                 {

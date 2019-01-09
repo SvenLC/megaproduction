@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,11 +30,17 @@ namespace MegaCastingWPF.Model.Extends
         [JsonProperty(PropertyName = "CAST_DATE_DEBUT_PUBLICATION")]
         public System.DateTime CAST_DATE_DEBUT_PUBLICATION { get; set; }
 
+        [JsonProperty(PropertyName = "DATE")]
+        public string DATE => CAST_DATE_DEBUT_PUBLICATION.ToString("dd/MM/yyyy");
+
         [JsonProperty(PropertyName = "CAST_DUREE_DIFFUSION")]
         public System.Int32 CAST_DUREE_DIFFUSION { get; set; }
 
         [JsonProperty(PropertyName = "CAST_DATE_DEBUT_CONTRAT")]
         public System.DateTime CAST_DATE_DEBUT_CONTRAT { get; set; }
+
+        [JsonProperty(PropertyName = "DATECON")]
+        public string DATECON => CAST_DATE_DEBUT_CONTRAT.ToString("dd/MM/yyyy");
 
         [JsonProperty(PropertyName = "CAST_NBR_POSTE")]
         public int CAST_NBR_POSTE { get; set; }
@@ -45,126 +52,104 @@ namespace MegaCastingWPF.Model.Extends
         public string CAST_DESCRIPTION_PROFIL { get; set; }
 
         [JsonProperty(PropertyName = "PRO_NAME")]
-        public int PRO_NAME { get; set; }
+        public string PRO_NAME { get; set; }
 
         [JsonProperty(PropertyName = "MET_LIBELLE")]
-        public int MET_LIBELLE { get; set; }
+        public string MET_LIBELLE { get; set; }
 
         [JsonProperty(PropertyName = "CTC_EMAIL")]
-        public int CTC_EMAIL { get; set; }
+        public string CTC_EMAIL { get; set; }
 
         [JsonProperty(PropertyName = "LOC_LIBELLE")]
-        public int LOC_LIBELLE { get; set; }
+        public string LOC_LIBELLE { get; set; }
 
         [JsonProperty(PropertyName = "CON_LIBELLE")]
-        public int CON_LIBELLE { get; set; }
+        public string CON_LIBELLE { get; set; }
+
+        [JsonProperty(PropertyName = "objectID")]
+        public int objectID { get; set; }
+
 
         public override bool Create()
         {
-            //bool isSucces = this.Update();
+            bool succes = false;
+            try
+            {
+                succes = new T_E_OFFRE_CASTING_CAST().Create();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est servenue !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
-            //if (isSucces)
-            //{
-            //    Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Add(this);
-
-            //    try
-            //    {
-            //        MegeCastingDatabase.Current.SaveChanges();
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
-
-            throw new NotImplementedException();
+            return succes;
         }
 
         public override bool Update()
         {
-            //OffreEdit windowEdit = new OffreEdit(this);
-            //windowEdit.ShowDialog();
+            bool succes = false;
+            try
+            {
+                succes = Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.get(this.objectID).Update();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est servenue !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
-            //if (windowEdit.DialogResult.HasValue && windowEdit.DialogResult.Value == true)
-            //{
-            //    try
-            //    {
-            //        MegeCastingDatabase.Current.SaveChanges();
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Database.MegeCastingDatabase.ReinitializeDatabase();
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
-
-            throw new NotImplementedException();
+            return succes;
         }
 
         public override bool Delete()
         {
-            //T_E_OFFRE_CASTING_CAST objectSelect = Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Where(x => x.CAST_ID == this.CAST_ID).First();
+            bool succes = false;
 
-            //Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.Remove(objectSelect);
-
-            //try
-            //{
-            //    MegeCastingDatabase.Current.SaveChanges();
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return true;
-            //}
-            //catch (Exception)
-            //{
-            //    Database.MegeCastingDatabase.ReinitializeDatabase();
-            //    return false;
-            //}
-
-            throw new NotImplementedException();
+            try
+            {
+                succes = Database.MegeCastingDatabase.Current.T_E_OFFRE_CASTING_CAST.get(this.objectID).Delete();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est servenue !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return succes;
         }
 
         public override string GetHeader()
         {
-            return this.CAST_ID.ToString();
+            return this.objectID.ToString();
         }
 
         public override List<T_E_OFFRE_CASTING_CAST_FORMA> getSource()
         {
             List<T_E_OFFRE_CASTING_CAST_FORMA> liste = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
 
-            //using (var client = new HttpClient())
-            //{
-            //    var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/offreCastings/formated").Result;
-            //    if (response.IsSuccessStatusCode)
-            //    {
-            //        var responseContent = response.Content;
-            //        string json = responseContent.ReadAsStringAsync().Result;
-            //        JObject googleSearch = JObject.Parse(json);
-            //        // get JSON result objects into a list
-            //        IList<JToken> results = googleSearch["offres"].Children().ToList();
-            //        // serialize JSON results into .NET objects
-            //        IList<T_E_OFFRE_CASTING_CAST_FORMA> searchResults = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
-            //        foreach (JToken result in results)
-            //        {
-            //            // JToken.ToObject is a helper method that uses JsonSerializer internally
-            //            T_E_OFFRE_CASTING_CAST_FORMA searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST_FORMA>();
-            //            searchResults.Add(searchResult);
-            //        }
-            //        liste = searchResults.ToList();
-            //    }
-            //}
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync("https://megacastingprivateapi.azurewebsites.net/offreCastings/formated").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject googleSearch = JObject.Parse(json);
+                    // get JSON result objects into a list
+                    IList<JToken> results = googleSearch["Offres"].Children().ToList();
+                    // serialize JSON results into .NET objects
+                    IList<T_E_OFFRE_CASTING_CAST_FORMA> searchResults = new List<T_E_OFFRE_CASTING_CAST_FORMA>();
+                    foreach (JToken result in results)
+                    {
+                        // JToken.ToObject is a helper method that uses JsonSerializer internally
+                        T_E_OFFRE_CASTING_CAST_FORMA searchResult = result.ToObject<T_E_OFFRE_CASTING_CAST_FORMA>();
+                        searchResults.Add(searchResult);
+                    }
+                    liste = searchResults.ToList();
+                }
+            }
 
             return liste;
         }
@@ -216,7 +201,7 @@ namespace MegaCastingWPF.Model.Extends
 
             TBC = new TextBlock()
             {
-                Text = this.CAST_DATE_DEBUT_PUBLICATION.ToString(),
+                Text = this.DATE,
             };
 
             TBC.SetValue(Grid.ColumnProperty, 0);
@@ -234,7 +219,7 @@ namespace MegaCastingWPF.Model.Extends
 
             TBC = new TextBlock()
             {
-                Text = this.CAST_DATE_DEBUT_CONTRAT.ToString(),
+                Text = this.DATECON,
             };
 
             TBC.SetValue(Grid.ColumnProperty, 0);
@@ -268,29 +253,43 @@ namespace MegaCastingWPF.Model.Extends
 
             liste.Add(TBC);
 
-            //TBC = new TextBlock()
-            //{
-            //    Text = this.T_H_CLIENT_CLI.T_E_PROSPECT_PRO.PRO_NAME,
-            //};
+            TBC = new TextBlock()
+            {
+                Text = PRO_NAME,
+            };
 
-            //TBC.SetValue(Grid.ColumnProperty, 0);
+            TBC.SetValue(Grid.ColumnProperty, 0);
 
-            //liste.Add(TBC);
+            liste.Add(TBC);
 
-            //TBC = new TextBlock()
-            //{
-            //    Text = this.T_R_METIER_MET.MET_LIBELLE,
-            //};
+            TBC = new TextBlock()
+            {
+                Text = MET_LIBELLE,
+            };
 
-            //TBC.SetValue(Grid.ColumnProperty, 0);
+            TBC.SetValue(Grid.ColumnProperty, 0);
 
-            //liste.Add(TBC);
+            liste.Add(TBC);
+
+            TBC = new TextBlock()
+            {
+                Text = LOC_LIBELLE,
+            };
+
+            TBC.SetValue(Grid.ColumnProperty, 0);
+
+            liste.Add(TBC);
+
+            TBC = new TextBlock()
+            {
+                Text = CON_LIBELLE,
+            };
+
+            TBC.SetValue(Grid.ColumnProperty, 0);
+
+            liste.Add(TBC);
 
 
-            //if (this.T_H_CLIENT_CLI != null)
-            //{
-
-            //}
 
             return liste;
         }
@@ -304,7 +303,7 @@ namespace MegaCastingWPF.Model.Extends
                 Header = "Id",
                 Width = new DataGridLength(50),
                 FontSize = 12,
-                Binding = new Binding("CAST_ID")
+                Binding = new Binding("objectID")
             });
             liste.Add(new DataGridTextColumn()
             {
@@ -325,7 +324,7 @@ namespace MegaCastingWPF.Model.Extends
                 Header = "Date publication",
                 Width = new DataGridLength(100),
                 FontSize = 12,
-                Binding = new Binding("CAST_DATE_DEBUT_PUBLICATION")
+                Binding = new Binding("DATE")
             });
             liste.Add(new DataGridTextColumn()
             {
@@ -339,7 +338,7 @@ namespace MegaCastingWPF.Model.Extends
                 Header = "Début contrat",
                 Width = new DataGridLength(100),
                 FontSize = 12,
-                Binding = new Binding("CAST_DATE_DEBUT_CONTRAT")
+                Binding = new Binding("DATECON")
             });
             liste.Add(new DataGridTextColumn()
             {
@@ -367,14 +366,28 @@ namespace MegaCastingWPF.Model.Extends
                 Header = "Nom du client",
                 Width = new DataGridLength(100),
                 FontSize = 12,
-                Binding = new Binding("T_H_CLIENT_CLI.T_E_PROSPECT_PRO.PRO_NAME")
+                Binding = new Binding("PRO_NAME")
             });
             liste.Add(new DataGridTextColumn()
             {
                 Header = "Libellé du métier",
                 Width = new DataGridLength(100),
                 FontSize = 12,
-                Binding = new Binding("T_R_METIER_MET.MET_LIBELLE")
+                Binding = new Binding("MET_LIBELLE")
+            });
+            liste.Add(new DataGridTextColumn()
+            {
+                Header = "Libellé du contrat",
+                Width = new DataGridLength(100),
+                FontSize = 12,
+                Binding = new Binding("CON_LIBELLE")
+            });
+            liste.Add(new DataGridTextColumn()
+            {
+                Header = "Libellé de la localisation",
+                Width = new DataGridLength(100),
+                FontSize = 12,
+                Binding = new Binding("LOC_LIBELLE")
             });
 
             return liste;

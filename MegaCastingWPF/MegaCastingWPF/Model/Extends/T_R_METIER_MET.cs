@@ -40,6 +40,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -82,6 +83,7 @@ namespace MegaCastingWPF.Model.Extends
                 {
                     using (var client = new HttpClient())
                     {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
 
                         string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
@@ -118,6 +120,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 response = client.DeleteAsync(Database.MegeCastingDatabase.Current.T_R_METIER_MET.Path + "/" + this.MET_ID).Result;
             }
 
@@ -141,6 +145,8 @@ namespace MegaCastingWPF.Model.Extends
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
                 var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_METIER_MET.Path).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -245,14 +251,28 @@ namespace MegaCastingWPF.Model.Extends
             return liste;
         }
 
-        public override List<T_R_METIER_MET> list()
-        {
-            throw new NotImplementedException();
-        }
+        public override List<T_R_METIER_MET> list() => getSource();
 
         public override T_R_METIER_MET get(int id)
         {
-            throw new NotImplementedException();
+            T_R_METIER_MET searchResult = new T_R_METIER_MET();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Database.MegaCastingAPIEntities.token);
+
+                var response = client.GetAsync(Database.MegeCastingDatabase.Current.T_R_METIER_MET.Path + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    string json = responseContent.ReadAsStringAsync().Result;
+                    JObject rss = JObject.Parse(json);
+
+                    searchResult = rss["metier"].ToObject<T_R_METIER_MET>();
+                }
+            }
+
+            return searchResult;
         }
     }
 }
