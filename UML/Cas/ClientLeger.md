@@ -4,6 +4,7 @@
     - Visualiser les offres de casting
     - Recherche un casting
         - Include: Saisie d'un mot clé
-        - (Extends: Choisir une catégorie particulière)
+        - Choisir une catégorie particulière pour filtre
     - Visualiser le contenu éditorial
         - Extends: Filtré par catégorie
+    - Visualiser une page Home

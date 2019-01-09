@@ -2,43 +2,43 @@
 
 - Utilisateur
     - Rechercher une offre de casting
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les offres de casting
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un client
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les clients
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un partnaire de diffusion
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les partenaires de diffusion
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un contenu éditorial
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les contenues éditoriaux
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un type contrat
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les types contrats
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher un métier
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les métiers
         - extends: Ajouter
         - extends: Éditer
         - extends: Supprimer
     - Rechercher domaine de métier
-        - extends: //TODO
+        - extends: Entre la valeur dans le champ de filtre
     - Gérer les domaines de métier
         - extends: Ajouter
         - extends: Éditer
