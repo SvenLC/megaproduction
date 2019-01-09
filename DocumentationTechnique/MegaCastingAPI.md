@@ -1,8 +1,30 @@
-# MegaCastin API
+# API
 
 ## Choix technologique
 
-### API
+### Nodejs
+
+Pour la réalisation des API notre choix s'est porté sur la plateforme logiciel libre et événementielle Nodejs écrite en Javascript.
+
+Nodejs intègre un serveur HTTP. Son fonctionnement est basé sur une boucle événementielle lui permettant de supporter de fortes montées en charge.
+
+L’utilisation de Node.js en tant que serveur web permet de traiter un gros volume de requêtes simultanément de manière efficace. Cette performance élevée s’explique par une conception asynchrone (modèle non bloquant) permettant d’éviter les attentes. Ainsi, plusieurs requêtes peuvent être lancées en parallèle. Les résultats sont traités au fil de l'eau.
+
+Node utilise le compilateur JavaScript V8 de Google focalisé sur les performances et la sécurité. A l'origine, la machine virtuelle V8 a été créée pour interpréter le JavaScript dans le navigateur Chrome. Merci aux développeurs de Google, le moteur V8 est et restera à la pointe de la technologie. Par ricochet, les progrès de V8 impactent directement Node.js.
+
+Le gestionnaire de packages npm
+Initialement gestionnaire de packages de Node.js, npm est aujourd'hui le gestionnaire de packages du monde JavaScript. On y trouve aussi bien des modules pour le backend que pour le frontend.
+
+Les développeurs sont très actifs. Ils contribuent constament à l'amélioration des librairies Node.js au point d'en faire un problème à part entière : la JavaScript fatigue.
+
+Npm compte aujourd'hui plus de 500 000 packages et le nombre ne cesse d'augmenter, bien plus rapidement que pour les autres langages.
+
+Une technologie stable et éprouvée
+Node.js n’est plus la petite dernière des technologies. C'est une techologie utilisée et éprouvée par les géants du web : Netflix, Trello, PayPal, LinkedIn, Walmart, Uber, Medium, Groupon, Ebay ou la NASA.
+
+Ce support par les gros acteurs et cette politique de Long Term Support (LTS) donne à Node.js l'avantage d'être une technologie sûre et un bon choix sur l'avenir.
+
+### 
 
 Backend Node.JS https://github.com/nodejs/node
 ORM Sequalize https://github.com/sequelize/sequelize
@@ -26,6 +48,27 @@ SQL server, cloud azure
 megacasting.database.windows.net
 
 ## Notice d'installation
+
+https://vmokshagroup.com/blog/building-restful-apis-using-node-js-express-js-and-ms-sql-server
+https://medium.freecodecamp.org/how-to-deploy-your-super-cool-node-app-to-azure-from-github-47ebff6c5448
+
+### ORM
+
+Sequelize
+https://github.com/sequelize/sequelize
+Import des models en utilisant sequelize-auto
+https://github.com/sequelize/sequelize-auto
+
+sequelize-auto  -c './config.json' -o './models' -d MEGACASTING -h megacasting.database.windows.net -u adminmegacasting  -x t4tX38CwrHQJbDWkl2qr
+
+fichier config.json
+{
+  "host": "megacasting.database.windows.net",
+  "dialect": "mssql",
+  "dialectOptions": {
+    "encrypt": true
+  }
+}
 
 ## Librairies node
 
@@ -75,10 +118,4 @@ Bcrypt a trop de dépendance système tel que python 2.7 windows build tools, qu
 
         npm install --save jsonwebtoken
 
-### MegaCasting Wiki
 
-Déploiement d'un wiki à l'aide de wikijs sur l'hébergeur Heroku.
-
-Documentation disponible ici -> https://github.com/Requarks/wiki
-
-script de déploiement pour Heroku
