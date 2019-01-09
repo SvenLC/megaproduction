@@ -1,6 +1,6 @@
-# Mega casting
+# Règles de gestion
 
-## Règles de gestion
+## Versionnage
 
 | Numéro | Date     | responsable | descriptif                     |
 | ------ | -------- | ----------- | ------------------------------ |
@@ -10,7 +10,8 @@
 | 1.1.0  | 14/11/18 | S. Le Cann  | Ajout règles                   |
 | 1.0.0  | 11/11/18 | B. Ragot    | Création du document           |
 
-### Utilisateurs
+
+## Utilisateurs
 
 - Un utilisateur a un et un seul compte
 - Un utilisateur doit s'authentifier pour utiliser le client lourd
@@ -22,7 +23,7 @@
 - Un utilisateur peur créer, modifier, supprimer 0 ou plusieurs fiches de contact
 - Un utilisateur peut être administrateur
 
-### Administrateur
+## Administrateur
 
 - Un administrateur est un utilisateur
 - Un administrateur peut créer, modifier, supprimer 0 ou plusieurs utilisateurs
@@ -33,26 +34,26 @@
 - Un administrateur peut créer, modifier, supprimer 0 ou plusieurs statuts juridiques
 - Un administrateur peut créer, modifier, supprimer 0 ou plusieurs localisation
 
-### Prospect
+## Prospect
 
 - Un prospect peut être un client et/ou un partenaire.
 - Un prospect est lié à une fiche de contact principale.
 - Un prospect peut être lié à 1 ou plusieurs fiches de contact
 
-### Client
+## Client
 
 - Un client possède une et une seule adresse.
 - Un client a un et un seul statut juridique
 - Un client peut être lié à 0 ou plusieurs offres
 - Un client peut être partenaire
 
-### Partenaire de diffusion
+## Partenaire de diffusion
 
 - Un partenaire de diffusion a un et un seul compte
 - Un partenaire doit s'authentifier pour utiliser l'API
 - Un partenaire de diffusuon peut récupérer la liste des offres à travers une API
   
-### Offre de casting
+## Offre de casting
 
 - Une offre de casting correspond à une et une seule localisation
 - Une offre de casting peut être crée par un et un seul utilisateur
@@ -66,7 +67,7 @@
 - Une offre de casting est liée a un et un seul contact
 - Une offre de casting publiée sur le site web est visible par tout le monde
 
-### Adresse et fiche contact
+## Adresse et fiche contact
 
 - Une adresse peut correspondre à plusieurs client.
 - Une adresse a une et une seule localisation
@@ -74,7 +75,7 @@
 - Une fiche de contact est lié à un et un seul prospect
 - Une fiche de contact peut être principale, c'est elle qui permet de contacter directement le prospect.
 
-### Listes de référentiels
+## Listes de référentiels
 
 - Un domaine de métier peut correspondre à plusieurs offres de casting
 - Un domaine de métier peut correspondre à un ou plusieurs métiers

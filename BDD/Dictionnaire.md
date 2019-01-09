@@ -1,5 +1,7 @@
 # Dictionnaire des données
 
+## Versionnage
+
 | Numéro | Date     | responsable | descriptif                           |
 | ------ | -------- | ----------- | ------------------------------------ |
 | 1.4.0  | 09/10/18 | S. Le Cann  | Réorganisation et ajouts d'entités   |
@@ -152,9 +154,3 @@
 | Nom                     | DBA_NOM       | A    |
 | Nature                  | DBA_NATURE    | AN   |
 | Commande                | DBA_COMMANDE  | AN   |
-
-
-
-
-https://sqlpro.developpez.com/cours/normes/#L3.1
-https://blog.developpez.com/exercices-sql/p10901/exercices-sql/modelisation_d_une_adresse
