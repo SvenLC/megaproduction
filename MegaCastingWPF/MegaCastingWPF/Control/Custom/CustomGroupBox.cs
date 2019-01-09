@@ -13,9 +13,9 @@ namespace MegaCastingWPF.Control.Custom
 {
     public class CustomGroupBox : GroupBox
     {
-        private BaseExtend prospect;
+        private object prospect;
 
-        public BaseExtend Prospect
+        public object Prospect
         {
             get
             {
@@ -32,7 +32,7 @@ namespace MegaCastingWPF.Control.Custom
         }
 
         public static RoutedEvent ClickEvent =
-        EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(BaseExtend));
+        EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(object));
 
         public event RoutedEventHandler Click
         {

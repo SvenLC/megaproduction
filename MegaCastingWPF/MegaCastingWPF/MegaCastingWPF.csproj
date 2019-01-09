@@ -82,6 +82,9 @@
     <Reference Include="MahApps.Metro.IconPacks, Version=2.3.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.2.3.0\lib\net46\MahApps.Metro.IconPacks.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -140,17 +143,29 @@
     </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\lenghtToVisibilityConverter.cs" />
+    <Compile Include="Database\APIObject.cs" />
+    <Compile Include="Database\MegaCastingAPIEntities.cs" />
     <Compile Include="Interface\ICrud.cs" />
     <Compile Include="Model\Extends\BaseExtend.cs" />
+    <Compile Include="Model\Extends\ConnectionModel.cs" />
+    <Compile Include="Model\Extends\T_E_ADRESSE_ADR.cs" />
     <Compile Include="Model\Extends\T_E_CONTACT_CTC.cs" />
+    <Compile Include="Model\Extends\T_E_CONTENU_EDITORIAL_EDI.cs" />
+    <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST_FORMA.cs" />
     <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST.cs" />
     <Compile Include="Model\Extends\T_E_PROSPECT_PRO.cs" />
+    <Compile Include="Model\Extends\T_H_CLIENT_CLI.cs" />
+    <Compile Include="Model\Extends\T_H_PARTENAIRES_PAR.cs" />
+    <Compile Include="Model\Extends\T_R_CONTENU_EDITORIAL_TYPE_CET.cs" />
     <Compile Include="Model\Extends\T_R_CONTRAT_CON.cs" />
     <Compile Include="Model\Extends\T_R_DOMAINE_METIER_DOM.cs" />
     <Compile Include="Model\Extends\T_R_LOCALISATION_LOC.cs" />
     <Compile Include="Model\Extends\T_R_METIER_MET.cs" />
     <Compile Include="Model\Extends\T_R_STATUT_JURIDIQUE_JUR.cs" />
+    <Compile Include="Model\Extends\T_S_DATABASE_ADMIN_DBA.cs" />
+    <Compile Include="Model\Extends\T_S_DATABASE_INFO_DBI.cs" />
     <Compile Include="Model\Extends\T_S_UTILISATEUR_UTI.cs" />
+    <Compile Include="Model\Extends\T_X_CODE_POSTAL_CPT.cs" />
     <Compile Include="Model\Views\BaseViewModel.cs" />
     <Compile Include="Model\Views\ConnectionViewModel.cs" />
     <Compile Include="Model\Views\ContratViewModel.cs" />
@@ -276,73 +291,7 @@
     <Compile Include="Control\UserControls\Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\Database.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Database.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Database.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Database\MegeCastingDatabase.cs" />
-    <Compile Include="Database\T_E_ADRESSE_ADR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_CONTACT_CTC.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_CONTENU_EDITORIAL_EDI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_OFFRE_CASTING_CAST.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_E_PROSPECT_PRO.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_H_CLIENT_CLI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_H_PARTENAIRES_PAR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_CONTENU_EDITORIAL_TYPE_CET.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_CONTRAT_CON.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_DOMAINE_METIER_DOM.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_LOCALISATION_LOC.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_METIER_MET.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_R_STATUT_JURIDIQUE_JUR.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_DATABASE_ADMIN_DBA.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_DATABASE_INFO_DBI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_S_UTILISATEUR_UTI.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\T_X_CODE_POSTAL_CPT.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -405,6 +354,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <None Include="MegaCastingWPF_TemporaryKey.pfx" />
 =======
     <EntityDeploy Include="Database\Database.edmx">
@@ -415,6 +365,8 @@
       <DependentUpon>Database.edmx</DependentUpon>
     </None>
 >>>>>>> 8d41cf0433d186656ce2025421550362e61f7bde
+=======
+>>>>>>> 43693d983931d88965b19356347e42c7743c5555
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -425,6 +377,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
@@ -454,5 +407,9 @@
   </ItemGroup>
   <ItemGroup />
 >>>>>>> 8d41cf0433d186656ce2025421550362e61f7bde
+=======
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+>>>>>>> 43693d983931d88965b19356347e42c7743c5555
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

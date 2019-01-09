@@ -12,7 +12,7 @@ using System.Windows.Data;
 
 namespace MegaCastingWPF.Control.Custom
 {
-    public class RelatedListe<T> : Content<T> where T : BaseExtend, new()
+    public class RelatedListe<T> : Content<T> where T : BaseExtend<T>, new()
     {
         private int Id;
 

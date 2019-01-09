@@ -68,7 +68,7 @@
                                                 <TextBox x:Name="UserName" controls:TextBoxHelper.ClearTextButton="True" Grid.Row="0" Grid.Column="2" Width="250" >
                                                     <Binding Path="UserName" UpdateSourceTrigger="PropertyChanged" >
                                                         <Binding.ValidationRules>
-                                                            <Rule:TextRule Min="5" Max="25"/>
+                                                            <Rule:TextRule Min="1" Max="25"/>
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </TextBox>

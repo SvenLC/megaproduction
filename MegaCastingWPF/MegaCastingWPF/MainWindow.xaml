@@ -18,6 +18,12 @@
                     <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="WebSite" />
                 </StackPanel>
             </Button>
+            <Button x:Name="Logout" Click="Logout_Click">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconModern Width="16" Height="16" Kind="User" VerticalAlignment="Center" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Logout" />
+                </StackPanel>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 

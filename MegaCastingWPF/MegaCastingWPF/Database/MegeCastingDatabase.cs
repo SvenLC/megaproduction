@@ -6,26 +6,15 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Database
 {
-    public class MegeCastingDatabase
+    public static class MegeCastingDatabase
     {
         #region Singleton var
 
-        private static Lazy<MegaCastingEntities> Instance = new Lazy<MegaCastingEntities>(() => new MegaCastingEntities());
+        private static MegaCastingAPIEntities Instance = new MegaCastingAPIEntities();
 
-        public static MegaCastingEntities Current => Instance.Value;
-
-        #endregion
-
-        #region Static Funcs
-
-        public static void ReinitializeDatabase()
-        {
-            if (Instance.IsValueCreated)
-            {
-                Instance = new Lazy<MegaCastingEntities>(() => new MegaCastingEntities());
-            }
-        }
+        public static MegaCastingAPIEntities Current => Instance;
 
         #endregion
+        
     }
 }

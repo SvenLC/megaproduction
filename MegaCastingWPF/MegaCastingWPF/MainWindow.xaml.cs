@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using MegaCastingWPF.Control.UserControls.Views;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Windows;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace MegaCastingWPF
         private void LinkWebSite_Click(object sender, RoutedEventArgs e)
         {
             Process p = new Process();
-            ProcessStartInfo pInfo = new ProcessStartInfo("http://www.google.fr");
+            ProcessStartInfo pInfo = new ProcessStartInfo("https://megacastingwebsite.herokuapp.com/");
 
             try
             {
@@ -56,20 +56,55 @@ namespace MegaCastingWPF
         public bool connected(String UserName, String PassWord)
         {
 
-            if (Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_LOGIN == UserName).Any())
+            string result = T_S_UTILISATEUR_UTI.connect(UserName, PassWord);
+            int id = 0;
+
+            #region Old
+
+                //if (Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.list().Where(x => x.UTI_LOGIN == UserName).Any())
+                //{
+                //    //T_S_UTILISATEUR_UTI utilisateur = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_LOGIN == UserName).First();
+
+                //    if (comparePassWord(PassWord, utilisateur.UTI_MDP))
+                //    {
+                //        GridContenu.Children.Clear();
+                //        GridContenu.Children.Add(new HomeView(utilisateur));
+
+                //        return true;
+                //    }
+                //}
+
+            #endregion
+
+            if (result == "")
             {
-                T_S_UTILISATEUR_UTI utilisateur = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.Where(x => x.UTI_LOGIN == UserName).First();
-
-                if (comparePassWord(PassWord, utilisateur.UTI_MDP))
+                return false;
+            }
+            else {
+                try
                 {
-                    GridContenu.Children.Clear();
-                    GridContenu.Children.Add(new HomeView(utilisateur));
-
-                    return true;
+                    Int32.TryParse(result, out id);
+                }
+                catch (Exception)
+                {
+                    id = 0;
                 }
             }
 
-            return false;
+            T_S_UTILISATEUR_UTI utilisateur = Database.MegeCastingDatabase.Current.T_S_UTILISATEUR_UTI.get(id);
+
+            if (utilisateur != null)
+            {
+                GridContenu.Children.Clear();
+                GridContenu.Children.Add(new HomeView(utilisateur));
+            }
+            else
+            {
+                MessageBox.Show("Un problème est survenue!", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+
+            return true;
 
         }
 
@@ -92,6 +127,12 @@ namespace MegaCastingWPF
 
             return true;
 
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            GridContenu.Children.Clear();
+            GridContenu.Children.Add(new ConnectionView(this));
         }
     }
 }

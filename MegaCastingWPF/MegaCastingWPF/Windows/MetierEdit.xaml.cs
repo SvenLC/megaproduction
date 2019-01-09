@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views.Edit;
 using MegaCastingWPF.Rule;
 using System;
@@ -28,13 +28,15 @@ namespace MegaCastingWPF.Windows
 
         public MetierEdit(T_R_METIER_MET _Prospect = null)
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            Model = new MetierEditModel(_Prospect);
+            //Model = new MetierEditModel(_Prospect);
 
-            this.DataContext = Model;
+            //this.DataContext = Model;
 
-            this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.ToList();
+            //this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.ToList();
+
+            throw new NotImplementedException();
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)

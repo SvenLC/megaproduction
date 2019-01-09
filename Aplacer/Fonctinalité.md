@@ -24,7 +24,6 @@
     - Gérer les informations partenaires de diffusion
     - Gérer les informations utilisateurs
   - Supprimer
-- Recherche un utilisateur
 - Gérer les utilisateurs
   - Afficher
   - Ajouter
@@ -32,13 +31,11 @@
     - Rendre inactif
     - Passer en administrateur
   - Supprimer
-- Rechercher une offre de casting
 - Gérer les offres des castings
   - Afficher
   - Ajouter
   - Éditer
   - Supprimer           
-- Rechercher un contenu éditorial
 - Gérer le contenu éditorial
   - Gérer le contenu
     - Afficher
@@ -52,32 +49,22 @@
     - Ajouter
     - Éditer
     - Supprimer
-  - Rechercher un métier
   - Gérer les métiers
     - Afficher
     - Ajouter
     - Éditer
     - Supprimer
-  - Rechercher un domaine de métier
   - Gérer les domaines de métier
     - Afficher
     - Ajouter
     - Éditer
     - Supprimer
-  - Recherher un status juridiques
   - Gérer les status juridiques
     - Afficher
     - Ajouter
     - Éditer
     - Supprimer
 
-Le contenu éditorial est sous forme d'article, sauvegarde en base de donnée. Écrite au format normal et stockage convertit en html.
-
-Ajout ?
-
-- Administer le site web
-- Visualiser les demandes de token
-- Créer des comptes web pour les clients
 
 ## Client léger
 
@@ -88,18 +75,6 @@ Ajout ?
 - Visualiser les offres de casting
 - Rechercher des offres de casting
 - Visualiser le contenu éditorial  
-
-Ajout ?
-
-- Moteur de recherche pour le contenu éditorial
-- Créer un compte (postulant)
-- Répondre à une offre de casting
-- Mise à disposition d'un sous-domaine pour l'API
-  - Affichage des documentations utilisateurs pour les flux json client.
-  - Demande d'un nouveau token.
-- Mise à disposition d'un espace d'administration simple
-  - Permet de modifier les pages statiques du site
-  - Administrer le sous domaine de l'API
 
 ## API/Service
 

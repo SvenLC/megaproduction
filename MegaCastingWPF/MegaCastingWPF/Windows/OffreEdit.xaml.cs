@@ -1,5 +1,5 @@
 ﻿using MahApps.Metro.Controls;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views.Edit;
 using MegaCastingWPF.Rule;
 using System;
@@ -25,16 +25,18 @@ namespace MegaCastingWPF.Windows
     {
         OffreEditModel Model;
 
-        public OffreEdit(T_E_OFFRE_CASTING_CAST _Prospect = null)
+        public OffreEdit(T_E_OFFRE_CASTING_CAST_FORMA _Prospect = null)
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            Model = new OffreEditModel(_Prospect);
+            //Model = new OffreEditModel(_Prospect);
 
-            this.DataContext = Model;
+            //this.DataContext = Model;
 
-            this.CBX_Metier.ItemsSource = Database.MegeCastingDatabase.Current.T_R_METIER_MET.ToList();
-            this.CBX_Prospect.ItemsSource = Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.ToList();
+            //this.CBX_Metier.ItemsSource = Database.MegeCastingDatabase.Current.T_R_METIER_MET.ToList();
+            //this.CBX_Prospect.ItemsSource = Database.MegeCastingDatabase.Current.T_H_CLIENT_CLI.ToList();
+
+            throw new NotImplementedException();
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)

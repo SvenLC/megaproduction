@@ -1,5 +1,5 @@
 ﻿using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views;
 using MegaCastingWPF.Windows;
 using System;
@@ -48,6 +48,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
         private void ButtonVignette_Click(object sender, RoutedEventArgs e)
         {
             this.loadVignette<LocalisationViewModel, T_R_LOCALISATION_LOC>(Model, ListContent, FilterTextBox);
+
         }
 
         private void ButtonListe_Click(object sender, RoutedEventArgs e)

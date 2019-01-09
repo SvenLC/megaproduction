@@ -1,7 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Model.Views.Edit;
 using MegaCastingWPF.Rule;
 using System;
@@ -29,27 +29,31 @@ namespace MegaCastingWPF.Windows
 
         public ProspectEdit(T_E_PROSPECT_PRO _Prospect = null)
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            Model = new ProspectEditModel(_Prospect);
+            //Model = new ProspectEditModel(_Prospect);
 
-            this.DataContext = Model;
+            //this.DataContext = Model;
 
-            Model.Content = new RelatedListe<T_E_CONTACT_CTC>(Model.StoreObject.PRO_ID);
+            //Model.Content = new RelatedListe<T_E_CONTACT_CTC>(Model.StoreObject.PRO_ID);
 
-            GridContact.Children.Add(Model.Content);
+            //GridContact.Children.Add(Model.Content);
 
-            this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.ToList();
+            //this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.ToList();
 
 
-            NumberRule1.IsObligated = isClientSwitch.IsChecked.Value;
-            NumberRule2.IsObligated = isClientSwitch.IsChecked.Value;
-            TextRule3.IsObligated = isClientSwitch.IsChecked.Value;
-            TextRule4.IsObligated = isClientSwitch.IsChecked.Value;
-            TextRule5.IsObligated = isClientSwitch.IsChecked.Value;
+            //NumberRule1.IsObligated = isClientSwitch.IsChecked.Value;
+            //NumberRule2.IsObligated = isClientSwitch.IsChecked.Value;
+            //TextRule3.IsObligated = isClientSwitch.IsChecked.Value;
+            //TextRule4.IsObligated = isClientSwitch.IsChecked.Value;
+            //TextRule5.IsObligated = isClientSwitch.IsChecked.Value;
 
-            TextRule1.IsObligated = isPartenaireSwitch.IsChecked.Value;
-            TextRule2.IsObligated = isPartenaireSwitch.IsChecked.Value;
+            //TextRule1.IsObligated = isPartenaireSwitch.IsChecked.Value;
+            //TextRule2.IsObligated = isPartenaireSwitch.IsChecked.Value;
+
+
+
+            throw new NotImplementedException();
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)
@@ -81,17 +85,19 @@ namespace MegaCastingWPF.Windows
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            T_E_CONTACT_CTC contact = new T_E_CONTACT_CTC();
-            contact.PRO_ID = Model.StoreObject.PRO_ID;
+            //T_E_CONTACT_CTC contact = new T_E_CONTACT_CTC();
+            //contact.PRO_ID = Model.StoreObject.PRO_ID;
 
-            bool succes = contact.Create();
+            //bool succes = contact.Create();
 
-            if (succes)
-            {
-                Model.StoreObject.T_E_CONTACT_CTC.Add(contact);
-            }
+            //if (succes)
+            //{
+            //    Model.StoreObject.T_E_CONTACT_CTC.Add(contact);
+            //}
 
-            Model.Content.Reload(Model.StoreObject.T_E_CONTACT_CTC.ToList());
+            //Model.Content.Reload(Model.StoreObject.T_E_CONTACT_CTC.ToList());
+
+            throw new NotImplementedException();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)

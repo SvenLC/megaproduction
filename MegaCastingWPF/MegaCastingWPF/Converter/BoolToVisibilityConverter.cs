@@ -34,23 +34,7 @@ namespace MegaCastingWPF.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Boolean? booleanValue = value as Boolean?;
-
-            if (booleanValue.HasValue)
-            {
-                if (booleanValue == true)
-                {
-                    return Visibility.Visible;
-                }
-                else
-                {
-                    return Visibility.Collapsed;
-                }
-            }
-            else
-            {
-                return Visibility.Collapsed;
-            }
+            throw new NotImplementedException();
         }
     }
 }

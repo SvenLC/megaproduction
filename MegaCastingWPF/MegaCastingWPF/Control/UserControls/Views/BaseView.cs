@@ -13,7 +13,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
 {
     public abstract class BaseView : UserControl
     {
-        public void loadVignette<T,E>(T Model,Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend, new()
+        public void loadVignette<T,E>(T Model,Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend<E>, new()
         {
             ListContent.Children.Clear();
             tbx.Text = "";
@@ -22,7 +22,7 @@ namespace MegaCastingWPF.Control.UserControls.Views
             ListContent.Children.Add(Model.Content as Vignette<E>);
         }
 
-        public void loadListe<T, E>(T Model, Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend, new()
+        public void loadListe<T, E>(T Model, Grid ListContent, TextBox tbx) where T : BaseViewModel<E>, new() where E : BaseExtend<E>, new()
         {
             ListContent.Children.Clear();
             tbx.Text = "";

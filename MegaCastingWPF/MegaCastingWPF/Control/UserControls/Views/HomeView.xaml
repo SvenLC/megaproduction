@@ -141,12 +141,6 @@
                                 <views:SettingsView />
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <!--<controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Help}"
-                                                     Label="About">
-                            <controls:HamburgerMenuIconItem.Tag>
-                                <views:AboutView />
-                            </controls:HamburgerMenuIconItem.Tag>
-                        </controls:HamburgerMenuIconItem>-->
                     </controls:HamburgerMenuItemCollection>
                 </controls:HamburgerMenu.OptionsItemsSource>
 

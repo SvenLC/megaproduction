@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace MegaCastingWPF.Interface
 {
-    public interface ICrud
+    public interface ICrud<T>
     {
 
-        void Create();
-        void Update();
-        void Delete();
+        bool Create();
+        bool Update();
+        bool Delete();
+        List<T> list();
+        T get(int id);
 
     }
 }

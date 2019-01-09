@@ -1,5 +1,5 @@
 ﻿using MegaCastingWPF.Control.Custom;
-using MegaCastingWPF.Database;
+using MegaCastingWPF.Model.Extends;
 using MegaCastingWPF.Interface;
 using System;
 using System.Collections.Generic;
@@ -11,11 +11,11 @@ using System.Windows;
 
 namespace MegaCastingWPF.Model.Views
 {
-    public class OffreViewModel : BaseViewModel<T_E_OFFRE_CASTING_CAST>
+    public class OffreViewModel : BaseViewModel<T_E_OFFRE_CASTING_CAST_FORMA>
     {
         public OffreViewModel()
         {
-            Content = new Liste<T_E_OFFRE_CASTING_CAST>();
+            Content = new Liste<T_E_OFFRE_CASTING_CAST_FORMA>();
         }
     }
 }
