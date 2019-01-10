@@ -1,5 +1,9 @@
 # Tableau d'ordonancement des tâches
 
+| Numéro | Date     | responsable | descriptif           |
+| ------ | -------- | ----------- | -------------------- |
+| 1.0.1  | 21/11/18 | B. Ragot    | Création du document |
+
 | Id  | Tâche                                          | Dépendance | Durée |       |
 | --- | ---------------------------------------------- | ---------- | ----- | ----- |
 | A   | Gestions des prospects (Client lourd)          | E          | 2     | Check |

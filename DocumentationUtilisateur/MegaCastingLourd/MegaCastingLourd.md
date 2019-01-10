@@ -14,6 +14,21 @@
 
 ## Sommaires
 
+- [Documenation Utilisateur client lourd](#documenation-utilisateur-client-lourd)
+  - [Identification du document](#identification-du-document)
+  - [Versionnage](#versionnage)
+  - [Sommaires](#sommaires)
+  - [Utilisation](#utilisation)
+    - [Connexion](#connexion)
+    - [Déconnexion](#d%C3%A9connexion)
+    - [Menu](#menu)
+    - [Pages disponible pour tout le monde](#pages-disponible-pour-tout-le-monde)
+      - [Prospects](#prospects)
+      - [Offres](#offres)
+      - [Utilisateurs](#utilisateurs)
+      - [liste référentiels](#liste-r%C3%A9f%C3%A9rentiels)
+    - [Tips](#tips)
+
 ## Utilisation
 
 ### Connexion
