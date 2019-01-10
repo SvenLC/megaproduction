@@ -41,41 +41,7 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 - Mise en place d'un serveurWeb.
 - Mise en place d'un serveur de base de données.
 
-## Fonctionnalités détaillées
-
-### Client lourd
-
-Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un interface simple et intuitive :
-
-- Espace membre pour s'identifier
-- Gestion des clients
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
-
-- Gestion des partenaires de diffusions
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
-
-- Gestion des offres de castings
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
-
-- Gestion des listes de référentiels
-  - Ajouter
-  - Afficher
-  - Mettre à jour
-  - Supprimer
-
-- Gestion du contenu éditorial
-  - Ajouter
-  - Mettre à jour
-  - Supprimer
+## Contraintes
 
 ![Image 001](./src/img/alert.png)
     Ceci n'a rien à faire ici je pense.
@@ -87,6 +53,104 @@ Le client lourd doit être disponible sur tous les postes de la société et êt
 ![Image 001](./src/img/alert.png)
 
     Tout ceci ne parles pas de fonctionnalité, ça regroupe des contraintes en autres et les fonctionnalités sont mal formulés.
+
+## Fonctionnalités détaillées
+
+### Client lourd
+
+Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un interface simple et intuitive :
+
+- Espace membre pour s'authentifier
+- Gérer les prospects
+  - Afficher
+  - Ajouter
+    - Faire devenir partenaire
+    - Faire devenir client
+    - Gérer les informations clients
+    - Gérer les informations partenaires de diffusion
+    - Gérer les informations utilisateurs
+  - Éditer
+    - Faire devenir partenaire
+    - Faire devenir client
+    - Gérer les informations clients
+    - Gérer les informations partenaires de diffusion
+    - Gérer les informations utilisateurs
+  - Supprimer
+- Gérer les utilisateurs
+  - Afficher
+  - Ajouter
+  - Éditer
+    - Rendre inactif
+    - Passer en administrateur
+  - Supprimer
+- Gérer les offres des castings
+  - Afficher
+  - Ajouter
+  - Éditer
+  - Supprimer
+- Gérer le contenu éditorial
+  - Gérer le contenu
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+- Gérer les listes de référentiel
+  - Rechercher un type de contrat
+  - Gérer les types de contrats
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Gérer les métiers
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Gérer les domaines de métier
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Gérer les status juridiques
+    - Afficher
+    - Ajouter
+    - Éditer
+    - Supprimer
+  - Gestion de l'interface, couleur, thème
+
+### Client léger
+
+- Visualiser les offres de casting
+- Rechercher des offres de casting
+- Visualiser le contenu éditorial  
+
+## Api privée
+
+Utilisé par l'API publique et le client lourd. Elle doit permettre d'accèder à toutes les ressources nécessaire sur la base de données et permettre de les créer, les modifiers et les supprimer
+
+- Prospects
+- Clients
+- Partenaires
+- Offres de castings
+- Adresses
+- Contacts
+- Contrats
+- Domaines de métiers
+- Localisations
+- Métiers
+- Statuts juridique
+- Utilisateurs
+  
+Elle respectera la convention REST pour les routes d'accès à l'API
+
+## Api publique
+
+l'API publique met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
+
+Utilisé par le client léger et les partenaires
+
+- Récupérer les flux de castings
+- Authentifier un utilsateur
 
 ## Client web
 
@@ -106,63 +170,25 @@ Le site internet devra aussi intégrer un moteur de recherche qui permettra de r
 
 Le site internet doit permettre de visualiser le contenu éditorial de megacasting.
 
-## Serveur
-
-### Serveur web
-
-Le serveur web met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
-
-![Image 001](./src/img/alert.png)
-
-    Pour moi ça va dans l'analyse détaillé. Champs déplacé dans BDD dictionnaire.
-
-### Serveur de base de données
+## Serveur de base de données
 
 La base de données, installé sur un serveur dédié doit être robuste et garantir l'intégrité des données.
 
 Les données contenues dans la base de données contiendrons les informations suivantes :
 
-#### Différentes tables
+La base de données doit permettre de :
 
-- Clients
-  - Dénomination
-  - Statut juridique
-  - adresse
-  - numéro de téléphone
-  - numéro de fax
-  - adresse email
-  - numéro de siret (Pour les entreprises)
-  - numéro RNA (Associations)
-  
-- Partenaires de diffusions
-  - Dénomination
-  - Statut juridique
-  - numéro de téléphone
-  - numéro de fax
-  - adresse email
-  - Login
-  - mots de passe
-  
-- Offres de castings
-  - Intitulé
-  - Référence
-  - Domaine de métier
-  - Métier
-  - Type de contrat
-  - Date de début de publication
-  - Durée de diffusion
-  - Date de début du contrat
-  - Nombre de poste
-  - Localisation
-  - Description du poste
-  - Description du profil recherché
-  - Coordonnées
-  - #Référentiels
-  - #Client
+- Stocker les données
+  - Des prospects
+  - Des clients (organisations à la recherche d’artiste)
+  - Des partenaires de diffusion
+  - Des offres de casting
+  - Des listes de référentiel (types de contrat, domaines de métier, métiers, catégories ...)
+  - contenu éditorial
+  - adresses
+  - contacts
+  - Des utilisateurs
 
-- Listes de référentiels
+### Différentes tables
 
-- Contenu  éditorial
-  - Fiches  métiers
-  - Conseils
-  - Interviews
+![MLD](../BDD/MGC_MLDv2.png)

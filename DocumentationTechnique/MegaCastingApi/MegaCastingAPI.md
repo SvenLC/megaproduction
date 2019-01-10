@@ -34,6 +34,7 @@
     - [Tedious](#tedious)
     - [bcrypt](#bcrypt)
     - [jsonwebtoken](#jsonwebtoken)
+    - [Memory-cache](#memory-cache)
 
 ## Technologies
 
@@ -377,6 +378,12 @@ Bcrypt a trop de dépendance système tel que python 2.7 windows build tools, qu
 
 ### jsonwebtoken
 
-Token pour l'authentification à l'api
+JSON Web Token (JWT) est un standard ouvert défini dans la RFC 75191. Il permet l'échange sécurisé de jetons (tokens) entre plusieurs parties. Cette sécurité de l’échange se traduit par la vérification de l’intégrité des données à l’aide d’une signature numérique. Elle s’effectue par l'algorithme HMAC ou RSA.
 
         npm install --save jsonwebtoken
+
+### Memory-cache
+
+Cache mémoire pour Nodejs
+
+        npm install memory-cache --save
