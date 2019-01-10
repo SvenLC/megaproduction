@@ -29,13 +29,13 @@ Ce logiciel nous a permis de réaliser la modélisation logique des données, ai
 
 ### MCD
 
-![MCD](../BDD/MGC_MCDv2.png)
+![MCD](MGC_MCDv2.png)
 
 -----------------------------------------------------------
 
 ### MLD
 
-![MLD](../BDD/MGC_MLDv2.png)
+![MLD](MGC_MLDv2.png)
 
 ### Règles de nommages
 
