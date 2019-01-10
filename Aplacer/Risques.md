@@ -1,10 +1,13 @@
+# Gestion des riques
+
+| Numéro | Date     | responsable | descriptif           |
+| ------ | -------- | ----------- | -------------------- |
+| 1.0.1  | 21/11/18 | B. Ragot    | Création du document |
 
 - Difficulté d'utiliser les nouvelles technologies
-
   - Gravité = 3
-  - Fréquence = 2 
+  - Fréquence = 2
   - Criticité =  6
-
 
   - Responsable : S. Lecann & B. Ragot
   - Prévention : Délai plus long pour réaliser les tâches.

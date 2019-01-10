@@ -45,7 +45,6 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 
 Le client lourd doit être disponible sur tous les postes de la société et être adapté à un fonctionnement à long terme.
 
- 
 ## Fonctionnalités détaillées
 
 ### Client lourd
@@ -187,4 +186,4 @@ La base de données doit permettre de :
 
 ### Différentes tables
 
-![MLD](../BDD/MGC_MLDv2.png)
+![MLD](./BDD/MGC_MLDv2.png)
