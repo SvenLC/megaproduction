@@ -27,9 +27,8 @@
     - [Connection à la base de données](#connection-%C3%A0-la-base-de-donn%C3%A9es)
     - [CORS](#cors)
     - [Logique de contrôle de l'authentification](#logique-de-contr%C3%B4le-de-lauthentification)
-    - [Azure cloud](#azure-cloud)
+    - [Implémentation algolia](#impl%C3%A9mentation-algolia)
     - [Intégration continue](#int%C3%A9gration-continue)
-    - [ORM](#orm)
   - [Librairies node](#librairies-node)
     - [Sequelize-auto](#sequelize-auto)
     - [Tedious](#tedious)
@@ -298,7 +297,6 @@ module.exports = (req, res, next) => {
 
     console.log(autHeader);
     console.log(token);
-          
     if (!autHeader) {
         const error = new Error('Non authentifié');
         error.statusCode = 401;
@@ -306,12 +304,9 @@ module.exports = (req, res, next) => {
     }
 
     if (autHeader == token) {
-        console.log('ok !');
         next();
 
-    } else {       
-        console.log('pas ok !'); 
-      
+    } else {
         const token = autHeader.split(' ')[1];
         let decodedToken;
         try {
@@ -331,36 +326,22 @@ module.exports = (req, res, next) => {
 };
 ```
 
-### Azure cloud
+### Implémentation algolia
 
-Paramètres de l'application
+Intégration de la méthode addObjects lors de la création d'une offre pour l'envoyer vers le service de référencement AlgoliaSearch
 
-    WEBSITE_NODE_DEFAULT_VERSION
-    8.11.1
+``` Javascript
+.then(async (offre) => {
+            const object = await getFormatedOffresByIdSvc(offre.CAST_ID);
+            index.addObjects(object, function(err, content) {
+              });
+            res.status(201).json({offre: offre});
+        })
+```
 
 ### Intégration continue
 
 Utilisation du service Serveur de builds Kudu App Service pour le déploiement automatique des applications nodejs dans azure directement à partir de repository github
-
-super-cool-node-app-to-azure-from-github-47ebff6c5448
-
-### ORM
-
-Sequelize
-https://github.com/sequelize/sequelize
-Import des models en utilisant sequelize-auto
-https://github.com/sequelize/sequelize-auto
-
-sequelize-auto  -c './config.json' -o './models' -d MEGACASTING -h megacasting.database.windows.net -u adminmegacasting  -x t4tX38CwrHQJbDWkl2qr
-
-fichier config.json
-{
-  "host": "megacasting.database.windows.net",
-  "dialect": "mssql",
-  "dialectOptions": {
-    "encrypt": true
-  }
-}
 
 ## Librairies node
 
