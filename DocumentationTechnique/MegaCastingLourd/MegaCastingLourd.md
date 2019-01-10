@@ -18,7 +18,7 @@
   - [Identification du document](#identification-du-document)
   - [Versionnage](#versionnage)
   - [Sommaires](#sommaires)
-  - [Technlogies](#technlogies)
+  - [Technologies](#technologies)
   - [Cycle de vie](#cycle-de-vie)
     - [Autres](#autres)
   - [Spécificités](#sp%C3%A9cificit%C3%A9s)
@@ -30,7 +30,7 @@
   - [Configuration](#configuration)
   - [Déploiement](#d%C3%A9ploiement)
 
-## Technlogies
+## Technologies
 
 - C#
   - WPF (Interface)

@@ -1,0 +1,1038 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Documentation de l'api privée megacasting",
+    "version" : "0.1",
+    "title" : "MegaCasting private API documentation"
+  },
+  "host" : "megacastingprivateapi.azurewebsites.net",
+  "tags" : [ {
+    "name" : "Adresse",
+    "description" : "Liste des routes pour les adresses"
+  }, {
+    "name" : "Authentification",
+    "description" : "Logique d'authentification"
+  }, {
+    "name" : "Prospect",
+    "description" : "Liste des routes pour les prospects"
+  } ],
+  "paths" : {
+    "/auth/login" : {
+      "post" : {
+        "tags" : [ "Authentification" ],
+        "summary" : "Authentification à l'api",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne l'ID de l'utilisateur ainsi qu'un JSON Web Token pour l'authentification.",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "UTI_ID" : {
+                  "type" : "integer"
+                },
+                "UTI_TOKEN" : {
+                  "type" : "string",
+                  "description" : "JSON WebToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adresses" : {
+      "get" : {
+        "tags" : [ "Adresse" ],
+        "summary" : "Récupérer la liste des adresses",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne une liste d'adresses",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Adresse"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Adresse" ],
+        "summary" : "Ajouter une adresse",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_1"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne l'adresse créée avec son id",
+            "schema" : {
+              "$ref" : "#/definitions/Adresse"
+            }
+          },
+          "404" : {
+            "description" : "Adresse non trouvée"
+          }
+        }
+      }
+    },
+    "/adresses/{ADR_ID}" : {
+      "get" : {
+        "tags" : [ "Adresse" ],
+        "summary" : "Récupérer une adresse par son id",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ADR_ID",
+          "in" : "path",
+          "description" : "ID de l'adresse recherchée",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'adresse correspondant à ADR_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Adresse"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Adresse" ],
+        "summary" : "Mettre à jour une adresse par son id",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ADR_ID",
+          "in" : "path",
+          "description" : "ID de l'adresse recherchée",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_2"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Met à jour l'adresse correspondant à ADR_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Adresse"
+            }
+          },
+          "404" : {
+            "description" : "Adresse non trouvée"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Adresse" ],
+        "summary" : "Supprime une adresse par son id",
+        "description" : "Supprimer l'adresse",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ADR_ID",
+          "in" : "path",
+          "description" : "id de l'adresse recherchée",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'adresse supprimée correspondante à ADR_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Adresse"
+            }
+          },
+          "404" : {
+            "description" : "Adresse non trouvée"
+          }
+        }
+      }
+    },
+    "/contacts" : {
+      "get" : {
+        "tags" : [ "Contact" ],
+        "summary" : "Récupèrer la liste des contacts",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne une liste de contacts",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Contact"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Contact" ],
+        "summary" : "Créer un contact",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_3"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne le contact crée",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          }
+        }
+      }
+    },
+    "/contacts/{CTC_ID}" : {
+      "get" : {
+        "tags" : [ "Contact" ],
+        "summary" : "Récupère un contact par son id",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CTC_ID",
+          "in" : "path",
+          "description" : "id du contact recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne le contact recherché",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          },
+          "404" : {
+            "description" : "Contact inexistant !"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Contact" ],
+        "summary" : "Met à jour le contact par son id",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CTC_ID",
+          "in" : "path",
+          "description" : "id du contact recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne le contact modifié correspondant à CTC_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          },
+          "404" : {
+            "description" : "Contact inexistant"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Contact" ],
+        "summary" : "Supprime un contact par son id",
+        "description" : "Supprimer un contact",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CTC_ID",
+          "in" : "path",
+          "description" : "id du contact à supprimer",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne le contact supprimé correspondant à CTC_ID",
+            "schema" : {
+              "properties" : {
+                "UTI_ID" : {
+                  "type" : "string"
+                },
+                "UTI_NOM" : {
+                  "type" : "string"
+                },
+                "UTI_PRENOM" : {
+                  "type" : "string"
+                },
+                "UTI_LOGIN" : {
+                  "type" : "string"
+                },
+                "UTI_ADMINISTRATEUR" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Contact inexistant !"
+          }
+        }
+      }
+    },
+    "/prospects" : {
+      "get" : {
+        "tags" : [ "Prospect" ],
+        "summary" : "Récupérer la liste des prospects",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne une liste d'adresse",
+            "schema" : {
+              "properties" : {
+                "prospect" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/definitions/Prospect"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Prospect" ],
+        "summary" : "Ajouter un prospect",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_4"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne le prospect crée",
+            "schema" : {
+              "$ref" : "#/definitions/Prospect"
+            }
+          }
+        }
+      }
+    },
+    "/prospects/{PRO_ID}" : {
+      "get" : {
+        "tags" : [ "Prospect" ],
+        "summary" : "Récupérer un prospect par son ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "PRO_ID",
+          "in" : "path",
+          "description" : "ID du prospect recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne le prospect correspondant à PRO_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Prospect"
+            }
+          },
+          "404" : {
+            "description" : "Prospect non trouvé"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Prospect" ],
+        "summary" : "Met à jour un prospect par son ID",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "PRO_ID",
+          "in" : "path",
+          "description" : "ID du prospect recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne le prospect modifié correspondant à PRO_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Prospect"
+            }
+          },
+          "404" : {
+            "description" : "Prospect non trouvé"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Prospect" ],
+        "summary" : "Supprime un prospect par son ID",
+        "description" : "Supprimer un prospect",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "PRO_ID",
+          "in" : "path",
+          "description" : "ID du prospect recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne le prospect supprimé correspondant à PRO_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Prospect"
+            }
+          },
+          "404" : {
+            "description" : "Prospect non trouvé"
+          }
+        }
+      }
+    },
+    "/utilisateurs" : {
+      "get" : {
+        "tags" : [ "Utilisateur" ],
+        "summary" : "Récupérer la liste des utilisateurs",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne une liste d'adresses",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "UTI_ID" : {
+                    "type" : "string"
+                  },
+                  "UTI_NOM" : {
+                    "type" : "string"
+                  },
+                  "UTI_PRENOM" : {
+                    "type" : "string"
+                  },
+                  "UTI_LOGIN" : {
+                    "type" : "string"
+                  },
+                  "UTI_ADMINISTRATEUR" : {
+                    "type" : "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Utilisateur" ],
+        "summary" : "Créer un utilisateur",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_5"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne l'utilisateur' crée",
+            "schema" : {
+              "$ref" : "#/definitions/Utilisateur"
+            }
+          }
+        }
+      }
+    },
+    "/utilisateurs/{UTI_ID}" : {
+      "get" : {
+        "tags" : [ "Utilisateur" ],
+        "summary" : "Récupérer un utilisateur par son ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "UTI_ID",
+          "in" : "path",
+          "description" : "ID de l'utilisateur recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'utilisateur' correspondant à UTI_ID",
+            "schema" : {
+              "properties" : {
+                "UTI_ID" : {
+                  "type" : "string"
+                },
+                "UTI_NOM" : {
+                  "type" : "string"
+                },
+                "UTI_PRENOM" : {
+                  "type" : "string"
+                },
+                "UTI_LOGIN" : {
+                  "type" : "string"
+                },
+                "UTI_ADMINISTRATEUR" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Prospect non trouvé"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Utilisateur" ],
+        "summary" : "Met à jour l'utilisateur par son ID",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "UTI_ID",
+          "in" : "path",
+          "description" : "ID du prospect recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'utilisateur modifié correspondant à UTI_ID",
+            "schema" : {
+              "properties" : {
+                "UTI_ID" : {
+                  "type" : "string"
+                },
+                "UTI_NOM" : {
+                  "type" : "string"
+                },
+                "UTI_PRENOM" : {
+                  "type" : "string"
+                },
+                "UTI_LOGIN" : {
+                  "type" : "string"
+                },
+                "UTI_ADMINISTRATEUR" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Utilisateur non trouvé"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Utilisateur" ],
+        "summary" : "Supprime un client par son id",
+        "description" : "Supprimer un utilisateur",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "UTI_ID",
+          "in" : "path",
+          "description" : "ID de l'utilisateur recherché",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'utilisateur' supprimé correspondant à UTI_ID",
+            "schema" : {
+              "properties" : {
+                "UTI_ID" : {
+                  "type" : "string"
+                },
+                "UTI_NOM" : {
+                  "type" : "string"
+                },
+                "UTI_PRENOM" : {
+                  "type" : "string"
+                },
+                "UTI_LOGIN" : {
+                  "type" : "string"
+                },
+                "UTI_ADMINISTRATEUR" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/offreCastings" : {
+      "get" : {
+        "tags" : [ "OffreCasting" ],
+        "summary" : "Récupèrer la liste des offres de castings",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne une liste d'offre de casting",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Offre"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "OffreCasting" ],
+        "summary" : "Créer une offre de casting",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body_6"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne l'offre créée",
+            "schema" : {
+              "$ref" : "#/definitions/Offre"
+            }
+          }
+        }
+      }
+    },
+    "/offreCastings/{CAST_ID}" : {
+      "get" : {
+        "tags" : [ "OffreCasting" ],
+        "summary" : "Récupère une offre par son id",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CAST_ID",
+          "in" : "path",
+          "description" : "id de l'offre recherchée",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Retourne l'offre recherchée",
+            "schema" : {
+              "$ref" : "#/definitions/Offre"
+            }
+          },
+          "404" : {
+            "description" : "Offre inexistante !"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "OffreCasting" ],
+        "summary" : "Met à jour une offre de casting par son id",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CAST_ID",
+          "in" : "path",
+          "description" : "id de l'offre recherchée",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Offre de casting à modifier",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Offre"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'offre' modifiée correspondant à CAST_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Offre"
+            }
+          },
+          "404" : {
+            "description" : "Offre inexistante"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "OffreCasting" ],
+        "summary" : "Supprime une offre de casting par son id",
+        "description" : "Supprimer une offre",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "CAST_ID",
+          "in" : "path",
+          "description" : "id de l'offre à supprimer",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retourne l'offre supprimée correspondant à CAST_ID",
+            "schema" : {
+              "$ref" : "#/definitions/Offre"
+            }
+          },
+          "404" : {
+            "description" : "Contact inexistant !"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "Token",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Utilisateur" : {
+      "properties" : {
+        "UTI_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "UTI_NOM" : {
+          "type" : "string"
+        },
+        "UTI_PRENOM" : {
+          "type" : "string"
+        },
+        "UTI_LOGIN" : {
+          "type" : "string"
+        },
+        "UTI_MDP" : {
+          "type" : "string"
+        },
+        "UTI_ADMINISTRATEUR" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "Contact" : {
+      "properties" : {
+        "CTC_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CTC_DESCRIPTION" : {
+          "type" : "string"
+        },
+        "CTC_NUM_TEL" : {
+          "type" : "string"
+        },
+        "CTC_NUM_FAX" : {
+          "type" : "string"
+        },
+        "CTC_EMAIL" : {
+          "type" : "string"
+        },
+        "CTC_PRINCIPALE" : {
+          "type" : "string"
+        },
+        "PRO_ID" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Adresse" : {
+      "properties" : {
+        "ADR_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "ADR_NUM_VOIE" : {
+          "type" : "string"
+        },
+        "ADR_LIBELLE_RUE" : {
+          "type" : "string"
+        },
+        "ADR_VILLE" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Prospect" : {
+      "properties" : {
+        "PRO_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "PRO_NAME" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Offre" : {
+      "properties" : {
+        "CAST_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CAST_INTITULE" : {
+          "type" : "string"
+        },
+        "CAST_REFERENCE" : {
+          "type" : "string"
+        },
+        "CAST_DATE_DEBUT_PUBLICATION" : {
+          "type" : "string"
+        },
+        "CAST_DUREE_DIFFUSION" : {
+          "type" : "string"
+        },
+        "CAST_DATE_DEBUT_CONTRAT" : {
+          "type" : "string"
+        },
+        "CAST_NBR_POSTE" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CAST_DESCRIPTION_POSTE" : {
+          "type" : "string"
+        },
+        "CAST_DESCRIPTION_PROFIL" : {
+          "type" : "string"
+        },
+        "PRO_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "MET_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CTC_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "LOC_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CON_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "body" : {
+      "properties" : {
+        "UTI_LOGIN" : {
+          "type" : "string"
+        },
+        "UTI_MDP" : {
+          "type" : "string"
+        }
+      }
+    },
+    "inline_response_201" : {
+      "properties" : {
+        "UTI_ID" : {
+          "type" : "integer"
+        },
+        "UTI_TOKEN" : {
+          "type" : "string",
+          "description" : "JSON WebToken"
+        }
+      }
+    },
+    "body_1" : {
+      "required" : [ "ADR_LIBELLE_RUE", "ADR_NUM_VOIE", "ADR_VILLE" ],
+      "properties" : {
+        "ADR_NUM_VOIE" : {
+          "type" : "string"
+        },
+        "ADR_LIBELLE_RUE" : {
+          "type" : "string"
+        },
+        "ADR_VILLE" : {
+          "type" : "string"
+        }
+      }
+    },
+    "body_2" : {
+      "required" : [ "ADR_LIBELLE_RUE", "ADR_NUM_VOIE", "ADR_VILLE" ],
+      "properties" : {
+        "ADR_NUM_VOIE" : {
+          "type" : "string"
+        },
+        "ADR_LIBELLE_RUE" : {
+          "type" : "string"
+        },
+        "ADR_VILLE" : {
+          "type" : "string"
+        }
+      }
+    },
+    "body_3" : {
+      "properties" : {
+        "UTI_NOM" : {
+          "type" : "string"
+        },
+        "UTI_PRENOM" : {
+          "type" : "string"
+        },
+        "UTI_LOGIN" : {
+          "type" : "string"
+        },
+        "UTI_MDP" : {
+          "type" : "string"
+        },
+        "UTI_ADMINISTRATEUR" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "body_4" : {
+      "properties" : {
+        "PRO_NAME" : {
+          "type" : "string"
+        }
+      }
+    },
+    "inline_response_200" : {
+      "properties" : {
+        "UTI_ID" : {
+          "type" : "string"
+        },
+        "UTI_NOM" : {
+          "type" : "string"
+        },
+        "UTI_PRENOM" : {
+          "type" : "string"
+        },
+        "UTI_LOGIN" : {
+          "type" : "string"
+        },
+        "UTI_ADMINISTRATEUR" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "body_5" : {
+      "properties" : {
+        "UTI_NOM" : {
+          "type" : "string"
+        },
+        "UTI_PRENOM" : {
+          "type" : "string"
+        },
+        "UTI_LOGIN" : {
+          "type" : "string"
+        },
+        "UTI_MDP" : {
+          "type" : "string"
+        },
+        "UTI_ADMINISTRATEUR" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "body_6" : {
+      "properties" : {
+        "CAST_INTITULE" : {
+          "type" : "string"
+        },
+        "CAST_REFERENCE" : {
+          "type" : "string"
+        },
+        "CAST_DATE_DEBUT_PUBLICATION" : {
+          "type" : "string"
+        },
+        "CAST_DUREE_DIFFUSION" : {
+          "type" : "string"
+        },
+        "CAST_DATE_DEBUT_CONTRAT" : {
+          "type" : "string"
+        },
+        "CAST_NBR_POSTE" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CAST_DESCRIPTION_POSTE" : {
+          "type" : "string"
+        },
+        "CAST_DESCRIPTION_PROFIL" : {
+          "type" : "string"
+        },
+        "PRO_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "MET_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CTC_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "LOC_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "CON_ID" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

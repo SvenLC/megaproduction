@@ -18,7 +18,7 @@
   - [Identification du document](#identification-du-document)
   - [Versionnage](#versionnage)
   - [Sommaires](#sommaires)
-  - [Technlogies](#technlogies)
+  - [Technologies](#technologies)
   - [Cycle de vie](#cycle-de-vie)
   - [Dépendances](#d%C3%A9pendances)
   - [Architecture](#architecture)
@@ -28,7 +28,7 @@
     - [Configuration Algolia (instantsearch)](#configuration-algolia-instantsearch)
   - [Déploiement](#d%C3%A9ploiement)
 
-## Technlogies
+## Technologies
 
 - ReactJs
   - Package
