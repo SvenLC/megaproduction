@@ -1,4 +1,4 @@
-# Documenation Technique client léger
+# Documenation techniques API
 
 ## Identification du document
 
@@ -14,7 +14,7 @@
 
 ## Sommaires
 
-- [Documenation Technique client léger](#documenation-technique-client-l%C3%A9ger)
+- [Documenation techniques API](#documenation-techniques-api)
   - [Identification du document](#identification-du-document)
   - [Versionnage](#versionnage)
   - [Sommaires](#sommaires)

@@ -43,17 +43,9 @@ Les artistes souhaitant voir les annonces le feront via le site internet et cont
 
 ## Contraintes
 
-![Image 001](./src/img/alert.png)
-    Ceci n'a rien à faire ici je pense.
-
 Le client lourd doit être disponible sur tous les postes de la société et être adapté à un fonctionnement à long terme.
 
-    Le client lourd permettra aussi de gérer le contenu éditorial du site web. (Fiches métiers, conseils, interview)
-
-![Image 001](./src/img/alert.png)
-
-    Tout ceci ne parles pas de fonctionnalité, ça regroupe des contraintes en autres et les fonctionnalités sont mal formulés.
-
+ 
 ## Fonctionnalités détaillées
 
 ### Client lourd
@@ -128,6 +120,8 @@ Le client lourd doit permettre de réaliser les actions suivantes à l'aide d'un
 
 Utilisé par l'API publique et le client lourd. Elle doit permettre d'accèder à toutes les ressources nécessaire sur la base de données et permettre de les créer, les modifiers et les supprimer
 
+Il faut s'authentifier sur l'API pour la consommer.
+
 - Prospects
 - Clients
 - Partenaires
@@ -146,6 +140,8 @@ Elle respectera la convention REST pour les routes d'accès à l'API
 ## Api publique
 
 l'API publique met à disposition des partenaires identifiés auprès de MegaCasting, un flux de diffusion qui reprendra toutes les informations relative aux fiches de castings. Ce flux sera fournis par une API REST sous format JSON et pourra être consommé par les partenaires de diffusions, afin de leur simplifier l'accès aux données.
+
+Il faut s'authentiier sur l'API pour la consommer
 
 Utilisé par le client léger et les partenaires
 
