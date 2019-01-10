@@ -149,11 +149,15 @@ namespace MegaCastingWPF.Windows
 
                     if (Model.StoreObject.CTC_ID != 0)
                     {
-                        T_E_CONTACT_CTC Contacttest = listeContact.Where(x => x.CTC_ID == Model.StoreObject.CTC_ID).First();
+                        List<T_E_CONTACT_CTC> Contacttest = listeContact.Where(x => x.CTC_ID == Model.StoreObject.CTC_ID).ToList();
 
-                        if (Contacttest != null)
+                        if (Contacttest != null && Contacttest.Count > 0)
                         {
-                            CBX_Contact.SelectedItem = Contacttest;
+                            CBX_Contact.SelectedItem = Contacttest.First();
+                        }
+                        else
+                        {
+                            Model.StoreObject.CTC_ID = 0;
                         }
                     }
                 }
