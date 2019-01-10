@@ -109,10 +109,79 @@
     - Valider
       ![Image 001](./src/img/valid.png)
 
+
+- Supprimer
+  - Sélectionner une offre
+  - Appuyer sur Supprimer
+
+#### Utilisateurs
+
+![Image 001](./src/img/019.png)
+
+- Recherche par nom
+  - Taper le nom dans le champs de filtre
+  - Appuyer sur **Entrée**
+  
+  ![Image 001](./src/img/005.png)
+  ![Image 001](./src/img/020.png)
+
+- Éditer ou ajouter une offre
+  - Cliquer sur ajouter / modifier
+    - Entrer les informations
+      ![Image 001](./src/img/021.png)
+
+      Si vous modifier et vous ne voulez pas modifier le mot de passe laisser le vide.
+    - Corriger les erreurs si besoins
+    - Valider
+      ![Image 001](./src/img/valid.png)
+
+
+- Supprimer
+  - Sélectionner une offre
+  - Appuyer sur Supprimer
+
+#### liste référentiels
+
+- gestion des contrats (Administrateur seulement)
+- gestion des domaines de métiers (Administrateur seulement)
+- gestion des métiers (Administrateur seulement)
+- gestion des localisations (Administrateur seulement)
+- gestions des status juridiques (Administrateur seulement)
+
+Le fonctionnement étant exactement le même pour chacun de ces écrans vous pouvez répéter les actions suivantes pour tous.
+
+![Image 001](./src/img/022.png)
+
+- Recherche par nom
+  - Taper le nom dans le champs de filtre
+  - Appuyer sur **Entrée**
+  
+  ![Image 001](./src/img/005.png)
+  ![Image 001](./src/img/023.png)
+
+- Éditer ou ajouter une offre
+  - Cliquer sur ajouter / modifier
+    - Entrer les informations
+      ![Image 001](./src/img/024.png)
+
+      Si vous modifier et vous ne voulez pas modifier le mot de passe laisser le vide.
+    - Corriger les erreurs si besoins
+    - Valider
+      ![Image 001](./src/img/valid.png)
+
+
+- Supprimer
+  - Sélectionner une offre
+  - Appuyer sur Supprimer
+
 ### Tips
 
 - Changement de couleur
+  - Sélectionner votre couleur de fond **Accent**
+  - Sélectionner la **Couleur**
+    ![Image 001](./src/img/025.png)
 - Lien vers le site
-
+  ![Image 001](./src/img/017.png)
+  - Cliquer sur logout
   
 

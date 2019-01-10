@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C11CC7CB-159D-4D80-801B-B5C726F29514}</ProjectGuid>
+    <ProjectGuid>{01D9CA2A-3BB0-42D1-A914-12E5F47C0E41}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MegaCastingWPF</RootNamespace>
     <AssemblyName>MegaCastingWPF</AssemblyName>
@@ -14,23 +14,6 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,30 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>CAB0C4E8BBE85A841A41AA982AFD0D2796F3A794</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>MegaCastingWPF_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.Annotations, Version=2018.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.2018.2.1\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
@@ -82,14 +44,14 @@
     <Reference Include="MahApps.Metro.IconPacks, Version=2.3.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.2.3.0\lib\net46\MahApps.Metro.IconPacks.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Modern, Version=2.3.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Modern.2.3.0\lib\net46\MahApps.Metro.IconPacks.Modern.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -111,11 +73,105 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Rule\NumberRule.cs" />
+    <Compile Include="Rule\TextRule.cs" />
+    <Compile Include="Rule\Validator.cs" />
+    <Compile Include="Windows\ContactEdit.xaml.cs">
+      <DependentUpon>ContactEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ContratEdit.xaml.cs">
+      <DependentUpon>ContratEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DomaineMetierEdit.xaml.cs">
+      <DependentUpon>DomaineMetierEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LocalisationEdit.xaml.cs">
+      <DependentUpon>LocalisationEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MetierEdit.xaml.cs">
+      <DependentUpon>MetierEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\OffreEdit.xaml.cs">
+      <DependentUpon>OffreEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ProspectEdit.xaml.cs">
+      <DependentUpon>ProspectEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\StatutEdit.xaml.cs">
+      <DependentUpon>StatutEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UtilisateurEdit.xaml.cs">
+      <DependentUpon>UtilisateurEdit.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Control\UserControls\Views\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\ConnectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\ContratView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\DomaineMetierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\LocalisationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\MetierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\OffreView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\ProspectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\StatutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\UserControls\Views\UtilisateurView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataDictionary\CustomControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Control\Custom\Content.cs" />
     <Compile Include="Control\Custom\CustomDataGrid.cs" />
+    <Compile Include="Control\Custom\CustomGroupBox.cs" />
     <Compile Include="Control\Custom\Liste.cs" />
     <Compile Include="Control\Custom\RelatedListe.cs" />
     <Compile Include="Control\Custom\Vignette.cs" />
+    <Compile Include="Control\UserControls\Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\UserControls\Views\BaseView.cs" />
     <Compile Include="Control\UserControls\Views\ConnectionView.xaml.cs">
       <DependentUpon>ConnectionView.xaml</DependentUpon>
@@ -126,6 +182,9 @@
     <Compile Include="Control\UserControls\Views\DomaineMetierView.xaml.cs">
       <DependentUpon>DomaineMetierView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\UserControls\Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\UserControls\Views\LocalisationView.xaml.cs">
       <DependentUpon>LocalisationView.xaml</DependentUpon>
     </Compile>
@@ -134,6 +193,12 @@
     </Compile>
     <Compile Include="Control\UserControls\Views\OffreView.xaml.cs">
       <DependentUpon>OffreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\ProspectView.xaml.cs">
+      <DependentUpon>ProspectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserControls\Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\UserControls\Views\StatutView.xaml.cs">
       <DependentUpon>StatutView.xaml</DependentUpon>
@@ -145,14 +210,57 @@
     <Compile Include="Converter\lenghtToVisibilityConverter.cs" />
     <Compile Include="Database\APIObject.cs" />
     <Compile Include="Database\MegaCastingAPIEntities.cs" />
+    <Compile Include="Database\MegeCastingDatabase.cs" />
     <Compile Include="Interface\ICrud.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\ContactEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ContratEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\DomaineMetierEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\LocalisationEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MetierEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\OffreEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ProspectEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\StatutEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UtilisateurEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Model\Extends\BaseExtend.cs" />
     <Compile Include="Model\Extends\ConnectionModel.cs" />
     <Compile Include="Model\Extends\T_E_ADRESSE_ADR.cs" />
     <Compile Include="Model\Extends\T_E_CONTACT_CTC.cs" />
     <Compile Include="Model\Extends\T_E_CONTENU_EDITORIAL_EDI.cs" />
-    <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST_FORMA.cs" />
     <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST.cs" />
+    <Compile Include="Model\Extends\T_E_OFFRE_CASTING_CAST_FORMA.cs" />
     <Compile Include="Model\Extends\T_E_PROSPECT_PRO.cs" />
     <Compile Include="Model\Extends\T_H_CLIENT_CLI.cs" />
     <Compile Include="Model\Extends\T_H_PARTENAIRES_PAR.cs" />
@@ -184,158 +292,11 @@
     <Compile Include="Model\Views\LocalisationViewModel.cs" />
     <Compile Include="Model\Views\MetierViewModel.cs" />
     <Compile Include="Model\Views\OffreViewModel.cs" />
+    <Compile Include="Model\Views\ProspectViewModel.cs" />
+    <Compile Include="Model\Views\SettingsViewModel.cs" />
     <Compile Include="Model\Views\StatutViewModel.cs" />
     <Compile Include="Model\Views\UtilisateurViewModel.cs" />
     <Compile Include="Model\Windows\MainWindowsModel.cs" />
-    <Compile Include="Rule\NumberRule.cs" />
-    <Compile Include="Rule\TextRule.cs" />
-    <Compile Include="Rule\Validator.cs" />
-    <Compile Include="Windows\ContactEdit.xaml.cs">
-      <DependentUpon>ContactEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ContratEdit.xaml.cs">
-      <DependentUpon>ContratEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\DomaineMetierEdit.xaml.cs">
-      <DependentUpon>DomaineMetierEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LocalisationEdit.xaml.cs">
-      <DependentUpon>LocalisationEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MetierEdit.xaml.cs">
-      <DependentUpon>MetierEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\OffreEdit.xaml.cs">
-      <DependentUpon>OffreEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ProspectEdit.xaml.cs">
-      <DependentUpon>ProspectEdit.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Windows\StatutEdit.xaml.cs">
-      <DependentUpon>StatutEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\UtilisateurEdit.xaml.cs">
-      <DependentUpon>UtilisateurEdit.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Control\UserControls\Views\AboutView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\UserControls\Views\ConnectionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\ContratView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\DomaineMetierView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\HomeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\UserControls\Views\LocalisationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\MetierView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\OffreView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\ProspectView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\UserControls\Views\SettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\UserControls\Views\StatutView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\UserControls\Views\UtilisateurView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DataDictionary\CustomControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Control\UserControls\Views\AboutView.xaml.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\Custom\CustomGroupBox.cs" />
-    <Compile Include="Control\UserControls\Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\UserControls\Views\ProspectView.xaml.cs">
-      <DependentUpon>ProspectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\UserControls\Views\SettingsView.xaml.cs">
-      <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Database\MegeCastingDatabase.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Windows\ContactEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ContratEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\DomaineMetierEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LocalisationEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\MetierEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\OffreEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ProspectEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="Windows\StatutEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UtilisateurEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Model\Views\ProspectViewModel.cs" />
-    <Compile Include="Model\Views\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -353,20 +314,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <None Include="MegaCastingWPF_TemporaryKey.pfx" />
-=======
-    <EntityDeploy Include="Database\Database.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Database\Database.edmx.diagram">
-      <DependentUpon>Database.edmx</DependentUpon>
-    </None>
->>>>>>> 8d41cf0433d186656ce2025421550362e61f7bde
-=======
->>>>>>> 43693d983931d88965b19356347e42c7743c5555
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -376,40 +323,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 et x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-=======
-    <Content Include="Database\Database.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Database.Context.cs</LastGenOutput>
-      <DependentUpon>Database.edmx</DependentUpon>
-    </Content>
-    <Content Include="Database\Database.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
->>>>>>> 8d41cf0433d186656ce2025421550362e61f7bde
-=======
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
->>>>>>> 43693d983931d88965b19356347e42c7743c5555
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

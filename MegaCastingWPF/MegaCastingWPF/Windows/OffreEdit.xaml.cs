@@ -33,10 +33,31 @@ namespace MegaCastingWPF.Windows
 
             this.DataContext = Model;
 
-            this.CBX_Metier.ItemsSource = Database.MegeCastingDatabase.Current.T_R_METIER_MET.list();
-            this.CBX_Prospect.ItemsSource = Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.list();
-            this.CBX_Contrat.ItemsSource = Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.list();
-            this.CBX_Localisation.ItemsSource = Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.list();
+            List<T_R_METIER_MET> listeMetier = Database.MegeCastingDatabase.Current.T_R_METIER_MET.list();
+            this.CBX_Metier.ItemsSource = listeMetier;
+            List<T_E_PROSPECT_PRO> listeProspect = Database.MegeCastingDatabase.Current.T_E_PROSPECT_PRO.list();
+            this.CBX_Prospect.ItemsSource = listeProspect;
+            List<T_R_CONTRAT_CON> listeContrat = Database.MegeCastingDatabase.Current.T_R_CONTRAT_CON.list();
+            this.CBX_Contrat.ItemsSource = listeContrat;
+            List<T_R_LOCALISATION_LOC> listeLocalisation = Database.MegeCastingDatabase.Current.T_R_LOCALISATION_LOC.list();
+            this.CBX_Localisation.ItemsSource = listeLocalisation;
+
+            if (Model.StoreObject.MET_ID != 0)
+            {
+                CBX_Metier.SelectedItem = (listeMetier.Where(x => x.MET_ID == Model.StoreObject.MET_ID)).First();
+            }
+            if (Model.StoreObject.PRO_ID != 0)
+            {
+                CBX_Prospect.SelectedItem = (listeProspect.Where(x => x.PRO_ID == Model.StoreObject.PRO_ID)).First();
+            }
+            if (Model.StoreObject.CON_ID != 0)
+            {
+                CBX_Contrat.SelectedItem = (listeContrat.Where(x => x.CON_ID == Model.StoreObject.CON_ID)).First();
+            }
+            if (Model.StoreObject.LOC_ID != 0)
+            {
+                CBX_Localisation.SelectedItem = (listeLocalisation.Where(x => x.LOC_ID == Model.StoreObject.LOC_ID)).First();
+            }
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)
@@ -123,7 +144,18 @@ namespace MegaCastingWPF.Windows
 
                 if (prospect != null)
                 {
-                    this.CBX_Contact.ItemsSource = Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.list().Where(x => x.PRO_ID == prospect.PRO_ID).ToList();
+                   List<T_E_CONTACT_CTC> listeContact = Database.MegeCastingDatabase.Current.T_E_CONTACT_CTC.list().Where(x => x.PRO_ID == prospect.PRO_ID).ToList();
+                   this.CBX_Contact.ItemsSource = listeContact;
+
+                    if (Model.StoreObject.CTC_ID != 0)
+                    {
+                        T_E_CONTACT_CTC Contacttest = listeContact.Where(x => x.CTC_ID == Model.StoreObject.CTC_ID).First();
+
+                        if (Contacttest != null)
+                        {
+                            CBX_Contact.SelectedItem = Contacttest;
+                        }
+                    }
                 }
             }
 

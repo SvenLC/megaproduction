@@ -37,6 +37,7 @@ namespace MegaCastingWPF.Windows
 
             Model.Content = new RelatedListe<T_E_CONTACT_CTC>(Model.StoreObject.PRO_ID);
 
+
             GridContact.Children.Add(Model.Content);
 
             List<T_R_STATUT_JURIDIQUE_JUR> listestatut = Database.MegeCastingDatabase.Current.T_R_STATUT_JURIDIQUE_JUR.list();
