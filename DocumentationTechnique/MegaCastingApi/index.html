@@ -1,0 +1,1823 @@
+<!doctype html>
+<html>
+  <head>
+    <title>MegaCasting private API documentation</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>MegaCasting private API documentation</h1>
+    <div class="app-desc">Documentation de l'api privée megacasting</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 0.1</div>
+    <div class="app-desc">BasePath:</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li>APIKey KeyParamName:Token KeyInQuery:false KeyInHeader:true</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Adresse">Adresse</a></h4>
+  <ul>
+  <li><a href="#adressesADRIDDelete"><code><span class="http-method">delete</span> /adresses/{ADR_ID}</code></a></li>
+  <li><a href="#adressesADRIDGet"><code><span class="http-method">get</span> /adresses/{ADR_ID}</code></a></li>
+  <li><a href="#adressesADRIDPut"><code><span class="http-method">put</span> /adresses/{ADR_ID}</code></a></li>
+  <li><a href="#adressesGet"><code><span class="http-method">get</span> /adresses</code></a></li>
+  <li><a href="#adressesPost"><code><span class="http-method">post</span> /adresses</code></a></li>
+  </ul>
+  <h4><a href="#Authentification">Authentification</a></h4>
+  <ul>
+  <li><a href="#authLoginPost"><code><span class="http-method">post</span> /auth/login</code></a></li>
+  </ul>
+  <h4><a href="#Contact">Contact</a></h4>
+  <ul>
+  <li><a href="#contactsCTCIDDelete"><code><span class="http-method">delete</span> /contacts/{CTC_ID}</code></a></li>
+  <li><a href="#contactsCTCIDGet"><code><span class="http-method">get</span> /contacts/{CTC_ID}</code></a></li>
+  <li><a href="#contactsCTCIDPut"><code><span class="http-method">put</span> /contacts/{CTC_ID}</code></a></li>
+  <li><a href="#contactsGet"><code><span class="http-method">get</span> /contacts</code></a></li>
+  <li><a href="#contactsPost"><code><span class="http-method">post</span> /contacts</code></a></li>
+  </ul>
+  <h4><a href="#OffreCasting">OffreCasting</a></h4>
+  <ul>
+  <li><a href="#offreCastingsCASTIDDelete"><code><span class="http-method">delete</span> /offreCastings/{CAST_ID}</code></a></li>
+  <li><a href="#offreCastingsCASTIDGet"><code><span class="http-method">get</span> /offreCastings/{CAST_ID}</code></a></li>
+  <li><a href="#offreCastingsCASTIDPut"><code><span class="http-method">put</span> /offreCastings/{CAST_ID}</code></a></li>
+  <li><a href="#offreCastingsGet"><code><span class="http-method">get</span> /offreCastings</code></a></li>
+  <li><a href="#offreCastingsPost"><code><span class="http-method">post</span> /offreCastings</code></a></li>
+  </ul>
+  <h4><a href="#Prospect">Prospect</a></h4>
+  <ul>
+  <li><a href="#prospectsGet"><code><span class="http-method">get</span> /prospects</code></a></li>
+  <li><a href="#prospectsPROIDDelete"><code><span class="http-method">delete</span> /prospects/{PRO_ID}</code></a></li>
+  <li><a href="#prospectsPROIDGet"><code><span class="http-method">get</span> /prospects/{PRO_ID}</code></a></li>
+  <li><a href="#prospectsPROIDPut"><code><span class="http-method">put</span> /prospects/{PRO_ID}</code></a></li>
+  <li><a href="#prospectsPost"><code><span class="http-method">post</span> /prospects</code></a></li>
+  </ul>
+  <h4><a href="#Utilisateur">Utilisateur</a></h4>
+  <ul>
+  <li><a href="#utilisateursGet"><code><span class="http-method">get</span> /utilisateurs</code></a></li>
+  <li><a href="#utilisateursPost"><code><span class="http-method">post</span> /utilisateurs</code></a></li>
+  <li><a href="#utilisateursUTIIDDelete"><code><span class="http-method">delete</span> /utilisateurs/{UTI_ID}</code></a></li>
+  <li><a href="#utilisateursUTIIDGet"><code><span class="http-method">get</span> /utilisateurs/{UTI_ID}</code></a></li>
+  <li><a href="#utilisateursUTIIDPut"><code><span class="http-method">put</span> /utilisateurs/{UTI_ID}</code></a></li>
+  </ul>
+
+  <h1><a name="Adresse">Adresse</a></h1>
+  <div class="method"><a name="adressesADRIDDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /adresses/{ADR_ID}</code></pre></div>
+    <div class="method-summary">Supprime une adresse par son id (<span class="nickname">adressesADRIDDelete</span>)</div>
+    <div class="method-notes">Supprimer l'adresse</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">ADR_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de l'adresse recherchée format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Adresse">Adresse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'adresse supprimée correspondante à ADR_ID
+        <a href="#Adresse">Adresse</a>
+    <h4 class="field-label">404</h4>
+    Adresse non trouvée
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adressesADRIDGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /adresses/{ADR_ID}</code></pre></div>
+    <div class="method-summary">Récupérer une adresse par son id (<span class="nickname">adressesADRIDGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">ADR_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID de l'adresse recherchée format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Adresse">Adresse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'adresse correspondant à ADR_ID
+        <a href="#Adresse">Adresse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adressesADRIDPut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /adresses/{ADR_ID}</code></pre></div>
+    <div class="method-summary">Mettre à jour une adresse par son id (<span class="nickname">adressesADRIDPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">ADR_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID de l'adresse recherchée format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_2">body_2</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Adresse">Adresse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Met à jour l'adresse correspondant à ADR_ID
+        <a href="#Adresse">Adresse</a>
+    <h4 class="field-label">404</h4>
+    Adresse non trouvée
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adressesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /adresses</code></pre></div>
+    <div class="method-summary">Récupérer la liste des adresses (<span class="nickname">adressesGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Adresse">Adresse</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+}, {
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne une liste d'adresses
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adressesPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /adresses</code></pre></div>
+    <div class="method-summary">Ajouter une adresse (<span class="nickname">adressesPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_1">body_1</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Adresse">Adresse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "ADR_ID" : 0,
+  "ADR_NUM_VOIE" : "ADR_NUM_VOIE",
+  "ADR_LIBELLE_RUE" : "ADR_LIBELLE_RUE",
+  "ADR_VILLE" : "ADR_VILLE"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne l'adresse créée avec son id
+        <a href="#Adresse">Adresse</a>
+    <h4 class="field-label">404</h4>
+    Adresse non trouvée
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Authentification">Authentification</a></h1>
+  <div class="method"><a name="authLoginPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/login</code></pre></div>
+    <div class="method-summary">Authentification à l'api (<span class="nickname">authLoginPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body">body</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_201">inline_response_201</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "UTI_TOKEN" : "UTI_TOKEN",
+  "UTI_ID" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne l'ID de l'utilisateur ainsi qu'un JSON Web Token pour l'authentification.
+        <a href="#inline_response_201">inline_response_201</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Contact">Contact</a></h1>
+  <div class="method"><a name="contactsCTCIDDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /contacts/{CTC_ID}</code></pre></div>
+    <div class="method-summary">Supprime un contact par son id (<span class="nickname">contactsCTCIDDelete</span>)</div>
+    <div class="method-notes">Supprimer un contact</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CTC_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id du contact à supprimer format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne le contact supprimé correspondant à CTC_ID
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Contact inexistant !
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contactsCTCIDGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /contacts/{CTC_ID}</code></pre></div>
+    <div class="method-summary">Récupère un contact par son id (<span class="nickname">contactsCTCIDGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CTC_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id du contact recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Contact">Contact</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CTC_NUM_FAX" : "CTC_NUM_FAX",
+  "PRO_ID" : "PRO_ID",
+  "CTC_PRINCIPALE" : "CTC_PRINCIPALE",
+  "CTC_EMAIL" : "CTC_EMAIL",
+  "CTC_ID" : 0,
+  "CTC_DESCRIPTION" : "CTC_DESCRIPTION",
+  "CTC_NUM_TEL" : "CTC_NUM_TEL"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne le contact recherché
+        <a href="#Contact">Contact</a>
+    <h4 class="field-label">404</h4>
+    Contact inexistant !
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contactsCTCIDPut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /contacts/{CTC_ID}</code></pre></div>
+    <div class="method-summary">Met à jour le contact par son id (<span class="nickname">contactsCTCIDPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CTC_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id du contact recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Contact">Contact</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CTC_NUM_FAX" : "CTC_NUM_FAX",
+  "PRO_ID" : "PRO_ID",
+  "CTC_PRINCIPALE" : "CTC_PRINCIPALE",
+  "CTC_EMAIL" : "CTC_EMAIL",
+  "CTC_ID" : 0,
+  "CTC_DESCRIPTION" : "CTC_DESCRIPTION",
+  "CTC_NUM_TEL" : "CTC_NUM_TEL"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne le contact modifié correspondant à CTC_ID
+        <a href="#Contact">Contact</a>
+    <h4 class="field-label">404</h4>
+    Contact inexistant
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contactsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /contacts</code></pre></div>
+    <div class="method-summary">Récupèrer la liste des contacts (<span class="nickname">contactsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Contact">Contact</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "CTC_NUM_FAX" : "CTC_NUM_FAX",
+  "PRO_ID" : "PRO_ID",
+  "CTC_PRINCIPALE" : "CTC_PRINCIPALE",
+  "CTC_EMAIL" : "CTC_EMAIL",
+  "CTC_ID" : 0,
+  "CTC_DESCRIPTION" : "CTC_DESCRIPTION",
+  "CTC_NUM_TEL" : "CTC_NUM_TEL"
+}, {
+  "CTC_NUM_FAX" : "CTC_NUM_FAX",
+  "PRO_ID" : "PRO_ID",
+  "CTC_PRINCIPALE" : "CTC_PRINCIPALE",
+  "CTC_EMAIL" : "CTC_EMAIL",
+  "CTC_ID" : 0,
+  "CTC_DESCRIPTION" : "CTC_DESCRIPTION",
+  "CTC_NUM_TEL" : "CTC_NUM_TEL"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne une liste de contacts
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contactsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /contacts</code></pre></div>
+    <div class="method-summary">Créer un contact (<span class="nickname">contactsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_3">body_3</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Contact">Contact</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CTC_NUM_FAX" : "CTC_NUM_FAX",
+  "PRO_ID" : "PRO_ID",
+  "CTC_PRINCIPALE" : "CTC_PRINCIPALE",
+  "CTC_EMAIL" : "CTC_EMAIL",
+  "CTC_ID" : 0,
+  "CTC_DESCRIPTION" : "CTC_DESCRIPTION",
+  "CTC_NUM_TEL" : "CTC_NUM_TEL"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne le contact crée
+        <a href="#Contact">Contact</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="OffreCasting">OffreCasting</a></h1>
+  <div class="method"><a name="offreCastingsCASTIDDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /offreCastings/{CAST_ID}</code></pre></div>
+    <div class="method-summary">Supprime une offre de casting par son id (<span class="nickname">offreCastingsCASTIDDelete</span>)</div>
+    <div class="method-notes">Supprimer une offre</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CAST_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de l'offre à supprimer format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Offre">Offre</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'offre supprimée correspondant à CAST_ID
+        <a href="#Offre">Offre</a>
+    <h4 class="field-label">404</h4>
+    Contact inexistant !
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="offreCastingsCASTIDGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /offreCastings/{CAST_ID}</code></pre></div>
+    <div class="method-summary">Récupère une offre par son id (<span class="nickname">offreCastingsCASTIDGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CAST_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de l'offre recherchée format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Offre">Offre</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne l'offre recherchée
+        <a href="#Offre">Offre</a>
+    <h4 class="field-label">404</h4>
+    Offre inexistante !
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="offreCastingsCASTIDPut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /offreCastings/{CAST_ID}</code></pre></div>
+    <div class="method-summary">Met à jour une offre de casting par son id (<span class="nickname">offreCastingsCASTIDPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">CAST_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de l'offre recherchée format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Offre">Offre</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Offre de casting à modifier </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Offre">Offre</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'offre' modifiée correspondant à CAST_ID
+        <a href="#Offre">Offre</a>
+    <h4 class="field-label">404</h4>
+    Offre inexistante
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="offreCastingsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /offreCastings</code></pre></div>
+    <div class="method-summary">Récupèrer la liste des offres de castings (<span class="nickname">offreCastingsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Offre">Offre</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+}, {
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne une liste d'offre de casting
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="offreCastingsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /offreCastings</code></pre></div>
+    <div class="method-summary">Créer une offre de casting (<span class="nickname">offreCastingsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_6">body_6</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Offre">Offre</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "CAST_DATE_DEBUT_PUBLICATION" : "CAST_DATE_DEBUT_PUBLICATION",
+  "PRO_ID" : 1,
+  "CAST_DESCRIPTION_PROFIL" : "CAST_DESCRIPTION_PROFIL",
+  "CAST_NBR_POSTE" : 6,
+  "MET_ID" : 5,
+  "CON_ID" : 7,
+  "CAST_REFERENCE" : "CAST_REFERENCE",
+  "LOC_ID" : 2,
+  "CAST_DUREE_DIFFUSION" : "CAST_DUREE_DIFFUSION",
+  "CAST_DATE_DEBUT_CONTRAT" : "CAST_DATE_DEBUT_CONTRAT",
+  "CAST_DESCRIPTION_POSTE" : "CAST_DESCRIPTION_POSTE",
+  "CTC_ID" : 5,
+  "CAST_INTITULE" : "CAST_INTITULE",
+  "CAST_ID" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne l'offre créée
+        <a href="#Offre">Offre</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Prospect">Prospect</a></h1>
+  <div class="method"><a name="prospectsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /prospects</code></pre></div>
+    <div class="method-summary">Récupérer la liste des prospects (<span class="nickname">prospectsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne une liste d'adresse
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="prospectsPROIDDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /prospects/{PRO_ID}</code></pre></div>
+    <div class="method-summary">Supprime un prospect par son ID (<span class="nickname">prospectsPROIDDelete</span>)</div>
+    <div class="method-notes">Supprimer un prospect</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">PRO_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID du prospect recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Prospect">Prospect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "PRO_ID" : 0,
+  "PRO_NAME" : "PRO_NAME"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne le prospect supprimé correspondant à PRO_ID
+        <a href="#Prospect">Prospect</a>
+    <h4 class="field-label">404</h4>
+    Prospect non trouvé
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="prospectsPROIDGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /prospects/{PRO_ID}</code></pre></div>
+    <div class="method-summary">Récupérer un prospect par son ID (<span class="nickname">prospectsPROIDGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">PRO_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID du prospect recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Prospect">Prospect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "PRO_ID" : 0,
+  "PRO_NAME" : "PRO_NAME"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne le prospect correspondant à PRO_ID
+        <a href="#Prospect">Prospect</a>
+    <h4 class="field-label">404</h4>
+    Prospect non trouvé
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="prospectsPROIDPut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /prospects/{PRO_ID}</code></pre></div>
+    <div class="method-summary">Met à jour un prospect par son ID (<span class="nickname">prospectsPROIDPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">PRO_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID du prospect recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Prospect">Prospect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "PRO_ID" : 0,
+  "PRO_NAME" : "PRO_NAME"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne le prospect modifié correspondant à PRO_ID
+        <a href="#Prospect">Prospect</a>
+    <h4 class="field-label">404</h4>
+    Prospect non trouvé
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="prospectsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /prospects</code></pre></div>
+    <div class="method-summary">Ajouter un prospect (<span class="nickname">prospectsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_4">body_4</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Prospect">Prospect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "PRO_ID" : 0,
+  "PRO_NAME" : "PRO_NAME"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne le prospect crée
+        <a href="#Prospect">Prospect</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Utilisateur">Utilisateur</a></h1>
+  <div class="method"><a name="utilisateursGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /utilisateurs</code></pre></div>
+    <div class="method-summary">Récupérer la liste des utilisateurs (<span class="nickname">utilisateursGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[Object]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ "{}", "{}" ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne une liste d'adresses
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="utilisateursPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /utilisateurs</code></pre></div>
+    <div class="method-summary">Créer un utilisateur (<span class="nickname">utilisateursPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#body_5">body_5</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utilisateur">Utilisateur</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "UTI_ADMINISTRATEUR" : true,
+  "UTI_LOGIN" : "UTI_LOGIN",
+  "UTI_PRENOM" : "UTI_PRENOM",
+  "UTI_MDP" : "UTI_MDP",
+  "UTI_ID" : 0,
+  "UTI_NOM" : "UTI_NOM"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Retourne l'utilisateur' crée
+        <a href="#Utilisateur">Utilisateur</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="utilisateursUTIIDDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /utilisateurs/{UTI_ID}</code></pre></div>
+    <div class="method-summary">Supprime un client par son id (<span class="nickname">utilisateursUTIIDDelete</span>)</div>
+    <div class="method-notes">Supprimer un utilisateur</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">UTI_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID de l'utilisateur recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'utilisateur' supprimé correspondant à UTI_ID
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="utilisateursUTIIDGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /utilisateurs/{UTI_ID}</code></pre></div>
+    <div class="method-summary">Récupérer un utilisateur par son ID (<span class="nickname">utilisateursUTIIDGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">UTI_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID de l'utilisateur recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'utilisateur' correspondant à UTI_ID
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Prospect non trouvé
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="utilisateursUTIIDPut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /utilisateurs/{UTI_ID}</code></pre></div>
+    <div class="method-summary">Met à jour l'utilisateur par son ID (<span class="nickname">utilisateursUTIIDPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">UTI_ID (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID du prospect recherché format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Retourne l'utilisateur modifié correspondant à UTI_ID
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Utilisateur non trouvé
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Adresse"><code>Adresse</code> - </a></li>
+    <li><a href="#Contact"><code>Contact</code> - </a></li>
+    <li><a href="#Offre"><code>Offre</code> - </a></li>
+    <li><a href="#Prospect"><code>Prospect</code> - </a></li>
+    <li><a href="#Utilisateur"><code>Utilisateur</code> - </a></li>
+    <li><a href="#body"><code>body</code> - </a></li>
+    <li><a href="#body_1"><code>body_1</code> - </a></li>
+    <li><a href="#body_2"><code>body_2</code> - </a></li>
+    <li><a href="#body_3"><code>body_3</code> - </a></li>
+    <li><a href="#body_4"><code>body_4</code> - </a></li>
+    <li><a href="#body_5"><code>body_5</code> - </a></li>
+    <li><a href="#body_6"><code>body_6</code> - </a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
+    <li><a href="#inline_response_201"><code>inline_response_201</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Adresse"><code>Adresse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">ADR_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">ADR_NUM_VOIE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_LIBELLE_RUE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_VILLE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Contact"><code>Contact</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">CTC_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CTC_DESCRIPTION (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CTC_NUM_TEL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CTC_NUM_FAX (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CTC_EMAIL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CTC_PRINCIPALE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">PRO_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Offre"><code>Offre</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">CAST_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CAST_INTITULE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_REFERENCE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DATE_DEBUT_PUBLICATION (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DUREE_DIFFUSION (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DATE_DEBUT_CONTRAT (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_NBR_POSTE (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CAST_DESCRIPTION_POSTE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DESCRIPTION_PROFIL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">PRO_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">MET_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CTC_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">LOC_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CON_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Prospect"><code>Prospect</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">PRO_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">PRO_NAME (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Utilisateur"><code>Utilisateur</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">UTI_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">UTI_NOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_PRENOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_LOGIN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_MDP (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_ADMINISTRATEUR (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body"><code>body</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">UTI_LOGIN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_MDP (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_1"><code>body_1</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">ADR_NUM_VOIE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_LIBELLE_RUE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_VILLE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_2"><code>body_2</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">ADR_NUM_VOIE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_LIBELLE_RUE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">ADR_VILLE </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_3"><code>body_3</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">UTI_NOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_PRENOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_LOGIN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_MDP (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_ADMINISTRATEUR (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_4"><code>body_4</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">PRO_NAME (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_5"><code>body_5</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">UTI_NOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_PRENOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_LOGIN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_MDP (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_ADMINISTRATEUR (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="body_6"><code>body_6</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">CAST_INTITULE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_REFERENCE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DATE_DEBUT_PUBLICATION (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DUREE_DIFFUSION (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DATE_DEBUT_CONTRAT (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_NBR_POSTE (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CAST_DESCRIPTION_POSTE (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">CAST_DESCRIPTION_PROFIL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">PRO_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">MET_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CTC_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">LOC_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">CON_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">UTI_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_NOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_PRENOM (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_LOGIN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">UTI_ADMINISTRATEUR (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_201"><code>inline_response_201</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">UTI_ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">UTI_TOKEN (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> JSON WebToken </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
