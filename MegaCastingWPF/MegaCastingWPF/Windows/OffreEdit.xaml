@@ -9,7 +9,7 @@
                       mc:Ignorable="d"
                       Title="MegaCasting"
                       WindowTransitionsEnabled="False"
-                      WindowStartupLocation="CenterScreen">
+                      WindowStartupLocation="CenterScreen" d:DesignHeight="663">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -83,7 +83,7 @@
                                     </TextBox>
                                     <TextBlock Text="Date de publication" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
                                     <DatePicker x:Name="Date1" Grid.Row="4" Grid.Column="2" SelectedDate="{Binding StoreObject.CAST_DATE_DEBUT_PUBLICATION}"/>
-                                    <TextBlock Text="Heure" FontSize="12" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Nombre de jour" FontSize="12" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
                                     <TextBox controls:TextBoxHelper.ClearTextButton="True" Grid.Row="6" Grid.Column="2">
                                         <TextBox.Text>
                                             <Binding Path="StoreObject.CAST_DUREE_DIFFUSION" UpdateSourceTrigger="PropertyChanged" >
@@ -125,15 +125,15 @@
                                             </Binding>
                                         </TextBox.Text>
                                     </TextBox>
-                                    <TextBlock Text="Propect" FontSize="12" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Prospects" FontSize="12" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center"/>
                                     <ComboBox SelectedIndex="0" SelectionChanged="CBX_Localisation_SelectionChanged" Grid.Row="16" Grid.Column="2" x:Name="CBX_Prospect" DisplayMemberPath="PRO_NAME" ></ComboBox>
                                     <TextBlock Text="Métier" FontSize="12" Grid.Row="18" Grid.Column="0" VerticalAlignment="Center"/>
                                     <ComboBox SelectedIndex="0" Grid.Row="18" Grid.Column="2" x:Name="CBX_Metier" DisplayMemberPath="MET_LIBELLE" ></ComboBox>
-                                    <TextBlock Text="Propect" FontSize="12" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Localisation" FontSize="12" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center"/>
                                     <ComboBox SelectedIndex="0" Grid.Row="20" Grid.Column="2" x:Name="CBX_Localisation" DisplayMemberPath="LOC_LIBELLE" ></ComboBox>
                                     <TextBlock Text="Métier" FontSize="12" Grid.Row="22" Grid.Column="0" VerticalAlignment="Center"/>
                                     <ComboBox SelectedIndex="0" Grid.Row="22" Grid.Column="2" x:Name="CBX_Contrat" DisplayMemberPath="CON_LIBELLE" ></ComboBox>
-                                    <TextBlock Text="Métier" FontSize="12" Grid.Row="24" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Contact" FontSize="12" Grid.Row="24" Grid.Column="0" VerticalAlignment="Center"/>
                                     <ComboBox SelectedIndex="0" Grid.Row="24" Grid.Column="2" x:Name="CBX_Contact" DisplayMemberPath="CTC_DESCRIPTION" ></ComboBox>
                                 </Grid.Children>
                             </Grid>

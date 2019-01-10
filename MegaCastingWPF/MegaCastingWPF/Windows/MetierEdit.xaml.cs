@@ -34,7 +34,13 @@ namespace MegaCastingWPF.Windows
 
             this.DataContext = Model;
 
-            this.CBX_Statut.ItemsSource = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.list();
+            List<T_R_DOMAINE_METIER_DOM> statut = Database.MegeCastingDatabase.Current.T_R_DOMAINE_METIER_DOM.list();
+            this.CBX_Statut.ItemsSource = statut;
+
+            if (Model.StoreObject.DOM_ID != 0 && statut.Count > 0)
+            {
+                CBX_Statut.SelectedItem = statut.Where(x => x.DOM_ID == Model.StoreObject.DOM_ID).First();
+            }
         }
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)
